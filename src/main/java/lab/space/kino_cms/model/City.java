@@ -1,14 +1,15 @@
-package model;
+package lab.space.kino_cms.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "sms_distribution")
+@Table(name = "cities")
 @Data
-public class SMSDistribution {
+public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int counter;
+    @Column(length = 100)
+    private String name;
 }

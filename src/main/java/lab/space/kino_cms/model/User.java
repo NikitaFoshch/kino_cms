@@ -1,12 +1,12 @@
-package model;
+package lab.space.kino_cms.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lab.space.kino_cms.model.common.MappedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import model.common.MappedEntity;
 
 import java.time.LocalDate;
 
@@ -31,11 +31,16 @@ public class User extends MappedEntity {
     private String cardNumber;
     @Column(length = 50)
     private String language;
-    @Column(length = 10)
-    private String gender;
+    private Type gender;
     @Column(length = 20)
     private String phone;
     private LocalDate birthday;
     @OneToOne
     private City city;
+
+    public enum Type{
+        MALE,
+        FEMALE
+    }
+
 }

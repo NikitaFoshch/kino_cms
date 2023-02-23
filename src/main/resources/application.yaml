@@ -1,1 +1,16 @@
+server:
+  port: 8080
 
+spring:
+  application:
+    name: Kino-CMS
+  datasource:
+    url: jdbc:postgresql://localhost:5432/kino-cms
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: postgresql

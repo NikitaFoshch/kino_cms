@@ -1,4 +1,4 @@
-package model.common;
+package lab.space.kino_cms.model.common;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

@@ -1,4 +1,4 @@
-package model;
+package lab.space.kino_cms.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,20 +6,21 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import model.common.MappedEntity;
+import lab.space.kino_cms.model.common.MappedEntity;
+
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "movies")
+@Table
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Movie extends MappedEntity {
+public class Promotions extends MappedEntity {
     @Column(length = 100)
     private String name;
     @Column(length = 1000)
     private String description;
-    private boolean type3D;
-    private boolean type2D;
-    private boolean imax;
+    private LocalDate publicatedAt;
+    private boolean disabled;
     @Column(length = 150)
     private String trailerUrl;
     @Column(length = 150)

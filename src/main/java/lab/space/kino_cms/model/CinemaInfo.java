@@ -1,11 +1,12 @@
-package model;
+package lab.space.kino_cms.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lab.space.kino_cms.model.common.MappedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import model.common.MappedEntity;
 
 @Entity
 @Table(name = "cinema_infos")
@@ -21,5 +22,8 @@ public class CinemaInfo extends MappedEntity {
     private String coordinates;
     @Column(length = 150)
     private String logo;
-    private boolean defaultValue;
+    private boolean isDefault;
+
+    @ManyToOne
+    private ContactsPage contactsPage;
 }

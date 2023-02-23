@@ -1,4 +1,4 @@
-package model;
+package lab.space.kino_cms.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,7 +6,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import model.common.MappedEntity;
+import lab.space.kino_cms.model.common.MappedEntity;
 
 @Entity
 @Table(name = "main_pages")

@@ -1,21 +1,26 @@
-package model;
+package lab.space.kino_cms.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import model.common.MappedEntity;
+import lab.space.kino_cms.model.common.MappedEntity;
 
 @Entity
-@Table(name = "halls")
+@Table(name = "cinemas")
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Hall extends MappedEntity {
+public class Cinema extends MappedEntity {
     @Column(length = 100)
     private String name;
     @Column(length = 1000)
     private String description;
+    @Column(length = 1000)
+    private String conditions;
     @Column(length = 150)
-    private String schema;
+    private String logo;
     @Column(length = 150)
     private String topBanner;
     @Column(length = 150)
@@ -28,8 +33,6 @@ public class Hall extends MappedEntity {
     private String galleryImage4;
     @Column(length = 150)
     private String galleryImage5;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Cinema cinema;
     @OneToOne
     private SEO seo;
 }

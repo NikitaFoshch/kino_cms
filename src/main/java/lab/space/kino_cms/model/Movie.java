@@ -1,28 +1,29 @@
-package model;
+package lab.space.kino_cms.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lab.space.kino_cms.model.common.MappedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import model.common.MappedEntity;
 
 @Entity
-@Table(name = "cinemas")
+@Table(name = "movies")
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Cinema extends MappedEntity {
+public class Movie extends MappedEntity {
     @Column(length = 100)
     private String name;
     @Column(length = 1000)
     private String description;
-    @Column(length = 1000)
-    private String conditions;
+    private boolean type3D;
+    private boolean type2D;
+    private boolean imax;
     @Column(length = 150)
-    private String logo;
+    private String trailerUrl;
     @Column(length = 150)
-    private String topBanner;
+    private String mainImage;
     @Column(length = 150)
     private String galleryImage1;
     @Column(length = 150)

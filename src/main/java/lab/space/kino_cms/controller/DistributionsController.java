@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DistributionsController {
     @GetMapping({"/",""})
     public String showDistributionPage(){
-        return "pages/distributions/distributions";
+        return "/admin-panel/pages/distributions/distributions";
     }
 
     @GetMapping("pick-users")
     public String showUsers(){
-        return "pages/distributions/pick-users";
+        return "/admin-panel/pages/distributions/pick-users";
     }
 }

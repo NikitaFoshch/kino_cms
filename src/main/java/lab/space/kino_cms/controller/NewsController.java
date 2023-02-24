@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class NewsController {
     @GetMapping({"/",""})
     public String showNewsPage(){
-        return "pages/news/news";
+        return "/admin-panel/pages/news/news";
     }
 
     @GetMapping("news-edit")
     public String showNewsEditPage(){
-        return "pages/news/news-page";
+        return "/admin-panel/pages/news/news-page";
     }
 }

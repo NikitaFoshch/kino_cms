@@ -10,11 +10,11 @@ public class UserController {
 
     @GetMapping({"/", ""})
     public String showUsersPage() {
-        return "pages/users/users";
+        return "/admin-panel/pages/users/users";
     }
 
     @GetMapping("user-edit")
     public String showUserEditPage() {
-        return "pages/users/user";
+        return "/admin-panel/pages/users/user";
     }
 }

@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PromotionsController {
     @GetMapping({"/", ""})
     public String showPromotionsPage() {
-        return "pages/promotions/promotions";
+        return "/admin-panel/pages/promotions/promotions";
     }
 
     @GetMapping("promotions-edit")
     public String showPromotionsEditPage() {
-        return "pages/promotions/promotions-page";
+        return "/admin-panel/pages/promotions/promotions-page";
     }
 }

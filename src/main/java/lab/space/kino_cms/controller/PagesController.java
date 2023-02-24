@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PagesController {
     @GetMapping({"/",""})
     public String showPages(){
-        return "pages/pages/pages";
+        return "/admin-panel/pages/pages/pages";
     }
 }

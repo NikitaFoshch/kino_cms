@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CinemasController {
     @GetMapping({"/",""})
     public String showCinemasPage(){
-        return "pages/cinemas/cinemas";
+        return "/admin-panel/pages/cinemas/cinemas";
     }
 
     @GetMapping("cinema-edit")
     public String showCinemaEditPage(){
-        return "pages/cinemas/cinema-cart";
+        return "/admin-panel/pages/cinemas/cinema-cart";
     }
 
     @GetMapping("hall-save")
     public String showHallSavePage(){
-        return "pages/cinemas/hall-cart";
+        return "/admin-panel/pages/cinemas/hall-cart";
     }
 }

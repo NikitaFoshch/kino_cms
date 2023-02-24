@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BannersController {
     @GetMapping({"/",""})
     public String showBannersPage(){
-        return "pages/banners/banners";
+        return "/admin-panel/pages/banners/banners";
     }
 }

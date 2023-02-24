@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MoviesController {
     @GetMapping({"/",""})
     public String showMoviesPage(){
-        return "pages/movies/movies";
+        return "/admin-panel/pages/movies/movies";
     }
 
     @GetMapping("movie-edit")
     public String showMovieEditPage(){
-        return "pages/movies/movie-page";
+        return "/admin-panel/pages/movies/movie-page";
     }
 }

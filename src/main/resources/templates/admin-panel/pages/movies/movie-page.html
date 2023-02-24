@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="admin-panel/fragments/head :: head"></head>
+<head th:replace="~{admin-panel/fragments/head :: head}"></head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
   <!-- Navbar -->
-  <th:block th:insert="admin-panel/fragments/navbar :: navbar"></th:block>
+  <th:block th:insert="~{admin-panel/fragments/navbar :: navbar}"></th:block>
 
   <!-- /.navbar -->
   <!-- Main Sidebar Container -->
@@ -18,7 +18,7 @@
     </a>
 
     <!-- Sidebar -->
-    <th:block th:insert="admin-panel/fragments/sidebar :: sidebar"></th:block>
+    <th:block th:insert="~{admin-panel/fragments/sidebar :: sidebar}"></th:block>
 
     <!-- /.sidebar -->
   </aside>
@@ -48,6 +48,6 @@
   </div>
   <!-- ./wrapper -->
 </div>
-<th:block th:insert="admin-panel/fragments/js :: js"></th:block>
+<th:block th:insert="~{admin-panel/fragments/js :: js}"></th:block>
 </body>
 </html>

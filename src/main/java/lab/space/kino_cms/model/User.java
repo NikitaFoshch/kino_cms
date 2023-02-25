@@ -1,12 +1,12 @@
 package lab.space.kino_cms.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 import lab.space.kino_cms.model.common.MappedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 
@@ -29,18 +29,33 @@ public class User extends MappedEntity {
     private String password;
     @Column(length = 20)
     private String cardNumber;
-    @Column(length = 50)
-    private String language;
-    private Type gender;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private Language language;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10)
+    private Gender gender;
     @Column(length = 20)
     private String phone;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "DD.MM.YYYY")
     private LocalDate birthday;
     @OneToOne
     private City city;
 
-    public enum Type{
-        MALE,
-        FEMALE
+    @Getter
+    @RequiredArgsConstructor
+    public enum Gender{
+        MALE("Мужской"),
+        FEMALE("Женский");
+        private final String value;
+    }
+
+    @Getter
+    @RequiredArgsConstructor
+    public enum Language{
+        RU("Русский"),
+        UA("Украинский");
+        private final String value;
     }
 
 }

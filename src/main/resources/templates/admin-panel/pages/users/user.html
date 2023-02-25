@@ -25,137 +25,130 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Пользователь</h1>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
-
         <!-- Main content -->
         <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <!-- /.col-md-6 -->
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label for="firstname" class="col-sm-2 col-form-label">Имя</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="firstname" placeholder="Имя">
+            <div class="container-fluid pt-4">
+                <form th:method="POST" th:action="${'/users/user-update/' + user.id}" th:object="${user}">
+                    <div class="row">
+                        <input id="user-id" th:field="*{id}" hidden disabled>
+                        <!-- /.col-md-6 -->
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="firstname" class="col-sm-2 col-form-label">Имя</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="firstname" placeholder="Имя"
+                                           th:field="*{firstname}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lastname" class="col-sm-2 col-form-label">Фамилия</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="lastname" placeholder="Фамилия"
+                                           th:field="*{lastname}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="username" class="col-sm-2 col-form-label">Псевдоним</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="username" placeholder="Псевдоним"
+                                           th:field="*{username}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-sm-2 col-form-label">E-mail</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="email" placeholder="E-mail"
+                                           th:field="*{email}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="address" class="col-sm-2 col-form-label">Адрес</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="address" placeholder="Адрес"
+                                           th:field="*{address}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="password" class="col-sm-2 col-form-label">Пароль</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="password" placeholder="Пароль"
+                                           th:field="*{password}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="card-number" class="col-sm-2 col-form-label">Номер карты</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="card-number"
+                                           placeholder="1111-1111-1111-1111" th:field="*{cardNumber}">
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="lastname" class="col-sm-2 col-form-label">Фамилия</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="lastname" placeholder="Фамилия">
+                        <!-- /.col-md-6 -->
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Пол</label>
+                                <div th:each="userGender : ${T(lab.space.kino_cms.model.User.Gender).values()}">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" th:field="*{gender}" th:value="${userGender}"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label" th:for="${#ids.prev('gender')}"
+                                               th:text="${userGender.value}"></label>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="username" class="col-sm-2 col-form-label">Псевдоним</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="username" placeholder="Псевдоним">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Язык</label>
+                                <div th:each="userLanguage : ${T(lab.space.kino_cms.model.User.Language).values()}">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" th:field="*{language}" th:value="${userLanguage}"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label" th:for="${#ids.prev('language')}"
+                                               th:text="${userLanguage.value}"></label>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-2 col-form-label">E-mail</label>
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control" id="email" placeholder="E-mail">
+                            <div class="form-group row">
+                                <label for="phone" class="col-sm-3 col-form-label">Телефон</label>
+                                <div class="col-sm-7">
+                                    <input type="tel" class="form-control" id="phone"
+                                           placeholder="+38(097)1111-11-11" th:field="*{phone}">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="address" class="col-sm-2 col-form-label">Адрес</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="address" placeholder="Адрес">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="password" class="col-sm-2 col-form-label">Пароль</label>
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control" id="password" placeholder="Пароль">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="card-number" class="col-sm-2 col-form-label">Номер карты</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="card-number"
-                                       placeholder="1111-1111-1111-1111">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.col-md-6 -->
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Пол</label>
-                            <div class="custom-control custom-radio mr-2 col-sm-2">
-                                <input class="custom-control-input" type="radio" id="male-gender"
-                                       name="gender">
-                                <label for="male-gender" class="custom-control-label">Мужской</label>
-                            </div>
-                            <div class="custom-control custom-radio ml-2 col-sm-2">
-                                <input class="custom-control-input" type="radio" id="female-gender" name="gender">
-                                <label for="female-gender" class="custom-control-label">Женский</label>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Язык</label>
-                            <div class="custom-control custom-radio mr-2 col-sm-2">
-                                <input class="custom-control-input" type="radio" id="ru-lang" name="language">
-                                <label for="ru-lang" class="custom-control-label">Русский</label>
-                            </div>
-                            <div class="custom-control custom-radio ml-2 col-sm-2">
-                                <input class="custom-control-input" type="radio" id="ua-lang" name="language">
-                                <label for="ua-lang" class="custom-control-label">Украинский</label>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="phone" class="col-sm-3 col-form-label">Телефон</label>
-                            <div class="col-sm-7">
-                                <input type="tel" class="form-control" id="phone"
-                                       placeholder="+38(097)1111-11-11">
-                            </div>
-                        </div>
-                        <div class="form-group row mb-0">
-                            <label for="birthday" class="col-sm-3 col-form-label">Дата рождения</label>
-                            <div class="form-group ml-2">
-                                <div class="input-group date" id="birthday" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input"
-                                           data-target="#birthday"/>
-                                    <div class="input-group-append" data-target="#birthday"
-                                         data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="fa-solid fa-calendar-days"></i></i>
+                            <div class="form-group row mb-0">
+                                <label for="birthday" class="col-sm-3 col-form-label">Дата рождения</label>
+                                <div class="form-group ml-2">
+                                    <div class="input-group date" id="birthday" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input"
+                                               data-target="#birthday" data-toggle="datetimepicker"
+                                               th:field="*{birthday}"/>
+                                        <div class="input-group-append" data-target="#birthday"
+                                             data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa-solid fa-calendar-days"></i></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="city" class="col-sm-3 col-form-label ">Город</label>
-                            <div class="form-group ml-2">
-                                <select class="form-control select2bs4" id="city">
-                                    <option selected="selected">Одесса</option>
-                                    <option>Киев</option>
-                                    <option>Львов</option>
-                                    <option>Николаев</option>
-                                    <option>Днепр</option>
-                                    <option>Харьков</option>
-                                    <option>Запорожье</option>
-                                </select>
+                            <div class="form-group row">
+                                <label for="city" class="col-sm-3 col-form-label ">Город</label>
+                                <div class="form-group ml-2">
+                                    <select class="form-control select2bs4" id="city" th:field="*{city}">
+                                        <option th:each="city : ${cities}" th:value="${city.id}"
+                                                th:text="${city.name}"></option>
+                                    </select>
+                                </div>
                             </div>
+                            <!-- put content here -->
                         </div>
-                        <!-- put content here -->
+                        <!-- /.row -->
+                    </div><!-- /.container-fluid -->
+
+                    <div class="row">
+                        <div class="col-2 m-auto">
+                            <button type="submit" class="btn btn-block btn-default">Сохранить</button>
+                        </div>
                     </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
-                <div class="row">
-                    <div class="col-2 m-auto">
-                        <button type="button" class="btn btn-block btn-default">Сохранить</button>
-                    </div>
-                </div>
+                </form>
             </div>
             <!-- /.content -->
         </div>
@@ -165,12 +158,12 @@
     <!-- ./wrapper -->
 </div>
 <th:block th:insert="~{admin-panel/fragments/js :: js}"></th:block>
-<script src="/js/select2/select2.full.js"></script>
-<script src="/js/date-picker/tempusdominus-bootstrap-4.min.js"></script>
 <script src="/js/moment/moment.min.js"></script>
+<script src="/js/date-picker/tempusdominus-bootstrap-4.min.js"></script>
+<script src="/js/select2/select2.full.js"></script>
 <script>
     $('#birthday').datetimepicker({
-        format: 'L'
+        format: 'DD.MM.YYYY'
     });
 </script>
 </body>

@@ -1,14 +1,14 @@
 package lab.space.kino_cms.model;
 
 import jakarta.persistence.*;
+import lab.space.kino_cms.model.common.MappedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lab.space.kino_cms.model.common.MappedEntity;
 
 @Entity
 @Table(name = "halls")
-@EqualsAndHashCode(callSuper = true)
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class Hall extends MappedEntity {
     @Column(length = 100)
     private String name;

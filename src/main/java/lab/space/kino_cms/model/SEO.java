@@ -9,8 +9,8 @@ import lombok.EqualsAndHashCode;
 
 @Entity
 @Table
-@EqualsAndHashCode(callSuper = true)
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class SEO extends MappedEntity {
     @Column(length = 150)
     private String url;

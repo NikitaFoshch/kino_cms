@@ -10,8 +10,8 @@ import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "movies")
-@EqualsAndHashCode(callSuper = true)
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class Movie extends MappedEntity {
     @Column(length = 100)
     private String name;

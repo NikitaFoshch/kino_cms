@@ -9,8 +9,8 @@ import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "background_banners")
-@EqualsAndHashCode(callSuper = true)
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BackgroundBanner extends MappedEntity {
     private boolean backgroundImage;
     @Column(length = 150)

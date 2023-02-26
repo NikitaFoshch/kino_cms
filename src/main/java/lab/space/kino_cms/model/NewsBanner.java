@@ -9,8 +9,8 @@ import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "news_banners")
-@EqualsAndHashCode(callSuper = true)
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class NewsBanner extends MappedEntity {
     private boolean switcher;
     private int rotatingSpeed;

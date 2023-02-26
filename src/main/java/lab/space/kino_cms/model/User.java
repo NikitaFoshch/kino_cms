@@ -12,8 +12,8 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "users")
-@EqualsAndHashCode(callSuper = true)
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class User extends MappedEntity {
     @Column(length = 100)
     private String firstname;

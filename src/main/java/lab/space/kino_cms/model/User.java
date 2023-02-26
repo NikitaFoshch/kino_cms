@@ -44,7 +44,7 @@ public class User extends MappedEntity {
 
     @Getter
     @RequiredArgsConstructor
-    public enum Gender{
+    public enum Gender {
         MALE("Мужской"),
         FEMALE("Женский");
         private final String value;
@@ -52,7 +52,7 @@ public class User extends MappedEntity {
 
     @Getter
     @RequiredArgsConstructor
-    public enum Language{
+    public enum Language {
         RU("Русский"),
         UA("Украинский");
         private final String value;

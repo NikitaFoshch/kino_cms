@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 @Table
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class SEO extends MappedEntity {
+public class Seo extends MappedEntity {
     @Column(length = 150)
     private String url;
     @Column(length = 100)

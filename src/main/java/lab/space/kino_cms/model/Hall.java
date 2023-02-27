@@ -31,5 +31,5 @@ public class Hall extends MappedEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Cinema cinema;
     @OneToOne
-    private SEO seo;
+    private Seo seo;
 }

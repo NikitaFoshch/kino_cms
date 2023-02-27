@@ -15,5 +15,5 @@ public class ContactsPage {
     @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.ALL , orphanRemoval = true)
     private List<CinemaInfo> cinemaInfo;
     @OneToOne
-    private SEO seo;
+    private Seo seo;
 }

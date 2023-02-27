@@ -36,5 +36,5 @@ public class Promotions extends MappedEntity {
     @Column(length = 150)
     private String galleryImage5;
     @OneToOne
-    private SEO seo;
+    private Seo seo;
 }

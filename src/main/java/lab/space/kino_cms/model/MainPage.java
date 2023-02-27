@@ -21,5 +21,5 @@ public class MainPage extends MappedEntity {
     @Column(length = 1000)
     private String seoText;
     @OneToOne
-    private SEO seo;
+    private Seo seo;
 }

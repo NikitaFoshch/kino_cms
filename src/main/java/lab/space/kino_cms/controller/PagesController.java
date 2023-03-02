@@ -31,34 +31,14 @@ public class PagesController {
         return "/admin-panel/pages/pages/main-page-edit";
     }
 
-    @GetMapping("about-cinema-edit")
+    @GetMapping("common-page-edit")
     public String editAboutCinemaPage(){
-        return "/admin-panel/pages/pages/about-cinema";
-    }
-
-    @GetMapping("advertising-edit")
-    public String editAdvertisingPage(){
-        return "/admin-panel/pages/pages/advertising";
-    }
-
-    @GetMapping("cafe-bar-edit")
-    public String editCafeBarPage(){
-        return "/admin-panel/pages/pages/cafe-bar";
+        return "/admin-panel/pages/pages/common-page";
     }
 
     @GetMapping("contacts-edit")
     public String editContactsPage(){
         return "/admin-panel/pages/pages/contacts";
-    }
-
-    @GetMapping("kids-room-edit")
-    public String editKidsRoomPage(){
-        return "/admin-panel/pages/pages/kids-room";
-    }
-
-    @GetMapping("vip-hall-edit")
-    public String editVipHallPage(){
-        return "/admin-panel/pages/pages/vip-hall";
     }
 
     @PostMapping("main-page-update/{id}")

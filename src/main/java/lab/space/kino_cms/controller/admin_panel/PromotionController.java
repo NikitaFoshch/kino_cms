@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("admin/promotions")
-public class PromotionsController {
+public class PromotionController {
     @GetMapping({"/", ""})
     public String showPromotionsPage() {
         return "/admin-panel/pages/promotions/promotions";

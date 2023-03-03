@@ -1,4 +1,4 @@
-package lab.space.kino_cms.controller;
+package lab.space.kino_cms.controller.admin_panel;
 
 import lab.space.kino_cms.model.MainPage;
 import lab.space.kino_cms.model.Seo;
@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("pages")
+@RequestMapping("admin/pages")
 @RequiredArgsConstructor
 public class PagesController {
 
@@ -45,7 +45,7 @@ public class PagesController {
     public String updateUser(@PathVariable("id") Long mainPageId,
                              @ModelAttribute MainPage mainPage) {
         mainPageService.updateMainePageById(mainPageId, mainPage);
-        return "redirect:/pages/main-page-edit/" + mainPageId;
+        return "redirect:/admin/pages/main-page-edit/" + mainPageId;
     }
 
 }

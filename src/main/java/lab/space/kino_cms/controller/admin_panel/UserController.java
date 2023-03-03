@@ -1,4 +1,4 @@
-package lab.space.kino_cms.controller;
+package lab.space.kino_cms.controller.admin_panel;
 
 import lab.space.kino_cms.model.City;
 import lab.space.kino_cms.model.User;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("users")
+@RequestMapping("admin/users")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -40,13 +40,13 @@ public class UserController {
     public String updateUser(@PathVariable("id") Long userId,
                              @ModelAttribute User user) {
         userService.updateUserById(userId, user);
-        return "redirect:/users/user-edit/" + userId;
+        return "redirect:/admin/users/user-edit/" + userId;
     }
 
     @GetMapping("user-delete/{userId}")
     public String deleteUserById(@PathVariable Long userId) {
         userService.deleteUserById(userId);
-        return "redirect:/users";
+        return "redirect:/admin/users";
     }
 
 }

@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("about-cinema")
 public class AboutCinemaController {
+    @GetMapping({"/", ""})
+    public String showAboutCinemaPage(){
+        return "/web/pages/about-cinema/about-cinema";
+    }
     @GetMapping("news")
     public String showNewsPage(){
         return "/web/pages/about-cinema/news";
@@ -20,7 +24,7 @@ public class AboutCinemaController {
         return "/web/pages/about-cinema/cafe-bar";
     }
     @GetMapping("advertising")
-    public String showAboutCinemaPage(){
+    public String showAdvertisingPage(){
         return "/web/pages/about-cinema/advertising";
     }
 }

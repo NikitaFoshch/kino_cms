@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("main")
+@RequestMapping({"/",""})
 public class MainPageController {
-    @GetMapping({"/",""})
+    @GetMapping
     public String showMainPage(){
         return "/web/pages/main-page/main-page";
     }

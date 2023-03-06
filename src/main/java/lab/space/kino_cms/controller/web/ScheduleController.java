@@ -11,4 +11,8 @@ public class ScheduleController {
     public String showSchedulePage(){
         return "/web/pages/schedule/schedule";
     }
+    @GetMapping("ticket-booking")
+    public String showTicketBookingPage(){
+        return "/web/pages/schedule/ticket-booking";
+    }
 }

@@ -11,4 +11,12 @@ public class CinemasController {
     public String showCinemasPage(){
         return "/web/pages/cinemas/cinemas";
     }
+    @GetMapping("cinema-cart")
+    public String showCinemasCartPage(){
+        return "/web/pages/cinemas/cinema-cart";
+    }
+    @GetMapping("hall-cart")
+    public String showHallCartPage(){
+        return "/web/pages/cinemas/hall-cart";
+    }
 }

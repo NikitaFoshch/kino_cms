@@ -11,4 +11,8 @@ public class PosterController {
     public String showPosterPage(){
         return "/web/pages/poster/poster";
     }
+    @GetMapping("movie-cart")
+    public String showMovieCartPage(){
+        return "/web/pages/poster/movie-cart";
+    }
 }

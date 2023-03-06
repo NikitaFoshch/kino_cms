@@ -11,4 +11,8 @@ public class PromotionsController {
     public String showPromotionsPage(){
         return "/web/pages/promotions/promotions";
     }
+    @GetMapping("promotions-cart")
+    public String showPromotionsCartPage(){
+        return "/web/pages/promotions/promotions-cart";
+    }
 }

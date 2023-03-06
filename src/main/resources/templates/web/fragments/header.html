@@ -1,5 +1,5 @@
-<header class="site-header sticky-top py-1" th:fragment="header">
-    <div class="row">
+<header class="site-header py-1" th:fragment="header">
+    <div class="row mb-0">
         <div class="col-md-2 text-center m-auto">
             <div class="btn btn-light disabled"><h1>Kino-CMS</h1></div>
         </div>
@@ -20,8 +20,8 @@
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <div class="row"><h2 class="text-light">(048) 777-77-77</h2></div>
-                    <div class="row"><h2 class="text-light">(097) 777-77-77</h2></div>
+                    <div class="row"><h2 class="text-light text-nowrap">(048) 777-77-77</h2></div>
+                    <div class="row"><h2 class="text-light text-nowrap">(097) 777-77-77</h2></div>
                 </div>
             </div>
             <div class="row">
@@ -32,8 +32,20 @@
                         <a class="py-2 d-none d-md-inline-block" href="/coming-soon/">Скоро</a>
                         <a class="py-2 d-none d-md-inline-block" href="/cinemas/">Кинотеатры</a>
                         <a class="py-2 d-none d-md-inline-block" href="/promotions/">Акции</a>
-                        <a class="py-2 d-none d-md-inline-block" href="/about-cinema/">О кинотеатре</a>
+                        <li class="nav-item dropdown py-2 d-none d-md-inline-block text-black">
+                            <a class="dropdown-toggle" href="/about-cinema/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                О кинотеатре
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item text-black" href="/about-cinema/news">Новости</a></li>
+                                <li><a class="dropdown-item text-black" href="/about-cinema/advertising">Рклама</a></li>
+                                <li><a class="dropdown-item text-black" href="/about-cinema/cafe-bar">Кафе</a></li>
+                                <li><a class="dropdown-item text-black" href="#">Мобильное приложение</a></li>
+                                <li><a class="dropdown-item text-black" href="/about-cinema/contacts">Контакты</a></li>
+                            </ul>
+                        </li>
                         <a class="py-2 d-none d-md-inline-block" href="/client-cabinet/">Личный кабинет</a>
+
                     </nav>
                 </div>
                 <div class="col-md-auto pt-1">
@@ -45,7 +57,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-1"></div>
     </div>
 
 </header>

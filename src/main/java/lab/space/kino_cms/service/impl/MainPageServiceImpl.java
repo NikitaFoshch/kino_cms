@@ -18,12 +18,12 @@ public class MainPageServiceImpl implements MainPageService {
     @Override
     public MainPage getMainePage() {
         return mainPageRepository.findFirstByOrderByIdAsc()
-                .orElseThrow(() -> new EntityNotFoundException("MainPage not found"));
+                .orElseThrow(() -> new EntityNotFoundException("MainPage Not Found"));
     }
 
     @Override
     public void updateMainePage(MainPage requestedMainPage) {
-        log.info("---------------Update main page " + requestedMainPage + "---------------");
+        log.info("---------------Update Main Page " + requestedMainPage + "---------------");
 
         MainPage mainPage = getMainePage();
         mainPage.setPhone1(requestedMainPage.getPhone1());

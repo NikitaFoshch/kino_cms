@@ -1,15 +1,12 @@
 package lab.space.kino_cms.service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import lab.space.kino_cms.model.MainPage;
-import lab.space.kino_cms.model.Seo;
 import lab.space.kino_cms.repository.MainPageRepository;
 import lab.space.kino_cms.service.MainPageService;
-import lab.space.kino_cms.service.SeoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,35 +14,24 @@ import java.util.Optional;
 public class MainPageServiceImpl implements MainPageService {
 
     private final MainPageRepository mainPageRepository;
-    private final SeoService seoService;
 
     @Override
-    public MainPage getMainePageById(Long seoId) {
-        Optional<MainPage> optionalMainPage = mainPageRepository.findById(seoId);
-        return optionalMainPage.get();
+    public MainPage getMainePage() {
+        return mainPageRepository.findFirstByOrderByIdAsc()
+                .orElseThrow(() -> new EntityNotFoundException("MainPage not found"));
     }
 
     @Override
-    public void updateMainePageById(Long mainPageId, MainPage requestedMainPage) {
-        log.info("Update main page " + requestedMainPage);
+    public void updateMainePage(MainPage requestedMainPage) {
+        log.info("---------------Update main page " + requestedMainPage + "---------------");
 
-        Optional<MainPage> optionalMainPage = mainPageRepository.findById(mainPageId);
-        MainPage mainPage = optionalMainPage.get();
+        MainPage mainPage = getMainePage();
         mainPage.setPhone1(requestedMainPage.getPhone1());
         mainPage.setPhone2(requestedMainPage.getPhone2());
         mainPage.setSeoText(requestedMainPage.getSeoText());
-        mainPage.setSwitcher(requestedMainPage.isSwitcher());
+        mainPage.setDisabled(requestedMainPage.isDisabled());
+        mainPage.setSeo(requestedMainPage.getSeo());
 
-
-        Seo seo = mainPage.getSeo();
-        Seo requastedSeo = requestedMainPage.getSeo();
-        if (requastedSeo != null) {
-            seo.setUrl(requastedSeo.getUrl());
-            seo.setTitle(requastedSeo.getTitle());
-            seo.setKeywords(requastedSeo.getKeywords());
-            seo.setDescription(requastedSeo.getDescription());
-        }
         mainPageRepository.save(mainPage);
-
     }
 }

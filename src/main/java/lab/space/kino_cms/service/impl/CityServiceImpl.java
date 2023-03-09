@@ -1,5 +1,6 @@
 package lab.space.kino_cms.service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import lab.space.kino_cms.model.City;
 import lab.space.kino_cms.repository.CityRepository;
 import lab.space.kino_cms.service.CityService;
@@ -8,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,12 +19,14 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public List<City> getAllCities() {
+        log.info("---------------Get All Cities---------------");
         return cityRepository.findAll();
     }
 
     @Override
     public City getCityById(Long cityId) {
-        Optional<City> optionalCity = cityRepository.findById(cityId);
-        return optionalCity.get();
+        log.info("---------------Get City ID " + cityId + "---------------");
+        return cityRepository.findById(cityId)
+                .orElseThrow(()-> new EntityNotFoundException("City not found" + cityId));
     }
 }

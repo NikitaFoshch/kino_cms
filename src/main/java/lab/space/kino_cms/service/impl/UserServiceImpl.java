@@ -1,5 +1,6 @@
 package lab.space.kino_cms.service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import lab.space.kino_cms.model.City;
 import lab.space.kino_cms.model.User;
 import lab.space.kino_cms.repository.UserRepository;
@@ -11,7 +12,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,28 +23,28 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUsers() {
+        log.info("---------------Get All Users---------------");
         return userRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
     @Override
     public User getUserById(Long userId) {
-        Optional<User> user = userRepository.findById(userId);
-            return user.get();
+        log.info("---------------Get User ID " + userId + "---------------");
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found" + userId));
     }
 
     @Override
     public void deleteUserById(Long userId) {
-        log.info("Delete User ID " + userId);
+        log.info("---------------Delete User ID " + userId + "---------------");
         userRepository.deleteById(userId);
     }
 
     @Override
     public void updateUserById(Long userId, User requestedUser) {
-        log.info("Update " + requestedUser);
-
-        Optional<User> optionalUser = userRepository.findById(userId);
+        log.info("---------------Update " + requestedUser + "---------------");
+        User user = getUserById(userId);
         City city = cityService.getCityById(requestedUser.getCity().getId());
-        User user = optionalUser.get();
         user.setFirstname(requestedUser.getFirstname());
         user.setLastname(requestedUser.getLastname());
         user.setUsername(requestedUser.getUsername());

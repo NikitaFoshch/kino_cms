@@ -20,9 +20,5 @@ public class MainPage extends MappedEntity {
     @Column(length = 1000)
     private String seoText;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Seo seo;
-
-    public MainPage(Seo seo) {
-        this.seo = seo;
-    }
+    private Seo seo = new Seo();
 }

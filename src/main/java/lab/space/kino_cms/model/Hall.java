@@ -31,9 +31,5 @@ public class Hall extends MappedEntity {
     @Column(length = 150)
     private String galleryImage5;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Seo seo;
-
-    public Hall(Seo seo){
-        this.seo = seo;
-    }
+    private Seo seo = new Seo();
 }

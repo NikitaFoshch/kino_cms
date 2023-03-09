@@ -33,5 +33,5 @@ public class News extends MappedEntity {
     @Column(length = 150)
     private String galleryImage5;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Seo seo;
+    private Seo seo = new Seo();
 }

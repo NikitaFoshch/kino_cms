@@ -14,7 +14,7 @@ public class ContactsPage {
     private Long id;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "contact_page_id")
-    private List<CinemaInfo> cinemaInfo;
+    private List<CinemaInfo> cinemaInfo = List.of(new CinemaInfo());
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Seo seo;
+    private Seo seo = new Seo();
 }

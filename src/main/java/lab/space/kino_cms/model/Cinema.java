@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -37,14 +36,8 @@ public class Cinema extends MappedEntity {
     private String galleryImage5;
     @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.ALL , orphanRemoval = true)
     @JoinColumn(name = "cinema_id")
-    private List<Hall> halls;
+    private List<Hall> halls = List.of(new Hall());
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Seo seo;
+    private Seo seo = new Seo();
 
-    public Cinema(Hall hall,Seo seo){
-        List<Hall> halls = new ArrayList<>();
-        halls.add(hall);
-        this.halls = halls;
-        this.seo = seo;
-    }
 }

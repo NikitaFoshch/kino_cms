@@ -6,6 +6,7 @@ import lab.space.kino_cms.repository.CityRepository;
 import lab.space.kino_cms.service.CityService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,13 +21,13 @@ public class CityServiceImpl implements CityService {
     @Override
     public List<City> getAllCities() {
         log.info("---------------Get All Cities---------------");
-        return cityRepository.findAll();
+        return cityRepository.findAll(Sort.by(Sort.Direction.ASC,"name"));
     }
 
     @Override
     public City getCityById(Long cityId) {
         log.info("---------------Get City ID " + cityId + "---------------");
         return cityRepository.findById(cityId)
-                .orElseThrow(()-> new EntityNotFoundException("City not found" + cityId));
+                .orElseThrow(() -> new EntityNotFoundException("City not found By ID " + cityId));
     }
 }

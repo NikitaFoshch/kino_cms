@@ -3,6 +3,7 @@ package lab.space.kino_cms.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,7 +15,7 @@ public class ContactsPage {
     private Long id;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "contact_page_id")
-    private List<CinemaInfo> cinemaInfo = List.of(new CinemaInfo());
+    private List<CinemaInfo> cinemaInfo = new ArrayList<>();
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Seo seo = new Seo();
 }

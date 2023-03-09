@@ -73,7 +73,11 @@ public class Init implements CommandLineRunner {
         log.info("Try To Find Contacts");
         if (contactsPageRepository.findFirstByOrderByIdAsc().isEmpty()){
             log.warn("Contacts Not Found");
-            contactsPageRepository.save(new ContactsPage());
+            CinemaInfo cinemaInfo = new CinemaInfo();
+            cinemaInfo.setDefault(true);
+            ContactsPage contactsPage = new ContactsPage();
+            contactsPage.getCinemaInfo().add(cinemaInfo);
+            contactsPageRepository.save(contactsPage);
             log.info("Initial Contacts Created");
         } else log.info("Contacts Found");
     }

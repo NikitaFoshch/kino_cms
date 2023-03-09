@@ -14,12 +14,12 @@ import lombok.EqualsAndHashCode;
 public class CinemaInfo extends MappedEntity {
     @Column(length = 100)
     private String cinemaName;
-    private boolean disabled;
+    private boolean disabled = true;
     @Column(length = 500)
     private String address;
     @Column(length = 100)
     private String coordinates;
     @Column(length = 150)
     private String logo;
-    private boolean isDefault;
+    private boolean isDefault = false;
 }

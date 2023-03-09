@@ -15,13 +15,13 @@ public class MovieServiceImpl implements MovieService {
     private final MovieRepository movieRepository;
 
     @Override
-    public Movie getMovie() {
-        return movieRepository.findFirstByOrderByIdAsc()
-                .orElseThrow(() -> new EntityNotFoundException("Movie mot found"));
+    public Movie getMovieById(Long movieId) {
+        return movieRepository.findById(movieId)
+                .orElseThrow(() -> new EntityNotFoundException("Movie Not Found By ID " + movieId));
     }
 
     @Override
-    public void updateMovieById(Movie requestedMovie) {
+    public void updateMovieById(Long movieId, Movie requestedMovie) {
         log.info("---------------Update Movie---------------");
 
 

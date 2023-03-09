@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     public User getUserById(Long userId) {
         log.info("---------------Get User ID " + userId + "---------------");
         return userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("User not found" + userId));
+                .orElseThrow(() -> new EntityNotFoundException("User Not Found By ID " + userId));
     }
 
     @Override

@@ -18,7 +18,7 @@ public class SeoServiceImpl implements SeoService {
     public Seo getSEOById(Long seoId) {
         log.info("---------------Get SEO ID " + seoId + "---------------");
         return seoRepository.findById(seoId)
-                .orElseThrow(() -> new EntityNotFoundException("Seo not found" + seoId));
+                .orElseThrow(() -> new EntityNotFoundException("Seo Not Found By ID " + seoId));
     }
 
     @Override

@@ -4,11 +4,13 @@ import jakarta.persistence.*;
 import lab.space.kino_cms.model.common.MappedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "halls")
 @Data
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class Hall extends MappedEntity {
     @Column(length = 100)
     private String name;
@@ -30,4 +32,8 @@ public class Hall extends MappedEntity {
     private String galleryImage5;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Seo seo;
+
+    public Hall(Seo seo){
+        this.seo = seo;
+    }
 }

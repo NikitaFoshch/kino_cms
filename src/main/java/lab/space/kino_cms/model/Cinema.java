@@ -4,13 +4,16 @@ import jakarta.persistence.*;
 import lab.space.kino_cms.model.common.MappedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "cinemas")
 @Data
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class Cinema extends MappedEntity {
     @Column(length = 100)
     private String name;
@@ -37,4 +40,11 @@ public class Cinema extends MappedEntity {
     private List<Hall> halls;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Seo seo;
+
+    public Cinema(Hall hall,Seo seo){
+        List<Hall> halls = new ArrayList<>();
+        halls.add(hall);
+        this.halls = halls;
+        this.seo = seo;
+    }
 }

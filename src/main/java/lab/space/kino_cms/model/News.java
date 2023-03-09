@@ -1,9 +1,6 @@
 package lab.space.kino_cms.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lab.space.kino_cms.model.common.MappedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -35,6 +32,6 @@ public class News extends MappedEntity {
     private String galleryImage4;
     @Column(length = 150)
     private String galleryImage5;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Seo seo;
 }

@@ -15,4 +15,7 @@ public class BackgroundBanner extends MappedEntity {
     private boolean backgroundImage;
     @Column(length = 150)
     private String image;
+    public BackgroundBanner(){
+        this.backgroundImage = false;
+    }
 }

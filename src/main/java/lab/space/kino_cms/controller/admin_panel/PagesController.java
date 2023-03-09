@@ -1,13 +1,15 @@
 package lab.space.kino_cms.controller.admin_panel;
 
 import lab.space.kino_cms.model.MainPage;
-import lab.space.kino_cms.model.Seo;
 import lab.space.kino_cms.service.MainPageService;
 import lab.space.kino_cms.service.SeoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("admin/pages")
@@ -22,12 +24,10 @@ public class PagesController {
         return "/admin-panel/pages/pages/pages";
     }
 
-    @GetMapping("main-page-edit/{id}")
-    public String editMainPage(@PathVariable("id") Long mainPageId, Model model){
-        MainPage mainPage = mainPageService.getMainePageById(mainPageId);
-        Seo seo = seoService.getSEOById(mainPage.getSeo().getId());
+    @GetMapping("main-page-edit")
+    public String editMainPage(Model model){
+        MainPage mainPage = mainPageService.getMainePage();
         model.addAttribute("mainPage", mainPage);
-        model.addAttribute("seo", seo);
         return "/admin-panel/pages/pages/main-page-edit";
     }
 
@@ -41,11 +41,10 @@ public class PagesController {
         return "/admin-panel/pages/pages/contacts";
     }
 
-    @PostMapping("main-page-update/{id}")
-    public String updateUser(@PathVariable("id") Long mainPageId,
-                             @ModelAttribute MainPage mainPage) {
-        mainPageService.updateMainePageById(mainPageId, mainPage);
-        return "redirect:/admin/pages/main-page-edit/" + mainPageId;
+    @PostMapping("main-page-update")
+    public String updateUser(@ModelAttribute MainPage mainPage) {
+        mainPageService.updateMainePage(mainPage);
+        return "redirect:/admin/pages/main-page-edit";
     }
 
 }

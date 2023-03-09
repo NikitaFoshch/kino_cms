@@ -28,12 +28,12 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <form th:method="POST" th:action="${'/admin/pages/main-page-update/' + mainPage.id}" th:object="${mainPage}">
+                <form th:method="POST" th:action="${'/admin/pages/main-page-update'}" th:object="${mainPage}">
                     <div class="row pt-4">
                         <div class="col-md-8 mt-2 text-right">
                             <div class="custom-control custom-switch custom-switch-off-gray custom-switch-on-success">
                                 <input type="checkbox" class="custom-control-input" id="switch"
-                                       th:field="${mainPage.switcher}">
+                                       th:field="*{disabled}">
                                 <label class="custom-control-label" for="switch"></label>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                                 <label for="phone-number1" class="col-md-4 col-form-label">Телефон</label>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" id="phone-number1"
-                                           placeholder="777-77-77" th:field="${mainPage.phone1}">
+                                           placeholder="777-77-77" th:field="*{phone1}">
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                                 <label for="phone-number2" class="col-md-4 col-form-label">Телефон</label>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" id="phone-number2"
-                                           placeholder="777-77-77" th:field="${mainPage.phone2}">
+                                           placeholder="777-77-77" th:field="*{phone2}">
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                                 <label for="seo-text" class="col-md-1 col-form-label">SEO text</label>
                                 <textarea class="col-form-label col-md-10 form-control" rows="5" id="seo-text"
                                           placeholder="Enter your SEO text"
-                                          th:field="${mainPage.seoText}"></textarea>
+                                          th:field="*{seoText}"></textarea>
                             </div>
                         </div>
                     </div>
@@ -87,6 +87,7 @@
                         <div class="col-md-12">
                             <div class="form-group row">
                                 <label class="col-md-2 col-form-label">SEO блок</label>
+                                <input id="seo-id" th:field="*{seo.id}" hidden>
                                 <div class="col-md-8">
                                     <div class="form-group row">
                                         <label for="seo-url"

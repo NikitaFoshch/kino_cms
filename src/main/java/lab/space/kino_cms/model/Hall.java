@@ -28,8 +28,6 @@ public class Hall extends MappedEntity {
     private String galleryImage4;
     @Column(length = 150)
     private String galleryImage5;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Cinema cinema;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Seo seo;
 }

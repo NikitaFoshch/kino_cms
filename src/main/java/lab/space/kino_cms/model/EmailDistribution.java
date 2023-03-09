@@ -12,6 +12,7 @@ public class EmailDistribution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.ALL , orphanRemoval = true)
+    @JoinColumn(name = "email_distribution_id")
     private List<Template> templates;
 }

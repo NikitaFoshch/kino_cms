@@ -30,5 +30,6 @@ public class SeoServiceImpl implements SeoService {
         seo.setKeywords(requestedSeo.getKeywords());
         seo.setDescription(requestedSeo.getDescription());
         seoRepository.save(seo);
+        log.info("---------------Success Update Seo By ID " + seoId + "---------------");
     }
 }

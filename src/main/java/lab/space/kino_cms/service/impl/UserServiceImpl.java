@@ -29,20 +29,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(Long userId) {
-        log.info("---------------Get User ID " + userId + "---------------");
+        log.info("---------------Get User By ID " + userId + "---------------");
         return userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("User Not Found By ID " + userId));
     }
 
     @Override
     public void deleteUserById(Long userId) {
-        log.info("---------------Delete User ID " + userId + "---------------");
+        log.info("---------------Delete User By ID " + userId + "---------------");
         userRepository.deleteById(userId);
+        log.info("---------------Success Delete User By ID " + userId + "---------------");
     }
 
     @Override
     public void updateUserById(Long userId, User requestedUser) {
-        log.info("---------------Update " + requestedUser + "---------------");
+        log.info("---------------Update By ID " + requestedUser + "---------------");
         User user = getUserById(userId);
         City city = cityService.getCityById(requestedUser.getCity().getId());
         user.setFirstname(requestedUser.getFirstname());
@@ -59,6 +60,7 @@ public class UserServiceImpl implements UserService {
         user.setCity(city);
 
         userRepository.save(user);
+        log.info("---------------Success Update User By ID " + userId + "---------------");
     }
 
 }

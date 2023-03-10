@@ -33,5 +33,6 @@ public class MainPageServiceImpl implements MainPageService {
         mainPage.setSeo(requestedMainPage.getSeo());
 
         mainPageRepository.save(mainPage);
+        log.info("---------------Success Update Main Page " + requestedMainPage + "---------------");
     }
 }

@@ -29,5 +29,6 @@ public class BackgroundBannerServiceImpl implements BackgroundBannerService {
         backgroundBanner.setImage(requestedBackgroundBanner.getImage());
 
         backgroundBannerRepository.save(backgroundBanner);
+        log.info("---------------Success Update Background Banner---------------");
     }
 }

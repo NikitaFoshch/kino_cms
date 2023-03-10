@@ -44,11 +44,11 @@ public class NewsController {
                 mainPicture, galleryPicture1,
                 galleryPicture2, galleryPicture3,
                 galleryPicture4, galleryPicture5);
-        return "redirect:/admin/news/news-edit/" + newsId;
+        return "redirect:/admin/news/edit/" + newsId;
     }
 
     @GetMapping("add")
-    public String addNewsPage(Model model) {
+    public String addNews(Model model) {
         model.addAttribute("news", new News());
         return "/admin-panel/pages/news/news-page";
     }
@@ -75,7 +75,7 @@ public class NewsController {
     }
 
     @GetMapping("delete/{id}")
-    public String deleteNewsPageById(@PathVariable("id") Long newsId) {
+    public String deleteNewsById(@PathVariable("id") Long newsId) {
         newsService.deleteNewsById(newsId);
         return "redirect:/admin/news";
     }

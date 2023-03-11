@@ -23,6 +23,7 @@ public class CommonPageServiceImpl implements CommonPageService {
         log.info("---------------Get All CommonPage By Default True By Order By Id ASC---------------");
         return commonPageRepository.getCommonPageByDefaultTrueByOrderByIdAsc();
     }
+
     @Override
     public List<CommonPage> getAllCommonPageByDefaultFalseByOrderByIdAsc() {
         log.info("---------------Get All CommonPage By Default False By Order By Id ASC---------------");
@@ -38,46 +39,47 @@ public class CommonPageServiceImpl implements CommonPageService {
 
     @Override
     public void updateCommonPageById(Long commonPageId, CommonPage requstedCommonPage,
-                                     MultipartFile requstedMainImage, MultipartFile requstedGalleryImage1,
-                                     MultipartFile requstedGalleryImage2, MultipartFile requstedGalleryImage3,
-                                     MultipartFile requstedGalleryImage4, MultipartFile requstedGalleryImage5) {
+                                     MultipartFile requestedMainImage, MultipartFile requestedGalleryImage1,
+                                     MultipartFile requestedGalleryImage2, MultipartFile requestedGalleryImage3,
+                                     MultipartFile requestedGalleryImage4, MultipartFile requestedGalleryImage5) {
 
         log.info("---------------Update CommonPage By ID " + commonPageId + "---------------");
         CommonPage commonPage = getCommonPageById(commonPageId);
+
 
         commonPage.setName(requstedCommonPage.getName());
         commonPage.setDescription(requstedCommonPage.getDescription());
         commonPage.setDisabled(requstedCommonPage.isDisabled());
 
-        if (FileUtil.saveFile(requstedMainImage.getOriginalFilename(), requstedMainImage)) {
+        if (FileUtil.saveFile(requestedMainImage.getOriginalFilename(), requestedMainImage)) {
             FileUtil.deleteFile(commonPage.getMainImage());
-            commonPage.setMainImage(requstedMainImage.getOriginalFilename());
+            commonPage.setMainImage(requestedMainImage.getOriginalFilename());
         }
 
 
-        if (FileUtil.saveFile(requstedGalleryImage1.getOriginalFilename(), requstedGalleryImage1)) {
+        if (FileUtil.saveFile(requestedGalleryImage1.getOriginalFilename(), requestedGalleryImage1)) {
             FileUtil.deleteFile(commonPage.getGalleryImage1());
-            commonPage.setGalleryImage1(requstedGalleryImage1.getOriginalFilename());
+            commonPage.setGalleryImage1(requestedGalleryImage1.getOriginalFilename());
         }
 
-        if (FileUtil.saveFile(requstedGalleryImage2.getOriginalFilename(), requstedGalleryImage2)) {
+        if (FileUtil.saveFile(requestedGalleryImage2.getOriginalFilename(), requestedGalleryImage2)) {
             FileUtil.deleteFile(commonPage.getGalleryImage2());
-            commonPage.setGalleryImage2(requstedGalleryImage2.getOriginalFilename());
+            commonPage.setGalleryImage2(requestedGalleryImage2.getOriginalFilename());
         }
 
-        if (FileUtil.saveFile(requstedGalleryImage3.getOriginalFilename(), requstedGalleryImage3)) {
+        if (FileUtil.saveFile(requestedGalleryImage3.getOriginalFilename(), requestedGalleryImage3)) {
             FileUtil.deleteFile(commonPage.getGalleryImage3());
-            commonPage.setGalleryImage3(requstedGalleryImage3.getOriginalFilename());
+            commonPage.setGalleryImage3(requestedGalleryImage3.getOriginalFilename());
         }
 
-        if (FileUtil.saveFile(requstedGalleryImage4.getOriginalFilename(), requstedGalleryImage4)) {
+        if (FileUtil.saveFile(requestedGalleryImage4.getOriginalFilename(), requestedGalleryImage4)) {
             FileUtil.deleteFile(commonPage.getMainImage());
-            commonPage.setGalleryImage4(requstedGalleryImage4.getOriginalFilename());
+            commonPage.setGalleryImage4(requestedGalleryImage4.getOriginalFilename());
         }
 
-        if (FileUtil.saveFile(requstedGalleryImage5.getOriginalFilename(), requstedGalleryImage5)) {
+        if (FileUtil.saveFile(requestedGalleryImage5.getOriginalFilename(), requestedGalleryImage5)) {
             FileUtil.deleteFile(commonPage.getMainImage());
-            commonPage.setGalleryImage5(requstedGalleryImage5.getOriginalFilename());
+            commonPage.setGalleryImage5(requestedGalleryImage5.getOriginalFilename());
         }
 
         commonPage.setSeo(requstedCommonPage.getSeo());

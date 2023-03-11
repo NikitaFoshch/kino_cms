@@ -16,6 +16,7 @@ public class BackgroundBannerServiceImpl implements BackgroundBannerService {
 
     @Override
     public BackgroundBanner getBackgroundBanner() {
+        log.info("---------------Get BackgroundBanner---------------");
         return backgroundBannerRepository.findFirstByOrderByIdAsc()
                 .orElseThrow(() -> new EntityNotFoundException("BackgroundPage Not Found"));
     }

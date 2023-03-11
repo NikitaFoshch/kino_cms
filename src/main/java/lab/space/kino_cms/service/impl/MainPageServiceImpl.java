@@ -17,6 +17,7 @@ public class MainPageServiceImpl implements MainPageService {
 
     @Override
     public MainPage getMainePage() {
+        log.info("---------------Get MainPage---------------");
         return mainPageRepository.findFirstByOrderByIdAsc()
                 .orElseThrow(() -> new EntityNotFoundException("MainPage Not Found"));
     }

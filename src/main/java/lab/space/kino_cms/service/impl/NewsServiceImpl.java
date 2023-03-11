@@ -21,7 +21,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public List<News> getAllNews() {
-        log.info("---------------Get All news---------------");
+        log.info("---------------Get All News---------------");
         return newsRepository.findAll(Sort.by(Sort.Direction.DESC, "createAt"));
     }
 
@@ -35,9 +35,9 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public void updateNewsById(Long newsId, News requstedNews,
-                                   MultipartFile requstedMainImage, MultipartFile requstedGalleryImage1,
-                                   MultipartFile requstedGalleryImage2, MultipartFile requstedGalleryImage3,
-                                   MultipartFile requstedGalleryImage4, MultipartFile requstedGalleryImage5) {
+                               MultipartFile requestedMainImage, MultipartFile requestedGalleryImage1,
+                               MultipartFile requestedGalleryImage2, MultipartFile requestedGalleryImage3,
+                               MultipartFile requestedGalleryImage4, MultipartFile requestedGalleryImage5) {
         log.info("---------------Update News By ID " + newsId + "---------------");
         News news = getNewsById(newsId);
 
@@ -47,35 +47,35 @@ public class NewsServiceImpl implements NewsService {
         news.setDisabled(requstedNews.isDisabled());
         news.setTrailerUrl(requstedNews.getTrailerUrl());
 
-        if (FileUtil.saveFile(requstedMainImage.getOriginalFilename(), requstedMainImage)){
+        if (FileUtil.saveFile(requestedMainImage.getOriginalFilename(), requestedMainImage)) {
             FileUtil.deleteFile(news.getMainImage());
-            news.setMainImage(requstedMainImage.getOriginalFilename());
+            news.setMainImage(requestedMainImage.getOriginalFilename());
         }
 
 
-        if (FileUtil.saveFile(requstedGalleryImage1.getOriginalFilename(), requstedGalleryImage1)) {
+        if (FileUtil.saveFile(requestedGalleryImage1.getOriginalFilename(), requestedGalleryImage1)) {
             FileUtil.deleteFile(news.getGalleryImage1());
-            news.setGalleryImage1(requstedGalleryImage1.getOriginalFilename());
+            news.setGalleryImage1(requestedGalleryImage1.getOriginalFilename());
         }
 
-        if (FileUtil.saveFile(requstedGalleryImage2.getOriginalFilename(), requstedGalleryImage2)) {
+        if (FileUtil.saveFile(requestedGalleryImage2.getOriginalFilename(), requestedGalleryImage2)) {
             FileUtil.deleteFile(news.getGalleryImage2());
-            news.setGalleryImage2(requstedGalleryImage2.getOriginalFilename());
+            news.setGalleryImage2(requestedGalleryImage2.getOriginalFilename());
         }
 
-        if (FileUtil.saveFile(requstedGalleryImage3.getOriginalFilename(), requstedGalleryImage3)) {
+        if (FileUtil.saveFile(requestedGalleryImage3.getOriginalFilename(), requestedGalleryImage3)) {
             FileUtil.deleteFile(news.getGalleryImage3());
-            news.setGalleryImage3(requstedGalleryImage3.getOriginalFilename());
+            news.setGalleryImage3(requestedGalleryImage3.getOriginalFilename());
         }
 
-        if (FileUtil.saveFile(requstedGalleryImage4.getOriginalFilename(), requstedGalleryImage4)) {
+        if (FileUtil.saveFile(requestedGalleryImage4.getOriginalFilename(), requestedGalleryImage4)) {
             FileUtil.deleteFile(news.getMainImage());
-            news.setGalleryImage4(requstedGalleryImage4.getOriginalFilename());
+            news.setGalleryImage4(requestedGalleryImage4.getOriginalFilename());
         }
 
-        if (FileUtil.saveFile(requstedGalleryImage5.getOriginalFilename(), requstedGalleryImage5)) {
+        if (FileUtil.saveFile(requestedGalleryImage5.getOriginalFilename(), requestedGalleryImage5)) {
             FileUtil.deleteFile(news.getMainImage());
-            news.setGalleryImage5(requstedGalleryImage5.getOriginalFilename());
+            news.setGalleryImage5(requestedGalleryImage5.getOriginalFilename());
         }
 
         news.setSeo(requstedNews.getSeo());
@@ -116,22 +116,22 @@ public class NewsServiceImpl implements NewsService {
     public void deleteNewsById(Long newsId) {
         log.info("---------------Delete News By ID " + newsId + "---------------");
         News news = getNewsById(newsId);
-        if (news.getMainImage()!=null){
+        if (news.getMainImage() != null) {
             FileUtil.deleteFile(news.getMainImage());
         }
-        if (news.getGalleryImage1()!=null){
+        if (news.getGalleryImage1() != null) {
             FileUtil.deleteFile(news.getGalleryImage1());
         }
-        if (news.getGalleryImage2()!=null){
+        if (news.getGalleryImage2() != null) {
             FileUtil.deleteFile(news.getGalleryImage2());
         }
-        if (news.getGalleryImage3()!=null){
+        if (news.getGalleryImage3() != null) {
             FileUtil.deleteFile(news.getGalleryImage3());
         }
-        if (news.getGalleryImage4()!=null){
+        if (news.getGalleryImage4() != null) {
             FileUtil.deleteFile(news.getGalleryImage4());
         }
-        if (news.getGalleryImage5()!=null){
+        if (news.getGalleryImage5() != null) {
             FileUtil.deleteFile(news.getGalleryImage5());
         }
 

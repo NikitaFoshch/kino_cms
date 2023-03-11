@@ -34,9 +34,9 @@ public class PromotionsServiceImpl implements PromotionsService {
 
     @Override
     public void updatePromotionsById(Long promotionsId, Promotions requstedPromotions,
-                                     MultipartFile requstedMainImage, MultipartFile requstedGalleryImage1,
-                                     MultipartFile requstedGalleryImage2, MultipartFile requstedGalleryImage3,
-                                     MultipartFile requstedGalleryImage4, MultipartFile requstedGalleryImage5) {
+                                     MultipartFile requestedMainImage, MultipartFile requestedGalleryImage1,
+                                     MultipartFile requestedGalleryImage2, MultipartFile requestedGalleryImage3,
+                                     MultipartFile requestedGalleryImage4, MultipartFile requestedGalleryImage5) {
 
         log.info("---------------Update Promotions By ID " + promotionsId + "---------------");
         Promotions promotions = getPromotionsById(promotionsId);
@@ -47,35 +47,35 @@ public class PromotionsServiceImpl implements PromotionsService {
         promotions.setDisabled(requstedPromotions.isDisabled());
         promotions.setTrailerUrl(requstedPromotions.getTrailerUrl());
 
-        if (FileUtil.saveFile(requstedMainImage.getOriginalFilename(), requstedMainImage)) {
+        if (FileUtil.saveFile(requestedMainImage.getOriginalFilename(), requestedMainImage)) {
             FileUtil.deleteFile(promotions.getMainImage());
-            promotions.setMainImage(requstedMainImage.getOriginalFilename());
+            promotions.setMainImage(requestedMainImage.getOriginalFilename());
         }
 
 
-        if (FileUtil.saveFile(requstedGalleryImage1.getOriginalFilename(), requstedGalleryImage1)) {
+        if (FileUtil.saveFile(requestedGalleryImage1.getOriginalFilename(), requestedGalleryImage1)) {
             FileUtil.deleteFile(promotions.getGalleryImage1());
-            promotions.setGalleryImage1(requstedGalleryImage1.getOriginalFilename());
+            promotions.setGalleryImage1(requestedGalleryImage1.getOriginalFilename());
         }
 
-        if (FileUtil.saveFile(requstedGalleryImage2.getOriginalFilename(), requstedGalleryImage2)) {
+        if (FileUtil.saveFile(requestedGalleryImage2.getOriginalFilename(), requestedGalleryImage2)) {
             FileUtil.deleteFile(promotions.getGalleryImage2());
-            promotions.setGalleryImage2(requstedGalleryImage2.getOriginalFilename());
+            promotions.setGalleryImage2(requestedGalleryImage2.getOriginalFilename());
         }
 
-        if (FileUtil.saveFile(requstedGalleryImage3.getOriginalFilename(), requstedGalleryImage3)) {
+        if (FileUtil.saveFile(requestedGalleryImage3.getOriginalFilename(), requestedGalleryImage3)) {
             FileUtil.deleteFile(promotions.getGalleryImage3());
-            promotions.setGalleryImage3(requstedGalleryImage3.getOriginalFilename());
+            promotions.setGalleryImage3(requestedGalleryImage3.getOriginalFilename());
         }
 
-        if (FileUtil.saveFile(requstedGalleryImage4.getOriginalFilename(), requstedGalleryImage4)) {
+        if (FileUtil.saveFile(requestedGalleryImage4.getOriginalFilename(), requestedGalleryImage4)) {
             FileUtil.deleteFile(promotions.getMainImage());
-            promotions.setGalleryImage4(requstedGalleryImage4.getOriginalFilename());
+            promotions.setGalleryImage4(requestedGalleryImage4.getOriginalFilename());
         }
 
-        if (FileUtil.saveFile(requstedGalleryImage5.getOriginalFilename(), requstedGalleryImage5)) {
+        if (FileUtil.saveFile(requestedGalleryImage5.getOriginalFilename(), requestedGalleryImage5)) {
             FileUtil.deleteFile(promotions.getMainImage());
-            promotions.setGalleryImage5(requstedGalleryImage5.getOriginalFilename());
+            promotions.setGalleryImage5(requestedGalleryImage5.getOriginalFilename());
         }
 
         promotions.setSeo(requstedPromotions.getSeo());
@@ -120,22 +120,22 @@ public class PromotionsServiceImpl implements PromotionsService {
 
         log.info("---------------Delete Promotions By ID " + promotionsId + "---------------");
         Promotions promotions = getPromotionsById(promotionsId);
-        if (promotions.getMainImage()!=null){
+        if (promotions.getMainImage() != null) {
             FileUtil.deleteFile(promotions.getMainImage());
         }
-        if (promotions.getGalleryImage1()!=null){
+        if (promotions.getGalleryImage1() != null) {
             FileUtil.deleteFile(promotions.getGalleryImage1());
         }
-        if (promotions.getGalleryImage2()!=null){
+        if (promotions.getGalleryImage2() != null) {
             FileUtil.deleteFile(promotions.getGalleryImage2());
         }
-        if (promotions.getGalleryImage3()!=null){
+        if (promotions.getGalleryImage3() != null) {
             FileUtil.deleteFile(promotions.getGalleryImage3());
         }
-        if (promotions.getGalleryImage4()!=null){
+        if (promotions.getGalleryImage4() != null) {
             FileUtil.deleteFile(promotions.getGalleryImage4());
         }
-        if (promotions.getGalleryImage5()!=null){
+        if (promotions.getGalleryImage5() != null) {
             FileUtil.deleteFile(promotions.getGalleryImage5());
         }
 

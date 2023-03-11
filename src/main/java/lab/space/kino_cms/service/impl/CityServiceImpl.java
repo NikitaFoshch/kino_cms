@@ -21,12 +21,12 @@ public class CityServiceImpl implements CityService {
     @Override
     public List<City> getAllCities() {
         log.info("---------------Get All Cities---------------");
-        return cityRepository.findAll(Sort.by(Sort.Direction.ASC,"name"));
+        return cityRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
     }
 
     @Override
     public City getCityById(Long cityId) {
-        log.info("---------------Get City ID " + cityId + "---------------");
+        log.info("---------------Get City By ID " + cityId + "---------------");
         return cityRepository.findById(cityId)
                 .orElseThrow(() -> new EntityNotFoundException("City not found By ID " + cityId));
     }

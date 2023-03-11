@@ -17,9 +17,9 @@ public class CinemaServiceImpl implements CinemaService {
 
     @Override
     public Cinema getCinemaById(Long cinemaId) {
-        log.info("---------------Get Cinema ID " + cinemaId + "---------------");
+        log.info("---------------Get Cinema By ID " + cinemaId + "---------------");
         return cinemaRepository.findById(cinemaId)
-                .orElseThrow(()-> new EntityNotFoundException("Cinema Not found By ID " + cinemaId));
+                .orElseThrow(() -> new EntityNotFoundException("Cinema Not found By ID " + cinemaId));
     }
 
     @Override

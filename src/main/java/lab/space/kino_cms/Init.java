@@ -57,26 +57,33 @@ public class Init implements CommandLineRunner {
         if (cityRepository.findFirstByOrderByIdAsc().isEmpty()) {
             log.warn("City Not Found");
             List.of("Одесса", "Киев", "Львов", "Николаев", "Днепр", "Харьков", "Запорожье")
-                    .forEach(name-> cityRepository.save(new City(name)));
+                    .forEach(name -> cityRepository.save(new City(name)));
             log.info("Initial City Created");
         } else log.info("City Found");
 
         log.info("Try To Find CommonPage");
-        if (commonPageRepository.findFirstByOrderByIdAsc().isEmpty()){
+        if (commonPageRepository.findFirstByOrderByIdAsc().isEmpty()) {
             log.warn("CommonPage Not Found");
+            List<String> titles =
+                    List.of("О кинотеатре", "Кафе - Бар", "Vip - зал",
+                            "Реклама", "Детская комната");
             for (int i = 0; i < 5; i++) {
-                commonPageRepository.save(new CommonPage());
+                CommonPage commonPage = new CommonPage();
+                commonPage.setName(titles.get(i));
+                commonPage.setDefault(true);
+                commonPageRepository.save(commonPage);
             }
             log.info("Initial CommonPage Created");
         } else log.info("CommonPage Found");
 
         log.info("Try To Find Contacts");
-        if (contactsPageRepository.findFirstByOrderByIdAsc().isEmpty()){
+        if (contactsPageRepository.findFirstByOrderByIdAsc().isEmpty()) {
             log.warn("Contacts Not Found");
             CinemaInfo cinemaInfo = new CinemaInfo();
             cinemaInfo.setDefault(true);
+            cinemaInfo.setDisabled(true);
             ContactsPage contactsPage = new ContactsPage();
-            contactsPage.getCinemaInfo().add(cinemaInfo);
+            contactsPage.getCinemaInfoList().add(cinemaInfo);
             contactsPageRepository.save(contactsPage);
             log.info("Initial Contacts Created");
         } else log.info("Contacts Found");

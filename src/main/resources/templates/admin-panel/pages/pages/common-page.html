@@ -27,245 +27,229 @@
   <div class="content-wrapper">
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid pt-2">
-        <div class="row pt-4">
-          <div class="col-md-8 mt-2 text-right">
-            <div class="custom-control custom-switch custom-switch-off-gray custom-switch-on-success">
-              <input type="checkbox" class="custom-control-input" id="switch">
-              <label class="custom-control-label" for="switch"></label>
-            </div>
-          </div>
-          <div class="col-md-auto pr-5">
-            <ul class="nav nav-tabs" id="tabs" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="ru" data-toggle="pill" href="#" role="tab"
-                   aria-selected="true">Русский</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="ua" data-toggle="pill" href="#" role="tab"
-                   aria-selected="false">Украинский</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-2"></div>
-        </div>
-        <div class="row pt-4">
-          <div class="col-md-5">
-            <div class="form-group row">
-              <label for="name" class="col-md-4 col-form-label">Название</label>
-              <div class="col-md-8">
-                <input type="text" class="form-control" id="name"
-                       placeholder="Название">
+      <div class="container-fluid pt-4">
+        <form th:method="POST" th:action="${'/admin/pages/common-page-save'}" th:object="${commonPage}"
+              enctype="multipart/form-data">
+          <input type="text" th:field="*{id}" hidden>
+          <div class="row pt-2">
+            <div class="col-md-8 mt-2 text-right">
+              <div class="custom-control custom-switch custom-switch-off-gray custom-switch-on-success">
+                <input type="checkbox" class="custom-control-input" id="switch" th:field="*{disabled}">
+                <label class="custom-control-label" for="switch"></label>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="row pt-4">
-          <div class="col-md-12">
-            <div class="form-group row">
-              <label for="description" class="col-md-1 col-form-label">Описание</label>
-              <textarea class="col-form-label col-md-10 form-control" rows="5" id="description"
-                        placeholder="текст"></textarea>
+            <div class="col-md-auto pr-5">
+              <ul class="nav nav-tabs" id="tabs" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="ru" data-toggle="pill" href="#" role="tab"
+                     aria-selected="true">Русский</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="ua" data-toggle="pill" href="#" role="tab"
+                     aria-selected="false">Украинский</a>
+                </li>
+              </ul>
             </div>
+            <div class="col-md-2"></div>
           </div>
-        </div>
-        <div class="row pt-4">
-          <label class="col-md-auto form-group">Главная картинка</label>
-          <div class="col-md-2 text-center">
-            <img src="#" class="product-image" alt="Main Image">
-          </div>
-          <div class="col-1">
-            <button type="submit" class="btn btn-sm btn-block btn-default">
-              Загрузить
-            </button>
-          </div>
-          <div class="col-1">
-            <button type="submit" class="btn btn-sm btn-block btn-default">
-              Удалить
-            </button>
-          </div>
-        </div>
-        <div class="row pt-5">
-          <label class="col-md-auto form-group">Галерея картинок</label>
-        </div>
-        <div class="row pt-4">
-          <label class="col-md-auto col-form-label">Размер: 1000x190</label>
-          <div class="col-md-2 col-form-label">
-            <div class="row">
-              <div class="col-3"></div>
-              <div class="col-md-8 text-center">
-                <img src="#" class="product-image" alt="News Image">
-              </div>
-            </div>
-            <div class="row pt-1 pb-2">
-              <div class="col-3"></div>
-              <div class="col-8 ">
-                <button type="submit" class="btn btn-xs btn-block btn-default">
-                  Добавить
-                </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-3"></div>
-              <div class="col-8 ">
-                <button type="submit" class="btn btn-xs btn-block btn-default">
-                  Удалить
-                </button>
+          <div class="row pt-4">
+            <div class="col-md-5">
+              <div class="form-group row">
+                <label for="news-name" class="col-md-4 col-form-label">Название новости</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control" id="news-name"
+                         placeholder="Название новости" th:field="*{name}">
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-md-2 col-form-label">
-            <div class="row">
-              <div class="col-3"></div>
-              <div class="col-md-8 text-center">
-                <img src="#" class="product-image" alt="News Image">
-              </div>
-            </div>
-            <div class="row pt-1 pb-2">
-              <div class="col-3"></div>
-              <div class="col-8">
-                <button type="submit" class="btn btn-xs btn-block btn-default">
-                  Добавить
-                </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-3"></div>
-              <div class="col-8 ">
-                <button type="submit" class="btn btn-xs btn-block btn-default">
-                  Удалить
-                </button>
+          <div class="row pt-4">
+            <div class="col-md-12">
+              <div class="form-group row">
+                <label for="description" class="col-md-1 col-form-label">Описание</label>
+                <textarea class="col-form-label col-md-10 form-control" rows="5" id="description"
+                          placeholder="текст" th:field="*{description}"></textarea>
               </div>
             </div>
           </div>
-          <div class="col-md-2 col-form-label">
-            <div class="row">
-              <div class="col-3"></div>
-              <div class="col-md-8 text-center">
-                <img src="#" class="product-image" alt="News Image">
-              </div>
+          <div class="row pt-4">
+            <label class="col-md-auto form-group">Главная картинка</label>
+            <div class="col-md-2 text-center">
+              <img th:src="*{'/files/' + mainImage}" class="product-image" alt="Main Image">
             </div>
-            <div class="row pt-1 pb-2">
-              <div class="col-3"></div>
-              <div class="col-8">
-                <button type="submit" class="btn btn-xs btn-block btn-default">
-                  Добавить
-                </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-3"></div>
-              <div class="col-8 ">
-                <button type="submit" class="btn btn-xs btn-block btn-default">
-                  Удалить
-                </button>
+            <div class="col-md-auto">
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="main-image"
+                         name="mainPicture" accept="image/jpeg, image/png">
+                  <label class="custom-file-label" for="main-image"></label>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-md-2 col-form-label">
-            <div class="row">
-              <div class="col-3"></div>
-              <div class="col-md-8 text-center">
-                <img src="#" class="product-image" alt="News Image">
-              </div>
-            </div>
-            <div class="row pt-1 pb-2">
-              <div class="col-3"></div>
-              <div class="col-8">
-                <button type="submit" class="btn btn-xs btn-block btn-default">
-                  Добавить
-                </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-3"></div>
-              <div class="col-8 ">
-                <button type="submit" class="btn btn-xs btn-block btn-default">
-                  Удалить
-                </button>
-              </div>
-            </div>
+          <div class="row pt-5">
+            <label class="col-md-auto form-group">Галерея картинок</label>
           </div>
-          <div class="col-md-2 col-form-label">
-            <div class="row">
-              <div class="col-3"></div>
-              <div class="col-md-8 text-center">
-                <img src="#" class="product-image" alt="News Image">
+          <div class="row pt-4">
+            <label class="col-md-auto col-form-label">Размер: 1000x190</label>
+            <div class="col-md-2 col-form-label">
+              <div class="row">
+                <div class="col-3"></div>
+                <div class="col-md-8 text-center">
+                  <img th:src="*{'/files/' + galleryImage1}" class="product-image" alt="News Image">
+                </div>
               </div>
-            </div>
-            <div class="row pt-1 pb-2">
-              <div class="col-3"></div>
-              <div class="col-8">
-                <button type="submit" class="btn btn-xs btn-block btn-default">
-                  Добавить
-                </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-3"></div>
-              <div class="col-8 ">
-                <button type="submit" class="btn btn-xs btn-block btn-default">
-                  Удалить
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-1 col-form-label m-auto"></div>
-        </div>
-        <div class="row pt-4">
-          <div class="col-md-12">
-            <div class="form-group row">
-              <label class="col-md-2 col-form-label">SEO блок</label>
-              <div class="col-md-8">
-                <div class="form-group row">
-                  <label for="seo-url"
-                         class="col-md-auto ml-5 text-right col-form-label">URL:</label>
-                  <div class="col-md-10 ml-1">
-                    <input type="text" class="form-control" id="seo-url"
-                           placeholder="URL">
+              <div class="row pt-1 pb-2">
+                <div class="col-3"></div>
+                <div class="col-8 ">
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="gallery1-image"
+                             name="galleryPicture1" accept="image/jpeg, image/png">
+                      <label class="custom-file-label" for="gallery1-image"></label>
+                    </div>
                   </div>
                 </div>
-                <div class="row pt-2">
-                  <div class="col-md-12">
-                    <div class="form-group row">
-                      <label for="seo-title" class="col-md-1 text-right ml-4 col-form-label">Title:</label>
-                      <div class="col-md-10">
-                        <input type="text" class="form-control" id="seo-title"
-                               placeholder="Title">
+              </div>
+            </div>
+            <div class="col-md-2 col-form-label">
+              <div class="row">
+                <div class="col-3"></div>
+                <div class="col-md-8 text-center">
+                  <img th:src="*{'/files/' + galleryImage2}" class="product-image" alt="News Image">
+                </div>
+              </div>
+              <div class="row pt-1 pb-2">
+                <div class="col-3"></div>
+                <div class="col-8">
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="gallery2-image"
+                             name="galleryPicture2" accept="image/jpeg, image/png">
+                      <label class="custom-file-label" for="gallery2-image"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 col-form-label">
+              <div class="row">
+                <div class="col-3"></div>
+                <div class="col-md-8 text-center">
+                  <img th:src="*{'/files/' + galleryImage3}" class="product-image" alt="News Image">
+                </div>
+              </div>
+              <div class="row pt-1 pb-2">
+                <div class="col-3"></div>
+                <div class="col-8">
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="gallery3-image"
+                             name="galleryPicture3" accept="image/jpeg, image/png">
+                      <label class="custom-file-label" for="gallery3-image"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 col-form-label">
+              <div class="row">
+                <div class="col-3"></div>
+                <div class="col-md-8 text-center">
+                  <img th:src="*{'/files/' + galleryImage4}" class="product-image" alt="News Image">
+                </div>
+              </div>
+              <div class="row pt-1 pb-2">
+                <div class="col-3"></div>
+                <div class="col-8">
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="gallery4-image"
+                             name="galleryPicture4" accept="image/jpeg, image/png">
+                      <label class="custom-file-label" for="gallery4-image"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 col-form-label">
+              <div class="row">
+                <div class="col-3"></div>
+                <div class="col-md-8 text-center">
+                  <img th:src="*{'/files/' + galleryImage5}" class="product-image" alt="News Image">
+                </div>
+              </div>
+              <div class="row pt-1 pb-2">
+                <div class="col-3"></div>
+                <div class="col-8">
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="gallery5-image"
+                             name="galleryPicture5" accept="image/jpeg, image/png">
+                      <label class="custom-file-label" for="gallery5-image"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1 col-form-label m-auto"></div>
+          </div>
+          <div class="row pt-4">
+            <div class="col-md-12">
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">SEO блок</label>
+                <div class="col-md-8">
+                  <div class="form-group row">
+                    <label for="seo-url"
+                           class="col-md-auto ml-5 text-right col-form-label">URL:</label>
+                    <div class="col-md-10 ml-1">
+                      <input type="text" class="form-control" id="seo-url"
+                             placeholder="URL" th:field="*{seo.url}">
+                    </div>
+                  </div>
+                  <div class="row pt-2">
+                    <div class="col-md-12">
+                      <div class="form-group row">
+                        <label for="seo-title" class="col-md-1 text-right ml-4 col-form-label">Title:</label>
+                        <div class="col-md-10">
+                          <input type="text" class="form-control" id="seo-title"
+                                 placeholder="Title" th:field="*{seo.title}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row pt-2 ">
+                    <div class="col-md-12">
+                      <div class="form-group row">
+                        <label for="seo-keywords"
+                               class="col-md-1 text-right ml-2 col-form-label">Keywords:</label>
+                        <div class="col-md-10 ml-3">
+                          <input type="text" class="form-control" id="seo-keywords"
+                                 placeholder="Keywords" th:field="*{seo.keywords}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row pt-2">
+                    <div class="col-md-12">
+                      <div class="form-group row">
+                        <label for="seo-description" class="col-md-1 mr-1 col-form-label">Description:</label>
+                        <textarea class="col-form-label col-md-10 ml-4 form-control" rows="5"
+                                  id="seo-description" placeholder="Description"
+                                  th:field="*{seo.description}"></textarea>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="row pt-2 ">
-                  <div class="col-md-12">
-                    <div class="form-group row">
-                      <label for="seo-keywords"
-                             class="col-md-1 text-right ml-2 col-form-label">Keywords:</label>
-                      <div class="col-md-10 ml-3">
-                        <input type="text" class="form-control" id="seo-keywords"
-                               placeholder="Keywords">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row pt-2">
-                  <div class="col-md-12">
-                    <div class="form-group row">
-                      <label for="seo-description" class="col-md-1 mr-1 col-form-label">Description:</label>
-                      <textarea class="col-form-label col-md-10 ml-4 form-control" rows="5"
-                                id="seo-description" placeholder="Description"></textarea>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row pb-4">
-          <div class="col-2 m-auto">
-            <button type="submit" class="btn btn-block btn-default">Сохранить</button>
+          <div class="row pb-4">
+            <div class="col-2 m-auto">
+              <button type="submit" class="btn btn-block btn-default">Сохранить</button>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
       <!-- /.content -->
     </div>
@@ -275,5 +259,16 @@
   <!-- ./wrapper -->
 </div>
 <th:block th:insert="~{admin-panel/fragments/js :: js}"></th:block>
+<script src="/js/bs-file-input/bs-custom-file-input.min.js"></script>
+<script>
+  $(function () {
+    bsCustomFileInput.init();
+  });
+  $(document).on('change', '.custom-file-input', function (e) {
+    const img = $(this).parents('div.col-md-2').find('img');
+    if ($(img).length > 0) $(img).attr('src', URL.createObjectURL(e.target.files[0]));
+    else $(this).parents('div.row.pt-4').find('img').attr('src', URL.createObjectURL(e.target.files[0]));
+  });
+</script>
 </body>
 </html>

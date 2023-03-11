@@ -41,11 +41,13 @@ public class FileUtil {
     }
 
     public static void deleteFile(String filename) {
-        File file = new File("files\\" + filename);
-        if (file.exists()) {
-            file.delete();
-        } else {
-            log.error("File not deleted");
+        if (filename != null) {
+            File file = new File("files\\" + filename);
+            if (file.exists()) {
+                file.delete();
+            } else {
+                log.error("File not deleted");
+            }
         }
     }
 }

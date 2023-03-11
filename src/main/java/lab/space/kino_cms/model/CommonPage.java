@@ -15,6 +15,7 @@ public class CommonPage extends MappedEntity {
     @Column(length = 1000)
     private String description;
     private boolean disabled;
+    private boolean isDefault;
     @Column(length = 150)
     private String mainImage;
     @Column(length = 150)

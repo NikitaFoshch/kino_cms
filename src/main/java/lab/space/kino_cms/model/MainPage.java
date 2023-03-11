@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public class MainPage extends MappedEntity {
+    private final String title = "Главная страница";
     @Column(length = 20)
     private String phone1;
     @Column(length = 20)

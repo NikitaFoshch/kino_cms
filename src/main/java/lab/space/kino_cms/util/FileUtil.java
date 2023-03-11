@@ -23,7 +23,7 @@ public class FileUtil {
                 try {
                     Files.createDirectory(DIRECTORY);
                 } catch (IOException e) {
-                    log.error("Could not create directory");
+                    log.error("Could Not Create Directory");
                     return false;
                 }
             }
@@ -31,7 +31,7 @@ public class FileUtil {
                 Path filePath = DIRECTORY.resolve(filename);
                 Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {
-                log.error("Could not save file");
+                log.error("Could Not Save File");
                 return false;
             }
             return true;
@@ -46,8 +46,8 @@ public class FileUtil {
             if (file.exists()) {
                 file.delete();
             } else {
-                log.error("File not deleted");
+                log.error("File Not Deleted");
             }
-        }
+        }else log.error("Filename Is Empty");
     }
 }

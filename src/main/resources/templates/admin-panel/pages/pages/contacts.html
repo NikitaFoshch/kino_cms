@@ -28,183 +28,148 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <div class="row pt-2">
-                    <div class="col-md-12">
-                        <div class="card card-default card-outline">
-                            <div class="card-body">
-                                <div class="row pt-4">
-                                    <div class="col-md-5">
-                                        <div class="form-group row">
-                                            <label for="cinema-name" class="col-md-4 col-form-label">Название кинотеатра</label>
-                                            <div class="col-md-8">
-                                                <input type="text" class="form-control" id="cinema-name"
-                                                       placeholder="Название кинотеатра">
+                <form th:method="POST" th:action="${'/admin/pages/contacts-page-update'}" th:object="${contactsPage}" enctype="multipart/form-data">
+                    <div class="row pt-2" th:each="cinemaInfo, i :${contactsPage.cinemaInfoList}">
+                        <input type="text" th:field="*{cinemaInfoList[__${i.index}__].id}" hidden>
+                        <input type="text" th:field="*{cinemaInfoList[__${i.index}__].default}" hidden>
+                        <input type="text" th:field="*{id}" hidden>
+                        <div class="col-md-12">
+                            <div class="card card-default card-outline">
+                                <div class="card-body">
+                                    <div class="row pt-4">
+                                        <div class="col-md-5">
+                                            <div class="form-group row">
+                                                <label for="cinema-name" class="col-md-4 col-form-label">Название
+                                                    кинотеатра</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="cinema-name"
+                                                           placeholder="Название кинотеатра"
+                                                           th:field="*{cinemaInfoList[__${i.index}__].cinemaName}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mt-2 text-right" th:if="${!cinemaInfo.default}">
+                                            <div class="custom-control custom-switch custom-switch-off-gray custom-switch-on-success">
+                                                <input type="checkbox" class="custom-control-input" id="switch">
+                                                <label class="custom-control-label" for="switch"
+                                                       th:field="*{cinemaInfoList[__${i.index}__].disabled}"></label>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row pt-4">
-                                    <div class="col-md-12">
-                                        <div class="form-group row">
-                                            <label for="description" class="col-md-1 col-form-label">Адрес</label>
-                                            <textarea class="col-form-label col-md-10 form-control" rows="5" id="description"
-                                                      placeholder="Адрес"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row pt-4">
-                                    <div class="col-md-5">
-                                        <div class="form-group row">
-                                            <label for="coordinate" class="col-md-4 col-form-label">Координаты для карты</label>
-                                            <div class="col-md-8">
-                                                <input type="text" class="form-control" id="coordinate"
-                                                       placeholder="Координаты для карты">
+                                    <div class="row pt-4">
+                                        <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <label for="description" class="col-md-1 col-form-label">Адрес</label>
+                                                <textarea class="col-form-label col-md-10 form-control" rows="5"
+                                                          id="description"
+                                                          placeholder="Адрес"
+                                                          th:field="*{cinemaInfoList[__${i.index}__].address}"></textarea>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row pt-4">
-                                    <label class="col-md-auto form-group">Лого</label>
-                                    <div class="col-md-2 text-center">
-                                        <img src="#" class="product-image" alt="Logo Image">
-                                    </div>
-                                    <div class="col-1">
-                                        <button type="submit" class="btn btn-sm btn-block btn-default">
-                                            Загрузить
-                                        </button>
-                                    </div>
-                                    <div class="col-1">
-                                        <button type="submit" class="btn btn-sm btn-block btn-default">
-                                            Удалить
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row pt-2">
-                    <div class="col-md-12">
-                        <div class="card card-default card-outline">
-                            <div class="card-body">
-                                <div class="row pt-4">
-                                    <div class="col-md-12">
-                                        <div class="form-group row">
-                                            <label for="cinema-name1" class="col-md-2 col-form-label">Название кинотеатра</label>
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" id="cinema-name1"
-                                                       placeholder="Название кинотеатра">
-                                            </div>
-                                            <div class="col-md-6 mt-2 text-right">
-                                                <div class="custom-control custom-switch custom-switch-off-gray custom-switch-on-success">
-                                                    <input type="checkbox" class="custom-control-input" id="switch">
-                                                    <label class="custom-control-label" for="switch"></label>
+                                    <div class="row pt-4">
+                                        <div class="col-md-5">
+                                            <div class="form-group row">
+                                                <label for="coordinate" class="col-md-4 col-form-label">Координаты для
+                                                    карты</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="coordinate"
+                                                           placeholder="Координаты для карты"
+                                                           th:field="*{cinemaInfoList[__${i.index}__].coordinates}">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row pt-4">
-                                    <div class="col-md-12">
-                                        <div class="form-group row">
-                                            <label for="description1" class="col-md-1 col-form-label">Адрес</label>
-                                            <textarea class="col-form-label col-md-10 form-control" rows="5" id="description1"
-                                                      placeholder="Адрес"></textarea>
+                                    <div class="row pt-4">
+                                        <label class="col-md-auto form-group">Лого</label>
+                                        <div class="col-md-2 text-center">
+                                            <img th:src="${'/files/' + cinemaInfo.logo}" class="product-image"
+                                                 alt="Logo">
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row pt-4">
-                                    <div class="col-md-5">
-                                        <div class="form-group row">
-                                            <label for="coordinate1" class="col-md-4 col-form-label">Координаты для карты</label>
-                                            <div class="col-md-8">
-                                                <input type="text" class="form-control" id="coordinate1"
-                                                       placeholder="Координаты для карты">
+                                        <div class="col-md-auto">
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="logo"
+                                                           accept="image/jpeg, image/png" th:field="*{cinemaInfoList[__${i.index}__].file}">
+                                                    <label class="custom-file-label" for="logo"></label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row pt-4">
-                                    <label class="col-md-auto form-group">Лого</label>
-                                    <div class="col-md-2 text-center">
-                                        <img src="#" class="product-image" alt="Logo Image">
-                                    </div>
-                                    <div class="col-1">
-                                        <button type="submit" class="btn btn-sm btn-block btn-default">
-                                            Загрузить
-                                        </button>
-                                    </div>
-                                    <div class="col-1">
-                                        <button type="submit" class="btn btn-sm btn-block btn-default">
-                                            Удалить
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row pb-4">
-                    <div class="col-md-auto m-auto">
-                        <button href="#" type="button" class="btn btn-lg btn-block btn-default"><i
-                                class="fa-solid fa-plus pr-2"></i>Добавить еще кинотеатр
-                        </button>
-                    </div>
-                </div>
-                <div class="row pt-4">
-                    <div class="col-md-12">
-                        <div class="form-group row">
-                            <label class="col-md-2 col-form-label">SEO блок</label>
-                            <div class="col-md-8">
-                                <div class="form-group row">
-                                    <label for="seo-url"
-                                           class="col-md-auto ml-5 text-right col-form-label">URL:</label>
-                                    <div class="col-md-10 ml-1">
-                                        <input type="text" class="form-control" id="seo-url"
-                                               placeholder="URL">
-                                    </div>
-                                </div>
-                                <div class="row pt-2">
-                                    <div class="col-md-12">
-                                        <div class="form-group row">
-                                            <label for="seo-title" class="col-md-1 text-right ml-4 col-form-label">Title:</label>
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control" id="seo-title"
-                                                       placeholder="Title">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row pt-2 ">
-                                    <div class="col-md-12">
-                                        <div class="form-group row">
-                                            <label for="seo-keywords"
-                                                   class="col-md-1 text-right ml-2 col-form-label">Keywords:</label>
-                                            <div class="col-md-10 ml-3">
-                                                <input type="text" class="form-control" id="seo-keywords"
-                                                       placeholder="Keywords">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row pt-2">
-                                    <div class="col-md-12">
-                                        <div class="form-group row">
-                                            <label for="seo-description" class="col-md-1 mr-1 col-form-label">Description:</label>
-                                            <textarea class="col-form-label col-md-10 ml-4 form-control" rows="5"
-                                                      id="seo-description" placeholder="Description"></textarea>
+                                    <div class="row pt-4" th:if="${!cinemaInfo.default}">
+                                        <div class="col-md-auto m-auto">
+                                            <button type="button" class="btn btn-lg btn-block btn-default">
+                                                Удалить
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row pb-4">
-                    <div class="col-2 m-auto">
-                        <button type="submit" class="btn btn-block btn-default">Сохранить</button>
+                    <div class="row pb-4">
+                        <div class="col-md-auto m-auto">
+                            <a href="/admin/pages/cinema-info-page-add" type="button" class="btn btn-lg btn-block btn-default"><i
+                                    class="fa-solid fa-plus pr-2"></i>Добавить еще кинотеатр
+                            </a>
+                        </div>
                     </div>
-                </div>
+                    <div class="row pt-4">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label">SEO блок</label>
+                                <div class="col-md-8">
+                                    <div class="form-group row">
+                                        <label for="seo-url"
+                                               class="col-md-auto ml-5 text-right col-form-label">URL:</label>
+                                        <div class="col-md-10 ml-1">
+                                            <input type="text" class="form-control" id="seo-url"
+                                                   placeholder="URL" th:field="*{seo.url}">
+                                        </div>
+                                    </div>
+                                    <div class="row pt-2">
+                                        <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <label for="seo-title" class="col-md-1 text-right ml-4 col-form-label">Title:</label>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" id="seo-title"
+                                                           placeholder="Title" th:field="*{seo.title}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row pt-2 ">
+                                        <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <label for="seo-keywords"
+                                                       class="col-md-1 text-right ml-2 col-form-label">Keywords:</label>
+                                                <div class="col-md-10 ml-3">
+                                                    <input type="text" class="form-control" id="seo-keywords"
+                                                           placeholder="Keywords" th:field="*{seo.keywords}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row pt-2">
+                                        <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <label for="seo-description" class="col-md-1 mr-1 col-form-label">Description:</label>
+                                                <textarea class="col-form-label col-md-10 ml-4 form-control" rows="5"
+                                                          id="seo-description" placeholder="Description"
+                                                          th:field="*{seo.description}"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pb-4">
+                        <div class="col-2 m-auto">
+                            <button type="submit" class="btn btn-block btn-default">Сохранить</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <!-- /.content -->
         </div>
@@ -214,5 +179,14 @@
     <!-- ./wrapper -->
 </div>
 <th:block th:insert="~{admin-panel/fragments/js :: js}"></th:block>
+<script src="/js/bs-file-input/bs-custom-file-input.min.js"></script>
+<script>
+    $(function () {
+        bsCustomFileInput.init();
+    });
+    $(document).on('change', '.custom-file-input', function (e) {
+        $(this).parents('div.row.pt-4').find('img').attr('src', URL.createObjectURL(e.target.files[0]));
+    });
+</script>
 </body>
 </html>

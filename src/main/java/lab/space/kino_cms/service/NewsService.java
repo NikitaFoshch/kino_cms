@@ -9,9 +9,9 @@ public interface NewsService {
     List<News> getAllNews();
     News getNewsById(Long newsId);
     void updateNewsById(Long newsId, News requstedNews,
-                            MultipartFile requstedMainImage, MultipartFile requstedGalleryImage1,
-                            MultipartFile requstedGalleryImage2, MultipartFile requstedGalleryImage3,
-                            MultipartFile requstedGalleryImage4, MultipartFile requstedGalleryImage5);
+                            MultipartFile requestedMainImage, MultipartFile requestedGalleryImage1,
+                            MultipartFile requestedGalleryImage2, MultipartFile requestedGalleryImage3,
+                            MultipartFile requestedGalleryImage4, MultipartFile requestedGalleryImage5);
     void saveNews(News news, MultipartFile mainImage,
                   MultipartFile galleryImage1, MultipartFile galleryImage2,
                   MultipartFile galleryImage3, MultipartFile galleryImage4,

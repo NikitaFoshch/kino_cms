@@ -48,6 +48,6 @@ public class FileUtil {
             } else {
                 log.error("File Not Deleted");
             }
-        }else log.error("Filename Is Empty");
+        }else log.warn("Filename Is Empty");
     }
 }

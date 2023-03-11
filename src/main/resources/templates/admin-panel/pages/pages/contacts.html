@@ -28,10 +28,12 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <form th:method="POST" th:action="${'/admin/pages/contacts-page-update'}" th:object="${contactsPage}" enctype="multipart/form-data">
+                <form th:method="POST" th:action="${'/admin/pages/contacts-page-update'}" th:object="${contactsPage}"
+                      enctype="multipart/form-data">
                     <div class="row pt-2" th:each="cinemaInfo, i :${contactsPage.cinemaInfoList}">
                         <input type="text" th:field="*{cinemaInfoList[__${i.index}__].id}" hidden>
                         <input type="text" th:field="*{cinemaInfoList[__${i.index}__].default}" hidden>
+                        <input type="text" th:field="*{cinemaInfoList[__${i.index}__].contactsPage.id}" hidden>
                         <input type="text" th:field="*{id}" hidden>
                         <div class="col-md-12">
                             <div class="card card-default card-outline">
@@ -39,10 +41,12 @@
                                     <div class="row pt-4">
                                         <div class="col-md-5">
                                             <div class="form-group row">
-                                                <label for="cinema-name" class="col-md-4 col-form-label">Название
+                                                <label th:for="${'cinema-name-' + i.index}"
+                                                       class="col-md-4 col-form-label">Название
                                                     кинотеатра</label>
                                                 <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="cinema-name"
+                                                    <input type="text" class="form-control"
+                                                           th:id="${'cinema-name-' + i.index}"
                                                            placeholder="Название кинотеатра"
                                                            th:field="*{cinemaInfoList[__${i.index}__].cinemaName}">
                                                 </div>
@@ -50,9 +54,11 @@
                                         </div>
                                         <div class="col-md-6 mt-2 text-right" th:if="${!cinemaInfo.default}">
                                             <div class="custom-control custom-switch custom-switch-off-gray custom-switch-on-success">
-                                                <input type="checkbox" class="custom-control-input" id="switch">
-                                                <label class="custom-control-label" for="switch"
-                                                       th:field="*{cinemaInfoList[__${i.index}__].disabled}"></label>
+                                                <input type="checkbox" class="custom-control-input"
+                                                       th:id="${'switch-' + i.index}"
+                                                       th:field="*{cinemaInfoList[__${i.index}__].disabled}">
+                                                <label class="custom-control-label"
+                                                       th:for="${'switch-' + i.index}"></label>
                                             </div>
                                         </div>
                                     </div>
@@ -83,14 +89,16 @@
                                     <div class="row pt-4">
                                         <label class="col-md-auto form-group">Лого</label>
                                         <div class="col-md-2 text-center">
-                                            <img th:src="${'/files/' + cinemaInfo.logo}" class="product-image"
+                                            <img th:src="${cinemaInfo.logo == null} ? ${'/img/common/no-image.jpg'} : ${'/files/' + cinemaInfo.logo}"
+                                                 class="product-image"
                                                  alt="Logo">
                                         </div>
                                         <div class="col-md-auto">
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="logo"
-                                                           accept="image/jpeg, image/png" th:field="*{cinemaInfoList[__${i.index}__].file}">
+                                                           accept="image/jpeg, image/png"
+                                                           th:field="*{cinemaInfoList[__${i.index}__].file}">
                                                     <label class="custom-file-label" for="logo"></label>
                                                 </div>
                                             </div>
@@ -98,9 +106,9 @@
                                     </div>
                                     <div class="row pt-4" th:if="${!cinemaInfo.default}">
                                         <div class="col-md-auto m-auto">
-                                            <button type="button" class="btn btn-lg btn-block btn-default">
+                                            <a th:href="'/admin/pages/cinema-info-delete/' + *{cinemaInfoList[__${i.index}__].id}" type="button" class="btn btn-lg btn-block btn-default">
                                                 Удалить
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +117,8 @@
                     </div>
                     <div class="row pb-4">
                         <div class="col-md-auto m-auto">
-                            <a href="/admin/pages/cinema-info-page-add" type="button" class="btn btn-lg btn-block btn-default"><i
+                            <a href="/admin/pages/cinema-info-page-add" type="button"
+                               class="btn btn-lg btn-block btn-default"><i
                                     class="fa-solid fa-plus pr-2"></i>Добавить еще кинотеатр
                             </a>
                         </div>
@@ -118,6 +127,7 @@
                         <div class="col-md-12">
                             <div class="form-group row">
                                 <label class="col-md-2 col-form-label">SEO блок</label>
+                                <input type="text" th:field="*{seo.id}" hidden>
                                 <div class="col-md-8">
                                     <div class="form-group row">
                                         <label for="seo-url"

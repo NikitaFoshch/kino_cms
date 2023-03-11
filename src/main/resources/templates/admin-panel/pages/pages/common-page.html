@@ -75,7 +75,8 @@
           <div class="row pt-4">
             <label class="col-md-auto form-group">Главная картинка</label>
             <div class="col-md-2 text-center">
-              <img th:src="*{'/files/' + mainImage}" class="product-image" alt="Main Image">
+              <img th:src="*{mainImage == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + mainImage}"
+                   class="product-image" alt="Main Image">
             </div>
             <div class="col-md-auto">
               <div class="input-group">
@@ -96,7 +97,8 @@
               <div class="row">
                 <div class="col-3"></div>
                 <div class="col-md-8 text-center">
-                  <img th:src="*{'/files/' + galleryImage1}" class="product-image" alt="News Image">
+                  <img th:src="*{galleryImage1 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage1}"
+                  class="product-image" alt="News Image">
                 </div>
               </div>
               <div class="row pt-1 pb-2">
@@ -116,7 +118,8 @@
               <div class="row">
                 <div class="col-3"></div>
                 <div class="col-md-8 text-center">
-                  <img th:src="*{'/files/' + galleryImage2}" class="product-image" alt="News Image">
+                  <img th:src="*{galleryImage2 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage2}"
+                  class="product-image" alt="News Image">
                 </div>
               </div>
               <div class="row pt-1 pb-2">
@@ -136,7 +139,8 @@
               <div class="row">
                 <div class="col-3"></div>
                 <div class="col-md-8 text-center">
-                  <img th:src="*{'/files/' + galleryImage3}" class="product-image" alt="News Image">
+                  <img th:src="*{galleryImage3 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage3}"
+                            class="product-image" alt="News Image">
                 </div>
               </div>
               <div class="row pt-1 pb-2">
@@ -156,7 +160,8 @@
               <div class="row">
                 <div class="col-3"></div>
                 <div class="col-md-8 text-center">
-                  <img th:src="*{'/files/' + galleryImage4}" class="product-image" alt="News Image">
+                  <img th:src="*{galleryImage4 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage4}"
+                            class="product-image" alt="News Image">
                 </div>
               </div>
               <div class="row pt-1 pb-2">
@@ -176,7 +181,8 @@
               <div class="row">
                 <div class="col-3"></div>
                 <div class="col-md-8 text-center">
-                  <img th:src="*{'/files/' + galleryImage5}" class="product-image" alt="News Image">
+                  <img th:src="*{galleryImage5 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage5}"
+                            class="product-image" alt="News Image">
                 </div>
               </div>
               <div class="row pt-1 pb-2">

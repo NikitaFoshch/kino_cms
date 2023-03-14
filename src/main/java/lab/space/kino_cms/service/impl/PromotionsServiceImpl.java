@@ -69,12 +69,12 @@ public class PromotionsServiceImpl implements PromotionsService {
         }
 
         if (FileUtil.saveFile(requestedGalleryImage4.getOriginalFilename(), requestedGalleryImage4)) {
-            FileUtil.deleteFile(promotions.getMainImage());
+            FileUtil.deleteFile(promotions.getGalleryImage4());
             promotions.setGalleryImage4(requestedGalleryImage4.getOriginalFilename());
         }
 
         if (FileUtil.saveFile(requestedGalleryImage5.getOriginalFilename(), requestedGalleryImage5)) {
-            FileUtil.deleteFile(promotions.getMainImage());
+            FileUtil.deleteFile(promotions.getGalleryImage5());
             promotions.setGalleryImage5(requestedGalleryImage5.getOriginalFilename());
         }
 

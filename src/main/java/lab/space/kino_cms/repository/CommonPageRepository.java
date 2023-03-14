@@ -12,10 +12,10 @@ import java.util.Optional;
 public interface CommonPageRepository extends JpaRepository<CommonPage, Long> {
     Optional<CommonPage> findFirstByOrderByIdAsc();
 
-    @Query("from CommonPage c where c.isDefault = true order by c.id asc")
+    @Query("from CommonPage c where c.isDefault = true order by c.createAt asc")
     List<CommonPage> getCommonPageByDefaultTrueByOrderByIdAsc();
 
-    @Query("from CommonPage c where c.isDefault = false order by c.id asc")
+    @Query("from CommonPage c where c.isDefault = false order by c.createAt asc")
     List<CommonPage> getCommonPageByDefaultFalseByOrderByIdAsc();
 
 }

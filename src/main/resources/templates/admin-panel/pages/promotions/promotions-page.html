@@ -93,7 +93,7 @@
               <img th:src="*{mainImage == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + mainImage}"
                    class="product-image" alt="Main Image">
             </div>
-            <div class="col-md-auto">
+            <div class="col-md-auto mt-auto mb-auto">
               <div class="input-group">
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="main-image"
@@ -226,6 +226,7 @@
             <div class="col-md-12">
               <div class="form-group row">
                 <label class="col-md-2 col-form-label">SEO блок</label>
+                <input type="text" th:field="*{seo.id}" hidden>
                 <div class="col-md-8">
                   <div class="form-group row">
                     <label for="seo-url"

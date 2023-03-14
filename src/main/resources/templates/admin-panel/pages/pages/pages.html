@@ -57,7 +57,7 @@
                                     <tbody>
                                     <tr>
                                         <td th:text="${mainPage.title}"></td>
-                                        <td th:text="${mainPage.createAt}"></td>
+                                        <td th:text="${#temporals.format(mainPage.createAt,'dd.MM.yyyy')}"></td>
                                         <td th:text="${mainPage.disabled}"></td>
                                         <td>
                                             <a href="/admin/pages/main-page-edit" role="button" class="btn pb-0 pt-0">
@@ -69,7 +69,7 @@
 
                                     <tr th:each="defaultCommonPage:${defaultCommonPages}">
                                         <td th:text="${defaultCommonPage.name}"></td>
-                                        <td th:text="${defaultCommonPage.createAt}"></td>
+                                        <td th:text="${#temporals.format(defaultCommonPage.createAt,'dd.MM.yyyy')}"></td>
                                         <td th:text="${defaultCommonPage.disabled}"></td>
                                         <td>
                                             <a th:href="${'/admin/pages/common-page-edit/' + defaultCommonPage.id}"
@@ -81,7 +81,7 @@
                                     </tr>
                                     <tr>
                                         <td th:text="${contactsPage.title}"></td>
-                                        <td th:text="${contactsPage.createAt}"></td>
+                                        <td th:text="${#temporals.format(contactsPage.createAt,'dd.MM.yyyy')}"></td>
                                         <td th:text="${contactsPage.disabled}"></td>
                                         <td>
                                             <a href="/admin/pages/contacts-edit" role="button" class="btn pb-0 pt-0">
@@ -92,7 +92,7 @@
                                     </tr>
                                     <tr th:each="commonPage:${commonPages}">
                                         <td th:text="${commonPage.name}"></td>
-                                        <td th:text="${commonPage.createAt}"></td>
+                                        <td th:text="${#temporals.format(commonPage.createAt,'dd.MM.yyyy')}"></td>
                                         <td th:text="${commonPage.disabled}"></td>
                                         <td>
                                             <a th:href="${'/admin/pages/common-page-edit/' + commonPage.id}"

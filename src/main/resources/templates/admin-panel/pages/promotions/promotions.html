@@ -56,7 +56,7 @@
                                     <tbody>
                                     <tr th:each="promotions:${promotionsList}">
                                         <td th:text="${promotions.name}"></td>
-                                        <td th:text="${promotions.createAt}"></td>
+                                        <td th:text="${#temporals.format(promotions.createAt,'dd.MM.yyyy')}"></td>
                                         <td th:text="${promotions.disabled}"></td>
                                         <td>
                                             <a th:href="${'/admin/promotions/edit/' + promotions.id}"

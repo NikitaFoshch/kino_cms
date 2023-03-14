@@ -73,12 +73,12 @@ public class CommonPageServiceImpl implements CommonPageService {
         }
 
         if (FileUtil.saveFile(requestedGalleryImage4.getOriginalFilename(), requestedGalleryImage4)) {
-            FileUtil.deleteFile(commonPage.getMainImage());
+            FileUtil.deleteFile(commonPage.getGalleryImage4());
             commonPage.setGalleryImage4(requestedGalleryImage4.getOriginalFilename());
         }
 
         if (FileUtil.saveFile(requestedGalleryImage5.getOriginalFilename(), requestedGalleryImage5)) {
-            FileUtil.deleteFile(commonPage.getMainImage());
+            FileUtil.deleteFile(commonPage.getGalleryImage5());
             commonPage.setGalleryImage5(requestedGalleryImage5.getOriginalFilename());
         }
 

@@ -69,12 +69,12 @@ public class NewsServiceImpl implements NewsService {
         }
 
         if (FileUtil.saveFile(requestedGalleryImage4.getOriginalFilename(), requestedGalleryImage4)) {
-            FileUtil.deleteFile(news.getMainImage());
+            FileUtil.deleteFile(news.getGalleryImage4());
             news.setGalleryImage4(requestedGalleryImage4.getOriginalFilename());
         }
 
         if (FileUtil.saveFile(requestedGalleryImage5.getOriginalFilename(), requestedGalleryImage5)) {
-            FileUtil.deleteFile(news.getMainImage());
+            FileUtil.deleteFile(news.getGalleryImage5());
             news.setGalleryImage5(requestedGalleryImage5.getOriginalFilename());
         }
 

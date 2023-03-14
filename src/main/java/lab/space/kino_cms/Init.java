@@ -41,7 +41,9 @@ public class Init implements CommandLineRunner {
         if (movieRepository.findFirstByOrderByIdAsc().isEmpty()) {
             log.warn("Movie Not Found");
             for (int i = 0; i < 12; i++) {
-                movieRepository.save(new Movie());
+                Movie movie = new Movie();
+                movie.setName("Название фильма");
+                movieRepository.save(movie);
             }
             log.info("Initial Movie Created");
         } else log.info("Movie Found");

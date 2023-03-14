@@ -33,10 +33,11 @@
                 </div>
                 <div class="row pt-5">
                     <div class="col-md-3 col-form-label" th:each="cinema:${cinemas}">
-                        <a class="delete" th:if="${!cinema.default}" th:href="${'/admin/cinemas/cinema-delete/' + cinema.id}">
+                        <a class="delete" th:if="${!cinema.default}"
+                           th:href="${'/admin/cinemas/cinema-delete/' + cinema.id}">
                             <i class="fa-regular fa-circle-xmark fa-xl"></i>
                         </a>
-                        <a th:href="'/admin/cinemas/cinema-edit/' + *{cinema.id}" class="text-gray-dark" >
+                        <a th:href="'/admin/cinemas/cinema-edit/' + *{cinema.id}" class="text-gray-dark">
                             <div class="row">
                                 <div class="col-md-12 text-center pr-4 pl-4">
                                     <img th:src="*{cinema.logo == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + cinema.logo}"
@@ -47,7 +48,6 @@
                                 <div class="col-md-12 form-group text-center" th:text="${cinema.name}"></div>
                             </div>
                         </a>
-
                     </div>
                     <div class="col-md-2 col-form-label pt-5 mt-5 mb-5 ml-5 mr-5">
                         <a href="/admin/cinemas/cinema-add" class="text-gray-dark">

@@ -8,7 +8,7 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDate;
+import java.time.Instant;
 
 
 @MappedSuperclass
@@ -18,7 +18,7 @@ public class MappedEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @CreationTimestamp
-    private LocalDate createAt;
+    private Instant createAt;
     @UpdateTimestamp
-    private LocalDate updateAt;
+    private Instant updateAt;
 }

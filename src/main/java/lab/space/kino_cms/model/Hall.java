@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public class Hall extends MappedEntity {
+    private boolean isDefault;
     @Column(length = 100)
     private String name;
     @Column(length = 1000)
@@ -30,6 +31,8 @@ public class Hall extends MappedEntity {
     private String galleryImage4;
     @Column(length = 150)
     private String galleryImage5;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Cinema cinema;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Seo seo = new Seo();
 }

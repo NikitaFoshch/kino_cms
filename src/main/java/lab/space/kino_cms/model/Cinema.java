@@ -14,6 +14,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public class Cinema extends MappedEntity {
+    private boolean isDefault;
     @Column(length = 100)
     private String name;
     @Column(length = 1000)

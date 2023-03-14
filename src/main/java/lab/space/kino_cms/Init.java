@@ -49,7 +49,11 @@ public class Init implements CommandLineRunner {
         log.info("Try To Find Cinema");
         if (cinemaRepository.findFirstByOrderByIdAsc().isEmpty()) {
             log.warn("Cinema Not Found");
-            cinemaRepository.save(new Cinema());
+            Cinema cinema = new Cinema();
+            cinema.setDefault(true);
+            cinema.getHalls().get(0).setDefault(true);
+            cinema.setName("Стандартный Кинотеарт");
+            cinemaRepository.save(cinema);
             log.info("Initial Cinema Created");
         } else log.info("Cinema Found");
 

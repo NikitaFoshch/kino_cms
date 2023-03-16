@@ -14,7 +14,9 @@ import java.util.List;
 @Slf4j
 public class Init implements CommandLineRunner {
     private final MainPageRepository mainPageRepository;
+    private final TopBannerRepository topBannerRepository;
     private final BackgroundBannerRepository backgroundBannerRepository;
+    private final NewsBannerRepository newsBannerRepository;
     private final MovieRepository movieRepository;
     private final CinemaRepository cinemaRepository;
     private final CityRepository cityRepository;
@@ -30,12 +32,30 @@ public class Init implements CommandLineRunner {
             log.info("Initial MainPage Created");
         } else log.info("MainPage Found");
 
+        log.info("Try To Find TopBanner");
+        if (topBannerRepository.findFirstByOrderByIdAsc().isEmpty()) {
+            log.warn("TopBanner Not Found");
+            TopBanner topBanner = new TopBanner();
+            topBanner.setRotatingSpeed(10);
+            topBannerRepository.save(topBanner);
+            log.info("Initial TopBanner Created");
+        } else log.info("TopBanner Found");
+
         log.info("Try To Find BackgroundBanner");
         if (backgroundBannerRepository.findFirstByOrderByIdAsc().isEmpty()) {
             log.warn("BackgroundBanner Not Found");
             backgroundBannerRepository.save(new BackgroundBanner());
             log.info("Initial BackgroundBanner Created");
         } else log.info("BackgroundBanner Found");
+
+        log.info("Try To Find NewsBanner");
+        if (newsBannerRepository.findFirstByOrderByIdAsc().isEmpty()) {
+            log.warn("NewsBanner Not Found");
+            NewsBanner newsBanner = new NewsBanner();
+            newsBanner.setRotatingSpeed(10);
+            newsBannerRepository.save(newsBanner);
+            log.info("Initial NewsBanner Created");
+        } else log.info("NewsBanner Found");
 
         log.info("Try To Find Movie");
         if (movieRepository.findFirstByOrderByIdAsc().isEmpty()) {

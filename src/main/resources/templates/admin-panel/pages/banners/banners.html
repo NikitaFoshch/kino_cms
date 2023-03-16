@@ -30,196 +30,96 @@
             <div class="container-fluid pt-4">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header text-center">
-                                <h5 class="m-0">На главной верх</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-2">Размер: 1000x190</div>
-                                    <div class="col-md-10 text-right">
-                                        <div class="custom-control custom-switch custom-switch-off-gray custom-switch-on-success">
-                                            <input type="checkbox" class="custom-control-input" id="switch">
-                                            <label class="custom-control-label" for="switch"></label>
-                                        </div>
-                                    </div>
+                        <form th:method="POST" th:action="${'/admin/banners/top-banner-update'}"
+                              th:object="${topBanner}"
+                              enctype="multipart/form-data">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h5 class="m-0">На главной верх</h5>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-1 col-form-label">
-                                    </div>
-                                    <div class="col-md-2 col-form-label">
-                                        <div class="row">
-                                            <div class="col-3"></div>
-                                            <div class="col-md-8 text-center">
-                                                <img src="#" class="product-image" alt="Movie Image">
-                                            </div>
-                                        </div>
-                                        <div class="row pt-1 pb-2">
-                                            <div class="col-3"></div>
-                                            <div class="col-8">
-                                                <button type="submit" class="btn btn-xs btn-block btn-default">
-                                                    Добавить
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="url" class="col-md-auto col-form-label">URL:</label>
-                                            <div class="col-md-9 pr-3 pl-3">
-                                                <input type="text" class="form-control" id="url"
-                                                       placeholder="URL">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="text" class="col-md-auto col-form-label">Текст:</label>
-                                            <div class="col-md-8">
-                                                <input type="text" class="form-control" id="text"
-                                                       placeholder="Текст">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-2">Размер: 1000x190</div>
+                                        <div class="col-md-10 text-right">
+                                            <div class="custom-control custom-switch custom-switch-off-gray custom-switch-on-success">
+                                                <input type="checkbox" class="custom-control-input" id="switch"
+                                                       th:field="*{disabled}">
+                                                <label class="custom-control-label" for="switch"></label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 col-form-label">
-                                        <div class="row">
-                                            <div class="col-3"></div>
-                                            <div class="col-md-8 text-center">
-                                                <img src="#" class="product-image" alt="Movie Image">
+                                    <div class="row mt-3">
+                                        <div class="col-md-2 col-form-label"
+                                             th:each="topBannerBlock,i :*{topBannerBlocksList}">
+                                            <input type="text" th:field="*{topBannerBlocksList[__${i.index}__].id}"
+                                                   hidden>
+                                            <input type="text"
+                                                   th:field="*{topBannerBlocksList[__${i.index}__].topBanner.id}"
+                                                   hidden>
+                                            <input type="text" th:field="*{id}" hidden>
+                                            <a class="delete"
+                                               th:href="${'/admin/banners/top-banners-blocks-delete/' + topBannerBlock.id}">
+                                                <i class="fa-regular fa-circle-xmark fa-xl"></i>
+                                            </a>
+                                            <div class="row">
+                                                <div class="col-3"></div>
+                                                <div class="col-md-8 text-center">
+                                                    <img th:src="${topBannerBlock.image == null} ? ${'/img/common/no-image.jpg'} : ${'/files/' + topBannerBlock.image}"
+                                                         class="product-image" alt="TopBannerBlock Image">
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1 pb-2">
+                                                <div class="col-3"></div>
+                                                <div class="col-8 ">
+                                                    <div class="input-group">
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input"
+                                                                   id="top-banner-block-image"
+                                                                   accept="image/jpeg, image/png"
+                                                                   th:field="*{topBannerBlocksList[__${i.index}__].file}">
+                                                            <label class="custom-file-label"
+                                                                   for="top-banner-block-image"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="url" class="col-md-auto col-form-label">URL:</label>
+                                                <div class="col-md-9 pr-3 pl-3">
+                                                    <input type="text" class="form-control" id="url"
+                                                           placeholder="URL"
+                                                           th:field="*{topBannerBlocksList[__${i.index}__].url}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="text" class="col-md-auto col-form-label">Текст:</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="text"
+                                                           placeholder="Текст"
+                                                           th:field="*{topBannerBlocksList[__${i.index}__].text}">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="row pt-1 pb-2">
-                                            <div class="col-3"></div>
-                                            <div class="col-8">
-                                                <button type="submit" class="btn btn-xs btn-block btn-default">
-                                                    Добавить
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="url2" class="col-md-auto col-form-label">URL:</label>
-                                            <div class="col-md-9 pr-3 pl-3">
-                                                <input type="text" class="form-control" id="url2"
-                                                       placeholder="URL">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="text2" class="col-md-auto col-form-label">Текст:</label>
-                                            <div class="col-md-8">
-                                                <input type="text" class="form-control" id="text2"
-                                                       placeholder="Текст">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-form-label">
-                                        <div class="row">
-                                            <div class="col-3"></div>
-                                            <div class="col-md-8 text-center">
-                                                <img src="#" class="product-image" alt="Movie Image">
-                                            </div>
-                                        </div>
-                                        <div class="row pt-1 pb-2">
-                                            <div class="col-3"></div>
-                                            <div class="col-8">
-                                                <button type="submit" class="btn btn-xs btn-block btn-default">
-                                                    Добавить
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="url3" class="col-md-auto col-form-label">URL:</label>
-                                            <div class="col-md-9 pr-3 pl-3">
-                                                <input type="text" class="form-control" id="url3"
-                                                       placeholder="URL">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="text3" class="col-md-auto col-form-label">Текст:</label>
-                                            <div class="col-md-8">
-                                                <input type="text" class="form-control" id="text3"
-                                                       placeholder="Текст">
-                                            </div>
+                                        <div class="col-md-auto col-form-label pt-5 mt-5 mb-5 ml-5 mr-5">
+                                            <a type="button" href="/admin/banners/top-banners-blocks-add"
+                                               class="btn btn-block btn-default">Добавить <br> Баннер
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 col-form-label">
-                                        <div class="row">
-                                            <div class="col-3"></div>
-                                            <div class="col-md-8 text-center">
-                                                <img src="#" class="product-image" alt="Movie Image">
-                                            </div>
+                                    <div class="form-group row mt-3">
+                                        <label for="rotating-speed1" class="col-md-auto">Скорость вращения</label>
+                                        <div class="form-group col-md-auto  ml-5">
+                                            <input class="form-control" id="rotating-speed1"
+                                                   th:field="*{rotatingSpeed}">
                                         </div>
-                                        <div class="row pt-1 pb-2">
-                                            <div class="col-3"></div>
-                                            <div class="col-8">
-                                                <button type="submit" class="btn btn-xs btn-block btn-default">
-                                                    Добавить
-                                                </button>
-                                            </div>
+                                        <div class="col-1 pr-5"></div>
+                                        <div class="col-2 form-group">
+                                            <button type="submit" class="btn btn-block btn-default">Сохранить</button>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="url4" class="col-md-auto col-form-label">URL:</label>
-                                            <div class="col-md-9 pr-3 pl-3">
-                                                <input type="text" class="form-control" id="url4"
-                                                       placeholder="URL">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="text4" class="col-md-auto col-form-label">Текст:</label>
-                                            <div class="col-md-8">
-                                                <input type="text" class="form-control" id="text4"
-                                                       placeholder="Текст">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-form-label">
-                                        <div class="row">
-                                            <div class="col-3"></div>
-                                            <div class="col-md-8 text-center">
-                                                <img src="#" class="product-image" alt="Movie Image">
-                                            </div>
-                                        </div>
-                                        <div class="row pt-1 pb-2">
-                                            <div class="col-3"></div>
-                                            <div class="col-8">
-                                                <button type="submit" class="btn btn-xs btn-block btn-default">
-                                                    Добавить
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="url5" class="col-md-auto col-form-label">URL:</label>
-                                            <div class="col-md-9 pr-3 pl-3">
-                                                <input type="text" class="form-control" id="url5"
-                                                       placeholder="URL">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="text5" class="col-md-auto col-form-label">Текст:</label>
-                                            <div class="col-md-8">
-                                                <input type="text" class="form-control" id="text5"
-                                                       placeholder="Текст">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 col-form-label m-auto">
-                                        <button type="submit" class="btn btn-block btn-default">Добавить Фото</button>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-1"></div>
-                                    <label for="rotating-speed1" class="col-md-auto">Скорость вращения</label>
-                                    <div class="form-group col-md-auto  ml-5">
-                                        <select class="form-control" id="rotating-speed1">
-                                            <option>5</option>
-                                            <option>10</option>
-                                            <option>15</option>
-                                            <option>20</option>
-                                            <option>30</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-1 pr-5"></div>
-                                    <div class="col-2 form-group">
-                                        <button type="submit" class="btn btn-block btn-default">Сохранить</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <div class="row">
@@ -229,221 +129,131 @@
                                 <h5 class="m-0">Сквозной банер на заднем фоне</h5>
                             </div>
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-2">Размер: 2000x3000</div>
-                                </div>
-                                <div class="row pt-4">
-                                    <div class="col-md-auto">
-                                        <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" type="radio" id="customRadio1"
-                                                   name="background">
-                                            <label for="customRadio1" class="custom-control-label">Фото на фон</label>
+                                <form th:method="POST" th:action="${'/admin/banners/background-banner-update'}"
+                                      th:object="${backgroundBanner}"
+                                      enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-md-2">Размер: 2000x3000</div>
+                                    </div>
+                                    <div class="row pt-4">
+                                        <div th:each="backgroundImage : ${T(lab.space.kino_cms.model.BackgroundBanner.BackgroundImage).values()}">
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" th:field="*{backgroundImage}"
+                                                       th:value="${backgroundImage}"
+                                                       class="custom-control-input">
+                                                <label class="custom-control-label"
+                                                       th:for="${#ids.prev('backgroundImage')}"
+                                                       th:text="${backgroundImage.value}"></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 text-center">
+                                            <img th:src="*{image == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + image}"
+                                                 class="product-image w-75" alt="Background Image">
+                                        </div>
+                                        <div class="col-md-auto mt-auto mb-auto">
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="background-image"
+                                                           name="backgroundPicture" accept="image/jpeg, image/png">
+                                                    <label class="custom-file-label" for="background-image"></label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 text-center">
-                                        <img src="#" class="product-image" alt="Background Image">
-                                    </div>
-                                    <div class="col-2">
-                                        <button type="submit" class="btn btn-sm btn-block btn-default">
-                                            Добавить
-                                        </button>
-                                    </div>
-                                    <div class="col-2">
-                                        <button type="submit" class="btn btn-sm btn-block btn-default">
-                                            Удалить
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row pt-4">
-                                    <div class="col-md-auto">
-                                        <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" type="radio" id="customRadio2"
-                                                   name="background">
-                                            <label for="customRadio2" class="custom-control-label">Просто фон</label>
+                                    <div class="row pt-4">
+                                        <div class="col-2 m-auto">
+                                            <button type="submit" class="btn btn-block btn-default">Сохранить</button>
                                         </div>
                                     </div>
-                                    <!--                                    <div class="col-md-2 text-center ml-2">-->
-                                    <!--                                        <img src="#" class="product-image" alt="Background Image">-->
-                                    <!--                                    </div>-->
-                                    <!--                                    <div class="col-2">-->
-                                    <!--                                        <button type="submit" class="btn btn-sm btn-block btn-default">-->
-                                    <!--                                            Добавить-->
-                                    <!--                                        </button>-->
-                                    <!--                                    </div>-->
-                                    <!--                                    <div class="col-2">-->
-                                    <!--                                        <button type="submit" class="btn btn-sm btn-block btn-default">-->
-                                    <!--                                            Удалить-->
-                                    <!--                                        </button>-->
-                                    <!--                                    </div>-->
-                                </div>
-                                <div class="row pt-4">
-                                    <div class="col-2 m-auto">
-                                        <button type="submit" class="btn btn-block btn-default">Сохранить</button>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row pb-4">
                     <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header text-center">
-                                <h5 class="m-0">На главной Новости Акции</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-2">Размер: 1000x190</div>
-                                    <div class="col-md-10 text-right">
-                                        <div class="custom-control custom-switch custom-switch-off-gray custom-switch-on-success">
-                                            <input type="checkbox" class="custom-control-input" id="switch1">
-                                            <label class="custom-control-label" for="switch1"></label>
-                                        </div>
-                                    </div>
+                        <form th:method="POST" th:action="${'/admin/banners/news-banner-update'}"
+                              th:object="${newsBanner}"
+                              enctype="multipart/form-data">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h5 class="m-0">На главной Новости Акции</h5>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-1 col-form-label">
-                                    </div>
-                                    <div class="col-md-2 col-form-label">
-                                        <div class="row">
-                                            <div class="col-3"></div>
-                                            <div class="col-md-8 text-center">
-                                                <img src="#" class="product-image" alt="Movie Image">
-                                            </div>
-                                        </div>
-                                        <div class="row pt-1 pb-2">
-                                            <div class="col-3"></div>
-                                            <div class="col-8 ">
-                                                <button type="submit" class="btn btn-xs btn-block btn-default">
-                                                    Добавить
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="url6" class="col-md-auto col-form-label">URL:</label>
-                                            <div class="col-md-9 pr-3 pl-3">
-                                                <input type="text" class="form-control" id="url6"
-                                                       placeholder="URL">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-2">Размер: 1000x190</div>
+                                        <div class="col-md-10 text-right">
+                                            <div class="custom-control custom-switch custom-switch-off-gray custom-switch-on-success">
+                                                <input type="checkbox" class="custom-control-input" id="news-switch"
+                                                       th:field="*{disabled}">
+                                                <label class="custom-control-label" for="news-switch"></label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 col-form-label">
-                                        <div class="row">
-                                            <div class="col-3"></div>
-                                            <div class="col-md-8 text-center">
-                                                <img src="#" class="product-image" alt="Movie Image">
+                                    <div class="row mt-3">
+                                        <div class="col-md-2 col-form-label"
+                                             th:each="newsBannerBlock,i :*{newsBannerBlocksList}">
+                                            <input type="text" th:field="*{newsBannerBlocksList[__${i.index}__].id}"
+                                                   hidden>
+                                            <input type="text"
+                                                   th:field="*{newsBannerBlocksList[__${i.index}__].newsBanner.id}"
+                                                   hidden>
+                                            <input type="text" th:field="*{id}" hidden>
+                                            <a class="delete"
+                                               th:href="${'/admin/banners/news-banners-blocks-delete/' + newsBannerBlock.id}">
+                                                <i class="fa-regular fa-circle-xmark fa-xl"></i>
+                                            </a>
+                                            <div class="row">
+                                                <div class="col-3"></div>
+                                                <div class="col-md-8 text-center">
+                                                    <img th:src="${newsBannerBlock.image == null} ? ${'/img/common/no-image.jpg'} : ${'/files/' + newsBannerBlock.image}"
+                                                         class="product-image" alt="TopBannerBlock Image">
+                                                </div>
+                                            </div>
+                                            <div class="row pt-1 pb-2">
+                                                <div class="col-3"></div>
+                                                <div class="col-8 ">
+                                                    <div class="input-group">
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input"
+                                                                   id="news-banner-block-image"
+                                                                   accept="image/jpeg, image/png"
+                                                                   th:field="*{newsBannerBlocksList[__${i.index}__].file}">
+                                                            <label class="custom-file-label"
+                                                                   for="top-banner-block-image"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="news-url" class="col-md-auto col-form-label">URL:</label>
+                                                <div class="col-md-9 pr-3 pl-3">
+                                                    <input type="text" class="form-control" id="news-url"
+                                                           placeholder="URL"
+                                                           th:field="*{newsBannerBlocksList[__${i.index}__].url}">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="row pt-1 pb-2">
-                                            <div class="col-3"></div>
-                                            <div class="col-8">
-                                                <button type="submit" class="btn btn-xs btn-block btn-default">
-                                                    Добавить
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="url7" class="col-md-auto col-form-label">URL:</label>
-                                            <div class="col-md-9 pr-3 pl-3">
-                                                <input type="text" class="form-control" id="url7"
-                                                       placeholder="URL">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-form-label">
-                                        <div class="row">
-                                            <div class="col-3"></div>
-                                            <div class="col-md-8 text-center">
-                                                <img src="#" class="product-image" alt="Movie Image">
-                                            </div>
-                                        </div>
-                                        <div class="row pt-1 pb-2">
-                                            <div class="col-3"></div>
-                                            <div class="col-8">
-                                                <button type="submit" class="btn btn-xs btn-block btn-default">
-                                                    Добавить
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="url8" class="col-md-auto col-form-label">URL:</label>
-                                            <div class="col-md-9 pr-3 pl-3">
-                                                <input type="text" class="form-control" id="url8"
-                                                       placeholder="URL">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-form-label">
-                                        <div class="row">
-                                            <div class="col-3"></div>
-                                            <div class="col-md-8 text-center">
-                                                <img src="#" class="product-image" alt="Movie Image">
-                                            </div>
-                                        </div>
-                                        <div class="row pt-1 pb-2">
-                                            <div class="col-3"></div>
-                                            <div class="col-8">
-                                                <button type="submit" class="btn btn-xs btn-block btn-default">
-                                                    Добавить
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="url9" class="col-md-auto col-form-label">URL:</label>
-                                            <div class="col-md-9 pr-3 pl-3">
-                                                <input type="text" class="form-control" id="url9"
-                                                       placeholder="URL">
-                                            </div>
+                                        <div class="col-md-auto col-form-label pt-5 mt-5 mb-5 ml-5 mr-5">
+                                            <a type="button" href="/admin/banners/news-banners-blocks-add"
+                                               class="btn btn-block btn-default">Добавить <br> Баннер
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 col-form-label">
-                                        <div class="row">
-                                            <div class="col-3"></div>
-                                            <div class="col-md-8 text-center">
-                                                <img src="#" class="product-image" alt="Movie Image">
-                                            </div>
+                                    <div class="form-group row mt-3">
+                                        <label for="rotating-speed2" class="col-md-auto">Скорость вращения</label>
+                                        <div class="form-group col-md-auto  ml-5">
+                                            <input class="form-control" id="rotating-speed2"
+                                                   th:field="*{rotatingSpeed}">
                                         </div>
-                                        <div class="row pt-1 pb-2">
-                                            <div class="col-3"></div>
-                                            <div class="col-8">
-                                                <button type="submit" class="btn btn-xs btn-block btn-default">
-                                                    Добавить
-                                                </button>
-                                            </div>
+                                        <div class="col-1 pr-5"></div>
+                                        <div class="col-2 form-group">
+                                            <button type="submit" class="btn btn-block btn-default">Сохранить</button>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="url10" class="col-md-auto col-form-label">URL:</label>
-                                            <div class="col-md-9 pr-3 pl-3">
-                                                <input type="text" class="form-control" id="url10"
-                                                       placeholder="URL">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 col-form-label m-auto">
-                                        <button type="button" class="btn btn-block btn-default">
-                                            <a href="/admin/banners/add-banner" class="nav text-gray m-auto">Добавить фото</a>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-1"></div>
-                                    <label for="rotating-speed" class="col-md-auto">Скорость вращения</label>
-                                    <div class="form-group col-md-auto  ml-5">
-                                        <select class="form-control" id="rotating-speed">
-                                            <option>5</option>
-                                            <option>10</option>
-                                            <option>15</option>
-                                            <option>20</option>
-                                            <option>30</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-1 pr-5"></div>
-                                    <div class="col-2 form-group">
-                                        <button type="submit" class="btn btn-block btn-default">Сохранить</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -455,5 +265,16 @@
 </div>
 <!-- ./wrapper -->
 <th:block th:insert="~{admin-panel/fragments/js :: js}"></th:block>
+<script src="/js/bs-file-input/bs-custom-file-input.min.js"></script>
+<script>
+    $(function () {
+        bsCustomFileInput.init();
+    });
+    $(document).on('change', '.custom-file-input', function (e) {
+        const img = $(this).parents('div.col-md-2').find('img');
+        if ($(img).length > 0) $(img).attr('src', URL.createObjectURL(e.target.files[0]));
+        else $(this).parents('div.row.pt-4').find('img').attr('src', URL.createObjectURL(e.target.files[0]));
+    });
+</script>
 </body>
 </html>

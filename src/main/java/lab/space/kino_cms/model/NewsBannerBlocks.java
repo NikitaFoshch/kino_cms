@@ -1,11 +1,10 @@
 package lab.space.kino_cms.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lab.space.kino_cms.model.common.MappedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Entity
@@ -17,4 +16,8 @@ public class NewsBannerBlocks extends MappedEntity {
     private String image;
     @Column(length = 150)
     private String url;
+    @Transient
+    private MultipartFile file;
+    @ManyToOne(fetch = FetchType.LAZY )
+    public NewsBanner newsBanner;
 }

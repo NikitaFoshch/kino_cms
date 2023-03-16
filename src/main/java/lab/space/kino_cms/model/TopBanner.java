@@ -5,6 +5,7 @@ import lab.space.kino_cms.model.common.MappedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,9 +13,9 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class TopBanner extends MappedEntity {
-    @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.ALL , orphanRemoval = true)
-    @JoinColumn(name = "top_banner_id")
-    private List<TopBannerBlocks> topBannerBlocks;
     private boolean disabled;
     private int rotatingSpeed;
+    @OneToMany(fetch = FetchType.LAZY , cascade = CascadeType.ALL , orphanRemoval = true)
+    @JoinColumn(name = "top_banner_id")
+    private List<TopBannerBlocks> topBannerBlocksList = new ArrayList<>();
 }

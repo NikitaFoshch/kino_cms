@@ -1,6 +1,5 @@
 package lab.space.kino_cms.controller.admin_panel;
 
-import lab.space.kino_cms.model.CinemaInfo;
 import lab.space.kino_cms.model.CommonPage;
 import lab.space.kino_cms.model.ContactsPage;
 import lab.space.kino_cms.model.MainPage;
@@ -106,7 +105,6 @@ public class PagesController {
 
     @GetMapping("contacts-edit")
     public String showEditContactsPage(Model model) {
-        List<CinemaInfo> cinemaInfos = cinemaInfoService.getAllCinemaInfosByOrderByDefaultDesc();
         ContactsPage contactsPage = contactsPageService.getContactsPage();
         model.addAttribute("contactsPage", contactsPage);
         return "/admin-panel/pages/pages/contacts";

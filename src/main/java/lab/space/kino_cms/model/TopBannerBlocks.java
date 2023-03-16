@@ -1,11 +1,10 @@
 package lab.space.kino_cms.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lab.space.kino_cms.model.common.MappedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table
@@ -18,4 +17,8 @@ public class TopBannerBlocks extends MappedEntity {
     private String url;
     @Column(length = 500)
     private String text;
+    @Transient
+    private MultipartFile file;
+    @ManyToOne(fetch = FetchType.LAZY )
+    public TopBanner topBanner;
 }

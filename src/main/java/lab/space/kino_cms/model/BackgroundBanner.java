@@ -17,9 +17,9 @@ public class BackgroundBanner extends MappedEntity {
     private BackgroundImage backgroundImage;
     @Column(length = 150)
     private String image;
-    public BackgroundBanner(){
-        this.backgroundImage = BackgroundImage.COMMON_BACKGROUND;
-    }
+//    public BackgroundBanner(){
+//        this.backgroundImage = BackgroundImage.COMMON_BACKGROUND;
+//    }
     @Getter
     @RequiredArgsConstructor
     enum BackgroundImage{

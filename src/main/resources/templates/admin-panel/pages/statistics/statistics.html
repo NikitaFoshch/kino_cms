@@ -34,53 +34,25 @@
 
                         <div class="small-box bg-gray-light">
                             <div class="inner">
-                                <h3>10</h3>
+                                <h3 th:text="${numberOfUsers}"></h3>
                                 <p>User Registrations</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-user-plus"></i>
                             </div>
-                            <a href="#" class="small-box-footer">
+                            <a href="/admin/users/" class="small-box-footer">
                                 More info <i class="fas fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <!-- interactive chart -->
-                        <div class="card card-default card-outline">
-                            <div class="card-header">
-                                <h3 class="card-title">
-                                    <i class="far fa-chart-bar"></i>
-                                    Количество пользователей
-                                </h3>
-
-                                <div class="card-tools">
-                                    Real time
-                                    <div class="btn-group" id="realtime" data-toggle="btn-toggle">
-                                        <button type="button" class="btn btn-default btn-sm active" data-toggle="on">On</button>
-                                        <button type="button" class="btn btn-default btn-sm" data-toggle="off">Off</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div id="interactive" style="height: 300px;"></div>
-                            </div>
-                            <!-- /.card-body-->
-                        </div>
-                        <!-- /.card -->
-
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-default card-outline">
+                        <div class="card card-primary card-outline">
                             <div class="card-header">
                                 <h3 class="card-title">
                                     <i class="far fa-chart-bar"></i>
-                                    Количество заказов
+                                    Donut Chart
                                 </h3>
 
                                 <div class="card-tools">
@@ -93,14 +65,11 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div id="bar-chart" style="height: 300px;"></div>
+                                <div id="donut-chart" style="height: 300px;"></div>
                             </div>
-                            <!-- /.card-body-->
                         </div>
                     </div>
-                    <!-- /.card -->
                 </div>
-                <!-- /.row -->
             </div>
             <!-- /.content -->
         </div>
@@ -110,5 +79,61 @@
     <!-- ./wrapper -->
 </div>
 <th:block th:insert="~{admin-panel/fragments/js :: js}"></th:block>
+<th:block th:insert="~{admin-panel/fragments/statistics-js :: statistics-js}"></th:block>
+<script>
+    $(function () {
+        /*
+         * DONUT CHART
+         * -----------
+         */
+
+        var donutData = [
+            {
+                label: 'Муж',
+                data : [[${numberOfMaleUsers}]],
+                color: '#3c8dbc'
+            },
+            {
+                label: 'Жен',
+                data : [[${numberOfFemaleUsers}]],
+                color: '#7a009a'
+            }
+        ]
+        $.plot('#donut-chart', donutData, {
+            series: {
+                pie: {
+                    show       : true,
+                    radius     : 1,
+                    innerRadius: 0.5,
+                    label      : {
+                        show     : true,
+                        radius   : 2 / 3,
+                        formatter: labelFormatter,
+                        threshold: 0.1
+                    }
+
+                }
+            },
+            legend: {
+                show: false
+            }
+        })
+        /*
+         * END DONUT CHART
+         */
+
+    })
+
+    /*
+     * Custom Label formatter
+     * ----------------------
+     */
+    function labelFormatter(label, series) {
+        return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
+            + label
+            + '<br>'
+            + Math.round(series.percent) + '%</div>'
+    }
+</script>
 </body>
 </html>

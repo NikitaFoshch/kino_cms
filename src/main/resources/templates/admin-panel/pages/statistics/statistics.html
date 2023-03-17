@@ -29,7 +29,53 @@
         <div class="content">
             <div class="container-fluid pt-4">
                 <div class="form-group row">
-                    <div class="col-md-9"></div>
+                    <div class="col-lg-3 col-12">
+
+                        <div class="small-box bg-gray-light">
+                            <div class="inner">
+                                <h3 th:text="${numberOfCinemas}"></h3>
+                                <p>Cinemas</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-house"></i>
+                            </div>
+                            <a href="/admin/cinemas/" class="small-box-footer">
+                                More info <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-12">
+
+                        <div class="small-box bg-gray-light">
+                            <div class="inner">
+                                <h3 th:text="${numberOfNews}"></h3>
+                                <p>News</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-newspaper"></i>
+
+                            </div>
+                            <a href="/admin/news/" class="small-box-footer">
+                                More info <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-12">
+
+                        <div class="small-box bg-gray-light">
+                            <div class="inner">
+                                <h3 th:text="${numberOfPromotions}"></h3>
+                                <p>Promotions</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-star"></i>
+
+                            </div>
+                            <a href="/admin/promotions/" class="small-box-footer">
+                                More info <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
                     <div class="col-lg-3 col-12">
 
                         <div class="small-box bg-gray-light">
@@ -39,6 +85,7 @@
                             </div>
                             <div class="icon">
                                 <i class="fas fa-user-plus"></i>
+
                             </div>
                             <a href="/admin/users/" class="small-box-footer">
                                 More info <i class="fas fa-arrow-circle-right"></i>
@@ -59,13 +106,11 @@
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                        <i class="fas fa-times"></i>
-                                    </button>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div id="donut-chart" style="height: 300px;"></div>
+                                <div th:if="${numberOfUsers==0}" class="text-center"><h1>Недостаточно информации о пользователях</h1></div>
+                                <div th:if="${numberOfUsers!=0}" id="donut-chart" style="height: 300px;"></div>
                             </div>
                         </div>
                     </div>

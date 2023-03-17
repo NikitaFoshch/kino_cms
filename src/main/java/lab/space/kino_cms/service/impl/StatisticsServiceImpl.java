@@ -1,6 +1,12 @@
 package lab.space.kino_cms.service.impl;
 
+import lab.space.kino_cms.model.Cinema;
+import lab.space.kino_cms.model.News;
+import lab.space.kino_cms.model.Promotions;
 import lab.space.kino_cms.model.User;
+import lab.space.kino_cms.repository.CinemaRepository;
+import lab.space.kino_cms.repository.NewsRepository;
+import lab.space.kino_cms.repository.PromotionsRepository;
 import lab.space.kino_cms.repository.UserRepository;
 import lab.space.kino_cms.service.StatisticsService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +19,26 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class StatisticsServiceImpl  implements StatisticsService {
+    private final CinemaRepository cinemaRepository;
+    private final NewsRepository newsRepository;
+    private final PromotionsRepository promotionsRepository;
     private final UserRepository userRepository;
+    @Override
+    public List<Cinema> getAllCinemas() {
+        log.info("---------------Get All Cinemas---------------");
+        return cinemaRepository.findAll();
+    }
+    @Override
+    public List<News> getAllNews() {
+        log.info("---------------Get All News---------------");
+        return newsRepository.findAll();
+    }
+    @Override
+    public List<Promotions> getAllPromotions() {
+        log.info("---------------Get All Promotions---------------");
+        return promotionsRepository.findAll();
+    }
+
     @Override
     public List<User> getAllUsers() {
         log.info("---------------Get All Users---------------");

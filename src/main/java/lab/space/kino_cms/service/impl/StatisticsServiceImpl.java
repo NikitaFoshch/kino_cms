@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -55,5 +56,20 @@ public class StatisticsServiceImpl  implements StatisticsService {
     public List<User> getAllMaleUsers() {
         log.info("---------------Get All Male Users---------------");
         return userRepository.findAllMaleUsers();
+    }
+
+    @Override
+    public List<Integer> getAllBirthMonth() {
+        List<User> users = getAllUsers();
+        List<Integer> month = new ArrayList<>();
+        for (int i = 1; i <= 12; i++) {
+            int count = 0;
+
+            for (User user : users) {
+                if (i == user.getBirthday().getMonthValue()) count++;
+            }
+            month.add(count);
+        }
+        return month;
     }
 }

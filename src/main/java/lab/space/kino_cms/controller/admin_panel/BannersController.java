@@ -19,8 +19,9 @@ public class BannersController {
     private final BackgroundBannerService backgroundBannerService;
     private final NewsBannerService newsBannerService;
     private final NewsBannerBlocksService newsBannerBlocksService;
-    @GetMapping({"/",""})
-    public String showBannersPage(Model model){
+
+    @GetMapping({"/", ""})
+    public String showBannersPage(Model model) {
         TopBanner topBanner = topBannerService.getTopBanner();
         BackgroundBanner backgroundBanner = backgroundBannerService.getBackgroundBanner();
         NewsBanner newsBanner = newsBannerService.getNewsBanner();
@@ -30,6 +31,7 @@ public class BannersController {
         model.addAttribute("newsBanner", newsBanner);
         return "/admin-panel/pages/banners/banners";
     }
+
     @GetMapping("top-banners-blocks-delete/{id}")
     public String deleteTopBannerBlockById(@PathVariable("id") Long topBannerBlockId) {
         topBannerBlocksService.deleteTopBannerBlockById(topBannerBlockId);
@@ -51,7 +53,7 @@ public class BannersController {
     @PostMapping("background-banner-update")
     public String updateBackgroundBanner(@ModelAttribute BackgroundBanner backgroundBanner,
                                          @RequestPart MultipartFile backgroundPicture) {
-        backgroundBannerService.updateBackgroundBanner(backgroundBanner,backgroundPicture);
+        backgroundBannerService.updateBackgroundBanner(backgroundBanner, backgroundPicture);
         return "redirect:/admin/banners";
     }
 

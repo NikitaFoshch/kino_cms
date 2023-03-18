@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Cinema extends MappedEntity {
     private boolean isDefault;
+    private boolean disabled;
     @Column(length = 100)
     private String name;
     @Column(length = 1000)
@@ -35,7 +36,7 @@ public class Cinema extends MappedEntity {
     private String galleryImage4;
     @Column(length = 150)
     private String galleryImage5;
-    @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.ALL , orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "cinema_id")
     private List<Hall> halls = List.of(new Hall());
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)

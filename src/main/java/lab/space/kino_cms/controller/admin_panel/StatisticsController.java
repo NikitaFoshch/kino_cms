@@ -27,6 +27,7 @@ public class StatisticsController {
         List<User> userList = statisticsService.getAllUsers();
         List<User> userFemaleList = statisticsService.getAllFemaleUsers();
         List<User> userMaleList = statisticsService.getAllMaleUsers();
+        List<Integer> birthMonthData = statisticsService.getAllBirthMonth();
 
         model.addAttribute("numberOfCinemas", cinemaList.size());
         model.addAttribute("numberOfNews", newsList.size());
@@ -34,6 +35,7 @@ public class StatisticsController {
         model.addAttribute("numberOfUsers", userList.size());
         model.addAttribute("numberOfFemaleUsers", userFemaleList.size());
         model.addAttribute("numberOfMaleUsers", userMaleList.size());
+        model.addAttribute("birthMonthData", birthMonthData);
 
         return "/admin-panel/pages/statistics/statistics";
     }

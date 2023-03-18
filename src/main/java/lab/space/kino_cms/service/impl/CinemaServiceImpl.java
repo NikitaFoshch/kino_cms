@@ -2,9 +2,9 @@ package lab.space.kino_cms.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
 import lab.space.kino_cms.model.Cinema;
-import lab.space.kino_cms.model.Hall;
 import lab.space.kino_cms.repository.CinemaRepository;
 import lab.space.kino_cms.service.CinemaService;
+import lab.space.kino_cms.service.HallService;
 import lab.space.kino_cms.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +19,7 @@ import java.util.List;
 @Slf4j
 public class CinemaServiceImpl implements CinemaService {
     private final CinemaRepository cinemaRepository;
+    private final HallService hallService;
     @Override
     public List<Cinema> getAllCinema() {
         log.info("---------------Get All Cinema---------------");
@@ -42,6 +43,7 @@ public class CinemaServiceImpl implements CinemaService {
         log.info("---------------Update Cinema By ID " + cinemaId + "---------------");
         Cinema cinema = getCinemaById(cinemaId);
 
+        cinema.setDisabled(requstedCinema.isDisabled());
         cinema.setName(requstedCinema.getName());
         cinema.setDescription(requstedCinema.getDescription());
         cinema.setConditions(requstedCinema.getConditions());
@@ -124,6 +126,11 @@ public class CinemaServiceImpl implements CinemaService {
         }
 
         cinemaRepository.save(cinema);
+        cinema.getHalls().get(0).setName("1 Зал");
+        cinema.getHalls().get(0).setDefault(true);
+        cinema.getHalls().get(0).setCinema(cinema);
+        hallService.updateInitHallById(cinema.getHalls().get(0).getId(),cinema.getHalls().get(0));
+
         log.info("---------------Success Save Cinema---------------");
     }
 
@@ -161,9 +168,11 @@ public class CinemaServiceImpl implements CinemaService {
     }
 
     @Override
-    public void addHall(Long cinemaId, Hall requestedhall) {
-        Cinema cinema = getCinemaById(cinemaId);
-        cinema.getHalls().add(requestedhall);
+    public Cinema addCinema() {
+        Cinema cinema = new Cinema();
+        cinema.setName("Новый Кинотеатр");
+        return cinema;
     }
+
 
 }

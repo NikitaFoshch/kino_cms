@@ -14,5 +14,6 @@ public interface StatisticsService {
     List<User> getAllUsers();
     List<User> getAllFemaleUsers();
     List<User> getAllMaleUsers();
+    List<Integer> getAllBirthMonth();
 
 }

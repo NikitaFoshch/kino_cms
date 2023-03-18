@@ -29,6 +29,7 @@ public class User extends MappedEntity {
     private String password;
     @Column(length = 20)
     private String cardNumber;
+    private boolean mailSender;
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
     private Language language;

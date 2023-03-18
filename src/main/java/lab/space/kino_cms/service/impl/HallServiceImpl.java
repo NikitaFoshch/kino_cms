@@ -1,6 +1,7 @@
 package lab.space.kino_cms.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
+import lab.space.kino_cms.model.Cinema;
 import lab.space.kino_cms.model.Hall;
 import lab.space.kino_cms.repository.HallRepository;
 import lab.space.kino_cms.service.HallService;
@@ -33,6 +34,12 @@ public class HallServiceImpl implements HallService {
     }
 
     @Override
+    public List<Hall> getAllHallByCinemaByOrderByCreatedAtAsc(Cinema cinema) {
+        log.info("---------------Get All Halls By Cinema By Order By CreatedAt---------------");
+        return hallRepository.getHallsByCinemaOrderByCreateAt(cinema);
+    }
+
+    @Override
     public void updateHallById(Long hallId, Hall requstedHall,
                                MultipartFile requestedSchema, MultipartFile requestedTopBanner,
                                MultipartFile requestedGalleryImage1, MultipartFile requestedGalleryImage2,
@@ -41,6 +48,7 @@ public class HallServiceImpl implements HallService {
         log.info("---------------Update Hall By ID " + hallId + "---------------");
         Hall hall = getHallById(hallId);
 
+        hall.setDisabled(requstedHall.isDisabled());
         hall.setName(requstedHall.getName());
         hall.setDescription(requstedHall.getDescription());
 
@@ -84,6 +92,15 @@ public class HallServiceImpl implements HallService {
 
         hallRepository.save(hall);
         log.info("---------------Success Update Hall By ID " + hallId + "---------------");
+    }
+
+    @Override
+    public void updateInitHallById(Long hallId, Hall requstedHall) {
+        Hall hall = getHallById(hallId);
+        hall.setName(requstedHall.getName());
+        hall.setDefault(requstedHall.isDefault());
+        hall.setCinema(requstedHall.getCinema());
+        hallRepository.save(hall);
     }
 
     @Override
@@ -157,5 +174,12 @@ public class HallServiceImpl implements HallService {
         } else log.warn("Failure Attempt Of Deleting Default Cinema");
 
 
+    }
+
+    @Override
+    public Hall addHall() {
+        Hall hall = new Hall();
+        hall.setName("Новый зал");
+        return hall;
     }
 }

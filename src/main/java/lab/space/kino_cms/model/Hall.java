@@ -4,15 +4,14 @@ import jakarta.persistence.*;
 import lab.space.kino_cms.model.common.MappedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "halls")
 @Data
 @EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
 public class Hall extends MappedEntity {
     private boolean isDefault;
+    private boolean disabled;
     @Column(length = 100)
     private String name;
     @Column(length = 1000)
@@ -35,4 +34,11 @@ public class Hall extends MappedEntity {
     private Cinema cinema;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Seo seo = new Seo();
+
+    public Hall(){}
+    public Hall(String name, boolean isDefault){
+        this.name = name;
+        this.isDefault = isDefault;
+    }
+
 }

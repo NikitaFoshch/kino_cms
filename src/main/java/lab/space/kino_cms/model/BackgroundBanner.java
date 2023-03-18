@@ -22,7 +22,7 @@ public class BackgroundBanner extends MappedEntity {
 //    }
     @Getter
     @RequiredArgsConstructor
-    enum BackgroundImage{
+    public enum BackgroundImage{
         COMMON_BACKGROUND("Просто фон"),
         BACKGROUND_IMAGE("Фото на фон");
         private final String value;

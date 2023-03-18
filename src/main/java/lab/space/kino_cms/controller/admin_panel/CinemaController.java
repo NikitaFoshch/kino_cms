@@ -31,12 +31,13 @@ public class CinemaController {
                                      Model model) {
         Cinema cinema = cinemaService.getCinemaById(cinemaId);
         model.addAttribute("cinema", cinema);
+        model.addAttribute("hallsByCinema", hallService.getAllHallByCinemaByOrderByCreatedAtAsc(cinema));
         return "/admin-panel/pages/cinemas/cinema-cart";
     }
 
     @GetMapping("cinema-add")
     public String addCinema(Model model) {
-        model.addAttribute("cinema", new Cinema());
+        model.addAttribute("cinema",cinemaService.addCinema());
         return "/admin-panel/pages/cinemas/cinema-cart";
     }
 
@@ -86,18 +87,20 @@ public class CinemaController {
         return "redirect:/admin/cinemas";
     }
 
-    @GetMapping("hall-edit/{id}")
-    public String showHallSavePage(@PathVariable("id") Long hallId,
+    @GetMapping("{cinemaId}/hall-edit/{id}")
+    public String showHallSavePage(@PathVariable("cinemaId") Long cinemaId,
+            @PathVariable("id") Long hallId,
                                    Model model) {
         Hall hall = hallService.getHallById(hallId);
         model.addAttribute("hall", hall);
+        model.addAttribute("cinemaId", cinemaId);
         return "/admin-panel/pages/cinemas/hall-cart";
     }
 
     @GetMapping("{id}/hall/add")
     public String addHall(@PathVariable("id") Long cinemaId,
             Model model) {
-        model.addAttribute("hall", new Hall());
+        model.addAttribute("hall", hallService.addHall());
         model.addAttribute("cinemaId", cinemaId);
         return "/admin-panel/pages/cinemas/hall-cart";
     }
@@ -119,15 +122,16 @@ public class CinemaController {
         return "redirect:/admin/cinemas/hall-edit/" + hallId;
     }
 
-    @PostMapping("hall-save")
-    public String saveHall(@ModelAttribute Hall hall,
-                             @RequestPart MultipartFile schemaImage,
-                             @RequestPart(required = false) MultipartFile topBannerImage,
-                             @RequestPart(required = false) MultipartFile galleryPicture1,
-                             @RequestPart(required = false) MultipartFile galleryPicture2,
-                             @RequestPart(required = false) MultipartFile galleryPicture3,
-                             @RequestPart(required = false) MultipartFile galleryPicture4,
-                             @RequestPart(required = false) MultipartFile galleryPicture5) {
+    @PostMapping("hall-save/{id}")
+    public String saveHall(@PathVariable("id") Long cinemaId,
+                           @ModelAttribute Hall hall,
+                           @RequestPart MultipartFile schemaImage,
+                           @RequestPart(required = false) MultipartFile topBannerImage,
+                           @RequestPart(required = false) MultipartFile galleryPicture1,
+                           @RequestPart(required = false) MultipartFile galleryPicture2,
+                           @RequestPart(required = false) MultipartFile galleryPicture3,
+                           @RequestPart(required = false) MultipartFile galleryPicture4,
+                           @RequestPart(required = false) MultipartFile galleryPicture5) {
         if (hall.getId()==null){
             hallService.saveHall(hall, schemaImage, topBannerImage,
                     galleryPicture1, galleryPicture2,
@@ -139,7 +143,7 @@ public class CinemaController {
                     galleryPicture2, galleryPicture3,
                     galleryPicture4, galleryPicture5);
         }
-        return "redirect:/admin/cinemas";
+        return "redirect:/admin/cinemas/cinema-edit/" + cinemaId;
     }
 
     @GetMapping("hall-delete/{id}")

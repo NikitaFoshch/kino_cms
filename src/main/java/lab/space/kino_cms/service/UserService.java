@@ -14,4 +14,6 @@ public interface UserService {
 
     void updateUserById(Long userId, User user);
 
+    void sendMessage(User user);
+
 }

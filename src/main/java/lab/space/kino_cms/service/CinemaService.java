@@ -1,7 +1,6 @@
 package lab.space.kino_cms.service;
 
 import lab.space.kino_cms.model.Cinema;
-import lab.space.kino_cms.model.Hall;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -18,5 +17,5 @@ public interface CinemaService {
                     MultipartFile galleryImage2, MultipartFile galleryImage3,
                     MultipartFile galleryImage4, MultipartFile galleryImage5);
     void deleteCinemaById(Long cinemaId);
-    void addHall(Long cinemaId, Hall requestedhall);
+    Cinema addCinema();
 }

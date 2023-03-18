@@ -15,7 +15,7 @@ import java.util.List;
 public class TopBanner extends MappedEntity {
     private boolean disabled;
     private int rotatingSpeed;
-    @OneToMany(fetch = FetchType.LAZY , cascade = CascadeType.ALL , orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "top_banner_id")
     private List<TopBannerBlocks> topBannerBlocksList = new ArrayList<>();
 }

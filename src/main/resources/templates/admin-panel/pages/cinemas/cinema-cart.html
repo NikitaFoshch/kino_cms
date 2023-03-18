@@ -32,7 +32,11 @@
                       enctype="multipart/form-data">
                     <input type="text" th:field="*{id}" hidden>
                     <div class="row pt-2">
-                        <div class="col-md-8">
+                        <div class="col-md-8 mt-2 text-right">
+                            <div class="custom-control custom-switch custom-switch-off-gray custom-switch-on-success">
+                                <input type="checkbox" class="custom-control-input" id="switch" th:field="*{disabled}">
+                                <label class="custom-control-label" for="switch"></label>
+                            </div>
                         </div>
                         <div class="col-md-auto pr-5">
                             <ul class="nav nav-tabs" id="tabs" role="tablist">
@@ -234,17 +238,17 @@
                                             <th style="width: 5%"></th>
                                         </tr>
                                         </thead>
-                                        <tbody th:each="hall:${cinema.halls}">
+                                        <tbody th:each="hall:${hallsByCinema}">
                                         <tr>
                                             <td th:text="${hall.name}"></td>
                                             <td th:text="${#temporals.format(hall.createAt,'dd.MM.yyyy')}"></td>
                                             <td role="button">
-                                                <a th:href="${'/admin/cinemas/hall-edit/' + hall.id}" role="button" class="btn pb-0 pt-0">
+                                                <a th:href="${'/admin/cinemas/' + cinema.id + '/hall-edit/' + hall.id}" role="button" class="btn pb-0 pt-0">
                                                     <i class="fa-solid fa-pen"></i>
                                                 </a>
                                             </td>
                                             <td>
-                                                <a th:if="${!hall.default}"  th:href="${'/admin/news/delete/' + hall.id}"
+                                                <a th:if="${!hall.default}"  th:href="${'/admin/hall-delete/delete/' + hall.id}"
                                                    class="btn pb-0 pt-0">
                                                     <i class="fa-solid fa-trash-can"></i>
                                                 </a>

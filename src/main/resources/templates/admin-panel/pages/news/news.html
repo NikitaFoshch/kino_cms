@@ -58,7 +58,8 @@
                                     <tr th:each="news:${newsList}">
                                         <td th:text="${news.name}"></td>
                                         <td th:text="${#temporals.format(news.createAt,'dd.MM.yyyy')}"></td>
-                                        <td th:text="${news.disabled}"></td>
+                                        <td th:if="${news.disabled}">Вкл</td>
+                                        <td th:if="${!news.disabled}">Выкл</td>
                                         <td>
                                             <a th:href="${'/admin/news/edit/' + news.id}"
                                                class="btn pb-0 pt-0">

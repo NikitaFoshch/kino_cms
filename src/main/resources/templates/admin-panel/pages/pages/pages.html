@@ -59,7 +59,8 @@
                                     <tr>
                                         <td th:text="${mainPage.title}"></td>
                                         <td th:text="${#temporals.format(mainPage.createAt,'dd.MM.yyyy')}"></td>
-                                        <td th:text="${mainPage.disabled}"></td>
+                                        <td th:if="${mainPage.disabled}">Вкл</td>
+                                        <td th:if="${!mainPage.disabled}">Выкл</td>
                                         <td>
                                             <a href="/admin/pages/main-page-edit" role="button" class="btn pb-0 pt-0">
                                                 <i class="fa-solid fa-pen"></i>
@@ -71,7 +72,8 @@
                                     <tr th:each="defaultCommonPage:${defaultCommonPages}">
                                         <td th:text="${defaultCommonPage.name}"></td>
                                         <td th:text="${#temporals.format(defaultCommonPage.createAt,'dd.MM.yyyy')}"></td>
-                                        <td th:text="${defaultCommonPage.disabled}"></td>
+                                        <td th:if="${defaultCommonPage.disabled}">Вкл</td>
+                                        <td th:if="${!defaultCommonPage.disabled}">Выкл</td>
                                         <td>
                                             <a th:href="${'/admin/pages/common-page-edit/' + defaultCommonPage.id}"
                                                role="button" class="btn pb-0 pt-0">
@@ -83,7 +85,8 @@
                                     <tr>
                                         <td th:text="${contactsPage.title}"></td>
                                         <td th:text="${#temporals.format(contactsPage.createAt,'dd.MM.yyyy')}"></td>
-                                        <td th:text="${contactsPage.disabled}"></td>
+                                        <td th:if="${contactsPage.disabled}">Вкл</td>
+                                        <td th:if="${!contactsPage.disabled}">Выкл</td>
                                         <td>
                                             <a href="/admin/pages/contacts-edit" role="button" class="btn pb-0 pt-0">
                                                 <i class="fa-solid fa-pen"></i>
@@ -94,7 +97,8 @@
                                     <tr th:each="commonPage:${commonPages}">
                                         <td th:text="${commonPage.name}"></td>
                                         <td th:text="${#temporals.format(commonPage.createAt,'dd.MM.yyyy')}"></td>
-                                        <td th:text="${commonPage.disabled}"></td>
+                                        <td th:if="${commonPage.disabled}">Вкл</td>
+                                        <td th:if="${!commonPage.disabled}">Выкл</td>
                                         <td>
                                             <a th:href="${'/admin/pages/common-page-edit/' + commonPage.id}"
                                                role="button" class="btn pb-0 pt-0">

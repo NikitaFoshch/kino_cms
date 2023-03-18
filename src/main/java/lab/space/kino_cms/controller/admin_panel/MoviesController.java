@@ -17,10 +17,10 @@ public class MoviesController {
     private final MovieService movieService;
     @GetMapping({"/", ""})
     public String showMoviePage(Model model) {
-        List<Movie> movieEightList = movieService.getEightMovieByOrderById();
-        List<Movie> movieFourList = movieService.getFourMovieByOrderById();
-        model.addAttribute("movieEightList", movieEightList);
-        model.addAttribute("movieFourList", movieFourList);
+        List<Movie> moviesOngoing = movieService.getAllMovieOngoingByOrderById();
+        List<Movie> moviesComingSoon = movieService.getAllMovieComingSoonByOrderById();
+        model.addAttribute("moviesOngoing", moviesOngoing);
+        model.addAttribute("moviesComingSoon", moviesComingSoon);
         return "/admin-panel/pages/movies/movies";
     }
 

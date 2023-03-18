@@ -7,8 +7,11 @@ import java.util.List;
 
 public interface MovieService {
     Movie getMovieById(Long movieId);
-    List<Movie> getEightMovieByOrderById();
-    List<Movie> getFourMovieByOrderById();
+    List<Movie> getAllMovieByOrderById();
+    List<Movie> getAllMovieOngoingByOrderById();
+    List<Movie> getAllMovieComingSoonByOrderById();
+
+
     void updateMovieById(Long movieId, Movie requestedMovie,
                               MultipartFile requestedMainImage, MultipartFile requestedGalleryImage1,
                               MultipartFile requestedGalleryImage2, MultipartFile requestedGalleryImage3,

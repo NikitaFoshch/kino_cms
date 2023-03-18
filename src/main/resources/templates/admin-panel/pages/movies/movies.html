@@ -29,10 +29,22 @@
         <div class="content">
             <div class="container-fluid pt-4">
                 <div class="row">
-                    <div class="col-md-auto m-auto form-group"><h2>Список фильмов текущих</h2></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4 text-center pr-5">
+                        <h2>Список текущих фильмов</h2>
+                    </div>
+                    <div class=" col-md-auto pl-5 ml-5 text-right">
+                        <a href="/admin/movies/add" type="button" class="btn btn-block btn-default">
+                            <i class="fa-solid fa-plus pr-2"></i>
+                            Создать фильм
+                        </a>
+                    </div>
                 </div>
                 <div class="row pt-5">
-                    <div class="col-md-3 col-form-label" th:each="movie:${movieEightList}">
+                    <div class="col-md-3 col-form-label" th:each="movie:${moviesOngoing}">
+                        <a class="delete" th:href="${'/admin/movies/delete/' + movie.id}">
+                            <i class="fa-regular fa-circle-xmark fa-xl"></i>
+                        </a>
                         <a th:href="'/admin/movies/edit/' + *{movie.id}" class="text-gray-dark">
                             <div class="row">
                                 <div class="col-md-12 text-center pr-4 pl-4">
@@ -50,7 +62,10 @@
                     <div class="col-md-auto m-auto form-group pt-5"><h2>Список фильмов которые покажут скоро</h2></div>
                 </div>
                 <div class="row pt-5">
-                    <div class="col-md-3 col-form-label" th:each="movie:${movieFourList}">
+                    <div class="col-md-3 col-form-label" th:each="movie:${moviesComingSoon}">
+                        <a class="delete" th:href="${'/admin/cinemas/cinema-delete/' + movie.id}">
+                            <i class="fa-regular fa-circle-xmark fa-xl"></i>
+                        </a>
                         <a th:href="'/admin/movies/edit/' + *{movie.id}" class="text-gray-dark">
                             <div class="row">
                                 <div class="col-md-12 text-center pr-4 pl-4">

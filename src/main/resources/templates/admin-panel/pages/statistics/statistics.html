@@ -132,7 +132,9 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div id="bar-chart" style="height: 300px;"></div>
+                                <div th:if="${numberOfUsers==0}" class="text-center"><h1>Недостаточно информации о
+                                    пользователях</h1></div>
+                                <div th:if="${numberOfUsers!=0}" id="bar-chart" style="height: 300px;"></div>
                             </div>
                         </div>
                     </div>

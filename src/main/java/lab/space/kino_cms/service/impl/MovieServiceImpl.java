@@ -7,9 +7,12 @@ import lab.space.kino_cms.service.MovieService;
 import lab.space.kino_cms.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -26,15 +29,39 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> getEightMovieByOrderById() {
-        log.info("---------------Get All Movies By Asc Max 8---------------");
-        return movieRepository.getEightMovieByOrderById();
+    public List<Movie> getAllMovieByOrderById() {
+        log.info("---------------Get All Movies---------------");
+        return movieRepository.findAll(Sort.by(Sort.Direction.ASC, "createAt"));
     }
+
     @Override
-    public List<Movie> getFourMovieByOrderById() {
-        log.info("---------------Get All Movies By Desc Max 4---------------");
-        return movieRepository.getFourMovieByOrderById();
+    public List<Movie> getAllMovieOngoingByOrderById() {
+        log.info("---------------Get All Ongoing Movies---------------");
+        List<Movie> movieList = getAllMovieByOrderById();
+        List<Movie> movies = new ArrayList<>();
+        LocalDate localDate = LocalDate.now().plusWeeks(1);
+        for (Movie movie : movieList) {
+            if (movie.getRelease().getDayOfYear() <= localDate.getDayOfYear()) {
+                movies.add(movie);
+            }
+        }
+        return movies;
     }
+
+    @Override
+    public List<Movie> getAllMovieComingSoonByOrderById() {
+        log.info("---------------Get All Coming Soon Movies---------------");
+        List<Movie> movieList = getAllMovieByOrderById();
+        List<Movie> movies = new ArrayList<>();
+        LocalDate localDate = LocalDate.now().plusWeeks(1);
+        for (Movie movie : movieList) {
+            if (movie.getRelease().getDayOfYear() > localDate.getDayOfYear()) {
+                movies.add(movie);
+            }
+        }
+        return movies;
+    }
+
 
     @Override
     public void updateMovieById(Long movieId, Movie requestedMovie,
@@ -47,6 +74,7 @@ public class MovieServiceImpl implements MovieService {
         movie.setName(requestedMovie.getName());
         movie.setDescription(requestedMovie.getDescription());
         movie.setTrailerUrl(requestedMovie.getTrailerUrl());
+        movie.setDisabled(requestedMovie.isDisabled());
         movie.setType3D(requestedMovie.isType3D());
         movie.setType2D(requestedMovie.isType2D());
         movie.setPlus12(requestedMovie.isPlus12());

@@ -1,10 +1,13 @@
 package lab.space.kino_cms.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lab.space.kino_cms.model.common.MappedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "movies")
@@ -12,6 +15,9 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public class Movie extends MappedEntity {
+    private boolean disabled;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "DD.MM.YYYY")
+    private LocalDate release;
     @Column(length = 100)
     private String name;
     @Column(length = 1000)

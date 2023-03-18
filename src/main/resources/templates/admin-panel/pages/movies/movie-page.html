@@ -31,7 +31,11 @@
                 <form th:method="POST" th:action="${'/admin/movies/save'}" th:object="${movie}" enctype="multipart/form-data">
                     <input type="text" th:field="*{id}" hidden>
                     <div class="row pt-2">
-                        <div class="col-md-8">
+                        <div class="col-md-8 mt-2 text-right">
+                            <div class="custom-control custom-switch custom-switch-off-gray custom-switch-on-success">
+                                <input type="checkbox" class="custom-control-input" id="switch" th:field="*{disabled}">
+                                <label class="custom-control-label" for="switch"></label>
+                            </div>
                         </div>
                         <div class="col-md-auto pr-5">
                             <ul class="nav nav-tabs" id="tabs" role="tablist">
@@ -54,6 +58,19 @@
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" id="movie-name"
                                            placeholder="Название фильма" th:field="*{name}">
+                                </div>
+                            </div>
+                        </div>
+                        <label for="birthday" class="col-sm-3 col-form-label text-right">Дата выхода</label>
+                        <div class="form-group ml-2">
+                            <div class="input-group date" id="birthday" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input"
+                                       data-target="#birthday" data-toggle="datetimepicker"
+                                       th:field="*{release}"/>
+                                <div class="input-group-append" data-target="#birthday"
+                                     data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa-solid fa-calendar-days"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -298,6 +315,14 @@
     <!-- ./wrapper -->
 </div>
 <th:block th:insert="~{admin-panel/fragments/js :: js}"></th:block>
+<script src="/js/moment/moment.min.js"></script>
+<script src="/js/date-picker/tempusdominus-bootstrap-4.min.js"></script>
+<script src="/js/select2/select2.full.js"></script>
+<script type="application/javascript">
+    $('#birthday').datetimepicker({
+        format: 'DD.MM.YYYY'
+    });
+</script>
 <script>
     $(function () {
         bsCustomFileInput.init();

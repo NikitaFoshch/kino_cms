@@ -7,7 +7,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import static lab.space.kino_cms.model.BackgroundBanner.BackgroundImage;
 
 @Component
 @RequiredArgsConstructor
@@ -44,7 +47,9 @@ public class Init implements CommandLineRunner {
         log.info("Try To Find BackgroundBanner");
         if (backgroundBannerRepository.findFirstByOrderByIdAsc().isEmpty()) {
             log.warn("BackgroundBanner Not Found");
-            backgroundBannerRepository.save(new BackgroundBanner());
+            BackgroundBanner backgroundBanner = new BackgroundBanner();
+            backgroundBanner.setBackgroundImage(BackgroundImage.COMMON_BACKGROUND);
+            backgroundBannerRepository.save(backgroundBanner);
             log.info("Initial BackgroundBanner Created");
         } else log.info("BackgroundBanner Found");
 
@@ -60,11 +65,19 @@ public class Init implements CommandLineRunner {
         log.info("Try To Find Movie");
         if (movieRepository.findFirstByOrderByIdAsc().isEmpty()) {
             log.warn("Movie Not Found");
-            for (int i = 0; i < 12; i++) {
-                Movie movie = new Movie();
-                movie.setName("Название фильма");
-                movieRepository.save(movie);
-            }
+
+            Movie movie = new Movie();
+            LocalDate release = LocalDate.now();
+            movie.setRelease(release);
+            movie.setName("Название фильма");
+            movieRepository.save(movie);
+
+            Movie movie1 = new Movie();
+            release = release.plusWeeks(2);
+            movie1.setRelease(release);
+            movie1.setName("Название фильма");
+            movieRepository.save(movie1);
+
             log.info("Initial Movie Created");
         } else log.info("Movie Found");
 
@@ -74,6 +87,7 @@ public class Init implements CommandLineRunner {
             Cinema cinema = new Cinema();
             cinema.setDefault(true);
             cinema.getHalls().get(0).setDefault(true);
+            cinema.getHalls().get(0).setName("1 Зал");
             cinema.setName("Стандартный Кинотеарт");
             cinemaRepository.save(cinema);
             log.info("Initial Cinema Created");

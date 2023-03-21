@@ -10,5 +10,8 @@ public class SmsDistribution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int counter;
+    private int symbolCounter;
+    private int pickUsersSend;
+    @Column(length = 500)
+    private String text;
 }

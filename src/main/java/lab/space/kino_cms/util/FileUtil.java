@@ -50,4 +50,18 @@ public class FileUtil {
             }
         }else log.warn("Filename Is Empty");
     }
+
+    public static File getFile(String filename) {
+        if (filename != null){
+            File file = new File("files\\" + filename);
+            if (file.exists()){
+                return file;
+            }else {
+                log.error("File Not return");
+                return null;
+            }
+        }
+        log.warn("Filename Is Empty");
+        return null;
+    }
 }

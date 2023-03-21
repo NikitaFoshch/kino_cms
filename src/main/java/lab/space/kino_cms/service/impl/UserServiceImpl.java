@@ -9,10 +9,7 @@ import lab.space.kino_cms.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -20,10 +17,9 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class UserServiceImpl implements UserService {
-    private final JavaMailSender mailSender;
+
     private final UserRepository userRepository;
     private final CityService cityService;
-    private final String username = "antariuzz@gmail.com";
 
     @Override
     public List<User> getAllUsers() {
@@ -66,21 +62,4 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         log.info("---------------Success Update User By ID " + userId + "---------------");
     }
-
-    @Override
-    public void sendMessage(User user) {
-        if (!StringUtils.isEmpty(user.getEmail())) {
-            String message = String.format("Hello, %s! \n", user.getFirstname());
-
-            SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-            mailMessage.setFrom(username);
-            mailMessage.setTo(user.getEmail());
-            mailMessage.setSubject("Письмо");
-            mailMessage.setText(message);
-
-            mailSender.send(mailMessage);
-        }
-    }
-
 }

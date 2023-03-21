@@ -25,6 +25,8 @@ public class Init implements CommandLineRunner {
     private final CityRepository cityRepository;
     private final CommonPageRepository commonPageRepository;
     private final ContactsPageRepository contactsPageRepository;
+    private final EmailDistributionRepository emailDistributionRepository;
+    private final SmsDistributionRepository smsDistributionRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -127,5 +129,30 @@ public class Init implements CommandLineRunner {
             contactsPageRepository.save(contactsPage);
             log.info("Initial Contacts Created");
         } else log.info("Contacts Found");
+
+        log.info("Try To Find EmailDistribution");
+        if (emailDistributionRepository.findFirstByOrderByIdAsc().isEmpty()) {
+            log.warn("EmailDistribution Not Found");
+            EmailDistribution emailDistribution = new EmailDistribution();
+            for (int i = 1; i <= 5; i++) {
+                Template template = new Template();
+                template.setName("Тестовая рассылка_" + i);
+                emailDistribution.getTemplatesList().add(template);
+            }
+            emailDistribution.setPickUsersSend(1);
+            emailDistribution.setPickTemplateSend(1L);
+            emailDistributionRepository.save(emailDistribution);
+            log.info("Initial EmailDistribution Created");
+        } else log.info("EmailDistribution Found");
+
+        log.info("Try To Find SmsDistribution");
+        if (smsDistributionRepository.findFirstByOrderByIdAsc().isEmpty()) {
+            log.warn("SmsDistribution Not Found");
+            SmsDistribution smsDistribution = new SmsDistribution();
+            smsDistribution.setPickUsersSend(1);
+            smsDistribution.setText("");
+            smsDistributionRepository.save(smsDistribution);
+            log.info("Initial SmsDistribution Created");
+        } else log.info("SmsDistribution Found");
     }
 }

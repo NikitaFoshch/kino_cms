@@ -28,9 +28,15 @@
             <h5>О кинотеатре</h5>
             <ul class="list-unstyled text-small">
                 <li><a class="link-secondary" href="/about-cinema/news">Новости</a></li>
-                <li><a class="link-secondary" href="/about-cinema/advertising">Реклама</a></li>
-                <li><a class="link-secondary" href="/about-cinema/cafe-bar">Кафе-бар</a></li>
-                <li><a class="link-secondary" href="/about-cinema/contacts">Контакты</a></li>
+                <li th:each="defaultCommonPage:${defaultCommonPages}">
+                    <a class="link-secondary" href="/about-cinema/common-page"
+                       th:if="${defaultCommonPage.disabled}
+                       and ${defaultCommonPage.name} == 'Реклама'
+                       or ${defaultCommonPage.name} == 'Кафе - Бар' "
+                       th:text="${defaultCommonPage.name}">
+                    </a>
+                </li>
+                <li><a class="link-secondary" href="/about-cinema/contacts" th:text="${contactsPage.title}"></a></li>
             </ul>
         </div>
         <div class="col-3 col-auto">

@@ -62,4 +62,11 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         log.info("---------------Success Update User By ID " + userId + "---------------");
     }
+
+    @Override
+    public void saveUser(User user) {
+        log.info("---------------Save User---------------");
+        userRepository.save(user);
+        log.info("---------------Success Save User---------------");
+    }
 }

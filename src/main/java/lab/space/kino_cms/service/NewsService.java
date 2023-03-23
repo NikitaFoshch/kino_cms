@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface NewsService {
     List<News> getAllNews();
+    List<News> getNewsByOrderByPublicatedAtDesc();
     News getNewsById(Long newsId);
     void updateNewsById(Long newsId, News requstedNews,
                             MultipartFile requestedMainImage, MultipartFile requestedGalleryImage1,

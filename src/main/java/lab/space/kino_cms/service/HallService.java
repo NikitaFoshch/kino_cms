@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface HallService {
     Hall getHallById(Long hallId);
+    List<Hall> getHallsByCinemaAndDisabledTrue(Long cinemaId);
 
     List<Hall> getAllHallByOrderByIdAsc();
     List<Hall> getAllHallByCinemaByOrderByCreatedAtAsc(Cinema cinema);

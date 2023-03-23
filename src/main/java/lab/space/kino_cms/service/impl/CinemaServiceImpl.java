@@ -22,7 +22,7 @@ public class CinemaServiceImpl implements CinemaService {
     private final HallService hallService;
     @Override
     public List<Cinema> getAllCinema() {
-        log.info("---------------Get All Cinema---------------");
+        log.info("---------------Get All Cinema Order By CreateAt ASC---------------");
         return cinemaRepository.findAll(Sort.by(Sort.Direction.ASC, "createAt"));
     }
 

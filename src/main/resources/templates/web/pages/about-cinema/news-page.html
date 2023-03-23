@@ -5,7 +5,7 @@
 
 <th:block th:insert="~{/web/fragments/header :: header}"></th:block>
 
-<main th:object="${showCommonPage}">
+<main th:object="${news}">
   <div class="row">
     <img th:src="*{mainImage == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + mainImage}" class="d-md-block w-100" alt="..." height="600">
   </div>
@@ -15,7 +15,7 @@
       <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-11">
-            <p class="text-start" th:text="*{description}"></p>
+          <p class="text-start" th:text="*{description}"></p>
         </div>
       </div>
     </div>

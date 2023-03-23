@@ -28,6 +28,12 @@ public class HallServiceImpl implements HallService {
     }
 
     @Override
+    public List<Hall> getHallsByCinemaAndDisabledTrue(Long cinemaId) {
+        log.info("---------------Get All Halls By Cinema And Disabled True---------------");
+        return hallRepository.getHallsByCinemaAndDisabledTrue(cinemaId);
+    }
+
+    @Override
     public List<Hall> getAllHallByOrderByIdAsc() {
         log.info("---------------Get All Halls---------------");
         return hallRepository.findAll(Sort.by(Sort.Direction.ASC, "createAt"));

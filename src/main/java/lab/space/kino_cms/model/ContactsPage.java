@@ -14,7 +14,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class ContactsPage extends MappedEntity {
     private final String title = "Контакты";
-    private boolean disabled;
+    private boolean disabled = true;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "contacts_page_id")
     private List<CinemaInfo> cinemaInfoList = new ArrayList<>();

@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface PromotionsService {
     List<Promotions> getAllPromotions();
+    List<Promotions> getPromotionsByOrderByPublicatedAtDesc();
     Promotions getPromotionsById(Long promotionsId);
     void updatePromotionsById(Long promotionsId, Promotions requstedPromotions,
                         MultipartFile requstedMainImage, MultipartFile requstedGalleryImage1,

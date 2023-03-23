@@ -21,8 +21,14 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public List<News> getAllNews() {
-        log.info("---------------Get All News---------------");
+        log.info("---------------Get All News Order by CreateAt---------------");
         return newsRepository.findAll(Sort.by(Sort.Direction.DESC, "createAt"));
+    }
+
+    @Override
+    public List<News> getNewsByOrderByPublicatedAtDesc() {
+        log.info("---------------Get All News Order by PublicateAt---------------");
+        return newsRepository.getNewsByOrderByPublicatedAtDesc();
     }
 
     @Override

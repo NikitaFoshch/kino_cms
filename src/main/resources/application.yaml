@@ -9,9 +9,20 @@ spring:
     username: postgres
     password: password
     driver-class-name: org.postgresql.Driver
+  mail:
+    host: smtp.gmail.com
+    username: test.in.odessa@gmail.com
+    password:
+    port: 587
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+    protocol: smtp
+
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
     database: postgresql
   servlet:

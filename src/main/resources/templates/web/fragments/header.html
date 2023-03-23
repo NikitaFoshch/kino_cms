@@ -47,13 +47,13 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item text-black" href="/about-cinema/news">Новости</a></li>
                                 <li th:each="defaultCommonPage:${defaultCommonPages}"><a
-                                        class="dropdown-item text-black" href="/about-cinema/common-page"
+                                        class="dropdown-item text-black" th:href="${'/about-cinema/common-page/' + defaultCommonPage.id}"
                                         th:if="${defaultCommonPage.disabled}" th:text="${defaultCommonPage.name}"></a>
                                 </li>
                                 <li><a class="dropdown-item text-black" href="/about-cinema/contacts"
                                        th:text="${contactsPage.title}"></a></li>
                                 <li th:each="commonPage:${commonPages}"><a class="dropdown-item text-black"
-                                                                           href="/about-cinema/common-page"
+                                                                           th:href="${'/about-cinema/common-page/' + commonPage.id}"
                                                                            th:if="${commonPage.disabled}"
                                                                            th:text="${commonPage.name}"></a></li>
                             </ul>

@@ -21,8 +21,14 @@ public class PromotionsServiceImpl implements PromotionsService {
 
     @Override
     public List<Promotions> getAllPromotions() {
-        log.info("---------------Get All Promotions---------------");
+        log.info("---------------Get All Promotions Order By CreateAt---------------");
         return promotionsRepository.findAll(Sort.by(Sort.Direction.DESC, "createAt"));
+    }
+
+    @Override
+    public List<Promotions> getPromotionsByOrderByPublicatedAtDesc() {
+        log.info("---------------Get All Promotions Order By PublicatedAt---------------");
+        return promotionsRepository.getPromotionsByOrderByPublicatedAtDesc();
     }
 
     @Override

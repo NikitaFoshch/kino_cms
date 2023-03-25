@@ -29,7 +29,7 @@
             <ul class="list-unstyled text-small">
                 <li><a class="link-secondary" href="/about-cinema/news">Новости</a></li>
                 <li th:each="defaultCommonPage:${defaultCommonPages}">
-                    <a class="link-secondary" href="/about-cinema/common-page"
+                    <a class="link-secondary"  th:href="${'/about-cinema/common-page/' + defaultCommonPage.id}"
                        th:if="${defaultCommonPage.disabled}
                        and ${defaultCommonPage.name} == 'Реклама'
                        or ${defaultCommonPage.name} == 'Кафе - Бар' "

@@ -42,7 +42,11 @@ public class ContactsPageServiceImpl implements ContactsPageService {
             if (requestedCinemaInfo.getId() != null) {
                 CinemaInfo cinemaInfo = cinemaInfoService.getCinemaInfoById(requestedCinemaInfo.getId());
                 cinemaInfo.setCinemaName(requestedCinemaInfo.getCinemaName());
-                cinemaInfo.setDisabled(requestedCinemaInfo.isDisabled());
+                if (!cinemaInfo.isDefault()){
+                    cinemaInfo.setDisabled(requestedCinemaInfo.isDisabled());
+                }else {
+                    cinemaInfo.setDisabled(true);
+                }
                 cinemaInfo.setAddress(requestedCinemaInfo.getAddress());
                 cinemaInfo.setCoordinates(requestedCinemaInfo.getCoordinates());
                 if (FileUtil.saveFile(requestedCinemaInfo.getFile().getOriginalFilename(), requestedCinemaInfo.getFile())) {

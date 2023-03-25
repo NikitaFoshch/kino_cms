@@ -8,35 +8,29 @@
 <th:block th:insert="~{/web/fragments/header :: header}"></th:block>
 
 <main th:object="${promotions}">
-    <div class="row">
-
-    </div>
-    <div class="row mt-4 mb-3 text-left">
-        <div class="col-md-1"></div>
-        <div class="col-md-11">
-            <h1 th:text="*{name}"></h1>
-        </div>
-    </div>
-    <div class="row">
+    <div class="row pt-5">
         <div class="col-md-10">
-            <div class="row">
+            <div class="row pt-5">
                 <div class="col-md-1"></div>
                 <div class="col-md-11">
-                    <div class="row">
-                        <div class="col-md-auto">
-                            <a th:href="${promotions.trailerUrl}" class="btn link-danger" >
-                                <label for="youtube" class="link-dark" role="button">Youtube</label>
-                                <i class="fa-brands fa-youtube" id="youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row pt-4">
-                        <div class="col-md-4">
-                            <img th:src="*{mainImage == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + mainImage}"
-                                 class="rounded w-100" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <p class="text-start" th:text="*{description}"></p>
+                    <div class="card mb-3 " style="max-width: 1900px; background-color: #e3e3e3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <a th:href="${'/promotions/promotions-page/' + promotions.id}">
+                                    <img th:src="*{mainImage == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + mainImage}"
+                                         class="rounded w-100" alt="...">
+                                </a>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h1 class="card-title" th:text="*{name}"></h1>
+                                    <p class="card-text" th:text="*{description}"></p>
+                                    <a th:href="${promotions.trailerUrl}" class="btn link-danger ">
+                                        <label for="youtube" class="link-dark" role="button">Youtube</label>
+                                        <i class="fa-brands fa-youtube" id="youtube"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

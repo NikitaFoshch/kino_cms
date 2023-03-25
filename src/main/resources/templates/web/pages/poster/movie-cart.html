@@ -1,62 +1,202 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head><th:block th:replace="~{/web/fragments/head :: head}"></th:block></head>
+<head>
+  <th:block th:replace="~{/web/fragments/head :: head}"></th:block>
+</head>
 <body>
 
 <th:block th:insert="~{/web/fragments/header :: header}"></th:block>
 
-<main>
+<main th:object="${movie}">
   <div class="row">
-    <img src="/img/img_3.png" class="d-md-block w-100" alt="..." height="600">
+    <iframe height="600" th:src="${movie.trailerUrl}" class="object-fit-contain"></iframe>
+  </div>
+
+  <div class="row">
+    <div class="col-md-11 text-center">
+      <h2>Расписание сеансов</h2>
+    </div>
+  </div>
+  <div class="row" th:object="${date}">
+    <div class="col-md-1 m-5">
+      <a href="/schedule/" class="btn link-light">
+        <div class="card" style="width: 13rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <h3 th:text="${date.getDayOfMonth()}"></h3>
+              <h3 th:text="${date.getDayOfWeek()}"></h3>
+            </li>
+            <li class="list-group-item" th:text="${date.getMonth()}">Март</li>
+          </ul>
+        </div>
+      </a>
+
+    </div>
+    <div class="col-md-1 m-5">
+      <a href="/schedule/" class="btn link-light">
+        <div class="card" style="width: 13rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <h3 th:text="${date.plusDays(1).getDayOfMonth()}"></h3>
+              <h3 th:text="${date.plusDays(1).getDayOfWeek()}"></h3>
+            </li>
+            <li class="list-group-item" th:text="${date.plusDays(1).getMonth()}">Март</li>
+          </ul>
+        </div>
+      </a>
+
+    </div>
+    <div class="col-md-1 m-5">
+      <a href="/schedule/" class="btn link-light">
+        <div class="card" style="width: 13rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <h3 th:text="${date.plusDays(2).getDayOfMonth()}"></h3>
+              <h3 th:text="${date.plusDays(2).getDayOfWeek()}"></h3>
+            </li>
+            <li class="list-group-item" th:text="${date.plusDays(2).getMonth()}">Март</li>
+          </ul>
+        </div>
+      </a>
+
+    </div>
+    <div class="col-md-1 m-5">
+      <a href="/schedule/" class="btn link-light">
+        <div class="card" style="width: 13rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <h3 th:text="${date.plusDays(3).getDayOfMonth()}"></h3>
+              <h3 th:text="${date.plusDays(3).getDayOfWeek()}"></h3>
+            </li>
+            <li class="list-group-item" th:text="${date.plusDays(3).getMonth()}">Март</li>
+          </ul>
+        </div>
+      </a>
+
+    </div>
+    <div class="col-md-1 m-5">
+      <a href="/schedule/" class="btn link-light">
+        <div class="card" style="width: 13rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <h3 th:text="${date.plusDays(4).getDayOfMonth()}"></h3>
+              <h3 th:text="${date.plusDays(4).getDayOfWeek()}"></h3>
+            </li>
+            <li class="list-group-item" th:text="${date.plusDays(4).getMonth()}">Март</li>
+          </ul>
+        </div>
+      </a>
+
+    </div>
+    <div class="col-md-1 m-5">
+      <a href="/schedule/" class="btn link-light">
+        <div class="card" style="width: 13rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <h3 th:text="${date.plusDays(5).getDayOfMonth()}"></h3>
+              <h3 th:text="${date.plusDays(5).getDayOfWeek()}"></h3>
+            </li>
+            <li class="list-group-item" th:text="${date.plusDays(5).getMonth()}">Март</li>
+          </ul>
+        </div>
+      </a>
+
+    </div>
+    <div class="col-md-1 m-5">
+      <a href="/schedule/" class="btn link-light">
+        <div class="card" style="width: 13rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <h3 th:text="${date.plusDays(6).getDayOfMonth()}"></h3>
+              <h3 th:text="${date.plusDays(6).getDayOfWeek()}"></h3>
+            </li>
+            <li class="list-group-item" th:text="${date.plusDays(6).getMonth()}">Март</li>
+          </ul>
+        </div>
+      </a>
+
+    </div>
   </div>
   <div class="row">
-    <div class="ml-5 col-md-10 ">
-      Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.
-      Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.
-      Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.
-    </div>
-    <div class="col-md-2">
-      <div class="row mt-5 ">
-        <div class="col-md-12 text-center">
-          КАКАЯ_ТО РЕКЛАМА
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-6 ">
+          <img th:src="*{mainImage == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + mainImage}"
+               class="rounded w-75  m-5" alt="...">
         </div>
-      </div>
-      <div class="row mt-3">
-        <div class="col-md-12 text-center">
-          КАКАЯ_ТО РЕКЛАМА
+        <div class="col-md-6 pt-5">
+          <div class="row ">
+            <div class="col-md-auto m-auto">
+              <a th:href="${'/schedule/ticket-booking/' + movie.id}" type="button" class="btn btn-lg btn-success">Купить Билет</a>
+            </div>
+          </div>
+          <div class="row mt-4 mb-3">
+            <div class="col-md-12 text-center">
+              <h1 th:text="*{name}"></h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p class="text-start" th:text="*{description}"></p>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 text-center">
-          КАКАЯ_ТО РЕКЛАМА
+        <div class="col-md-6">
+          <div class="row mt-5">
+            <div class="col-md-12 m-5">
+              <img src="/img/info.png"
+                   class="rounded w-50 m-5" alt="...">
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <div class="row mt-5 mb-5 text-center"><h1>ФОТОГАЛЕРЕЯ</h1></div>
+          <div class="row m-auto w-75">
+            <div id="carouselExampleInterval" class="carousel slide " data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="6000" th:if="*{galleryImage1!=null}">
+                  <img th:src="*{galleryImage1 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage1}"
+                       class="d-md-block w-100" height="325" alt="/img/img.png">
+                </div>
+                <div class="carousel-item" data-bs-interval="6000" th:if="*{galleryImage2!=null}">
+                  <img th:src="*{galleryImage2 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage2}"
+                       class="d-md-block w-100" height="325" alt="/img/img.png">
+                </div>
+                <div class="carousel-item" data-bs-interval="6000" th:if="*{galleryImage3!=null}">
+                  <img th:src="*{galleryImage3 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage3}"
+                       class="d-md-block w-100" height="325" alt="/img/img.png">
+                </div>
+                <div class="carousel-item" data-bs-interval="6000" th:if="*{galleryImage4!=null}">
+                  <img th:src="*{galleryImage4 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage4}"
+                       class="d-md-block w-100" height="325" alt="/img/img.png">
+                </div>
+                <div class="carousel-item" data-bs-interval="6000" th:if="*{galleryImage5!=null}">
+                  <img th:src="*{galleryImage5 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage5}"
+                       class="d-md-block w-100" height="325" alt="/img/img.png">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                      data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+                      data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="row mt-5 mb-5 text-center"><h1>ФОТОГАЛЕРЕЯ</h1></div>
-  <div class="row m-auto w-75">
-    <div id="carouselExampleInterval" class="carousel slide " data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="6000">
-          <img src="/img/img.png" class="d-md-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="6000">
-          <img src="/img/img_1.png" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="6000">
-          <img src="/img/img_2.png" class="d-block w-100" alt="..." >
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </div>
+
+
 
 </main>
 

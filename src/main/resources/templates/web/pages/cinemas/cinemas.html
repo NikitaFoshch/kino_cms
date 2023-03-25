@@ -16,7 +16,7 @@
             <div class="card p-0">
               <a th:href="${'/cinemas/cinema-cart/' + cinema.id}" class="text-gray-dark">
                 <img th:src="${cinema.logo == null} ? ${'/img/common/no-image.jpg'} : ${'/files/' + cinema.logo}"
-                     class="card-img-top" alt="...">
+                     class="card-img-top" height="250" alt="...">
               </a>
               <div class="card-body">
                 <div class="col-md-12 form-group text-center" th:text="${cinema.name}"></div>

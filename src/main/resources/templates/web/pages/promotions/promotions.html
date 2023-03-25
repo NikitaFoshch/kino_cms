@@ -16,7 +16,7 @@
                         <div class="card p-0">
                             <a th:href="${'/promotions/promotions-cart/' + promotions.id}" class="text-gray-dark">
                                 <img th:src="${promotions.mainImage == null} ? ${'/img/common/no-image.jpg'} : ${'/files/' + promotions.mainImage}"
-                                     class="card-img-top" alt="...">
+                                     class="card-img-top" height="250" alt="...">
                             </a>
                             <div class="card-body">
                                 <a th:href="${'/promotions/promotions-page/' + promotions.id}"

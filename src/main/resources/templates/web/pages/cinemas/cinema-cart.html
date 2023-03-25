@@ -70,7 +70,7 @@
             </div>
             <div class="row">
                 <div class="col-md-auto p-3">
-                    <button type="button" class="btn btn-success">Расписание всех сеансов</button>
+                    <a th:href="${'/schedule/'}" type="button" class="btn btn-success">Расписание всех сеансов</a>
                 </div>
             </div>
         </div>
@@ -120,23 +120,23 @@
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="6000" th:if="*{galleryImage1!=null}">
                     <img th:src="*{galleryImage1 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage1}"
-                         class="d-md-block w-100" alt="/img/img.png">
+                         class="d-md-block w-100" height="800" alt="/img/img.png">
                 </div>
                 <div class="carousel-item" data-bs-interval="6000" th:if="*{galleryImage2!=null}">
                     <img th:src="*{galleryImage2 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage2}"
-                         class="d-md-block w-100" alt="/img/img.png">
+                         class="d-md-block w-100" height="800" alt="/img/img.png">
                 </div>
                 <div class="carousel-item" data-bs-interval="6000" th:if="*{galleryImage3!=null}">
                     <img th:src="*{galleryImage3 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage3}"
-                         class="d-md-block w-100" alt="/img/img.png">
+                         class="d-md-block w-100" height="800" alt="/img/img.png">
                 </div>
                 <div class="carousel-item" data-bs-interval="6000" th:if="*{galleryImage4!=null}">
                     <img th:src="*{galleryImage4 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage4}"
-                         class="d-md-block w-100" alt="/img/img.png">
+                         class="d-md-block w-100" height="800" alt="/img/img.png">
                 </div>
                 <div class="carousel-item" data-bs-interval="6000" th:if="*{galleryImage5!=null}">
                     <img th:src="*{galleryImage5 == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + galleryImage5}"
-                         class="d-md-block w-100" alt="/img/img.png">
+                         class="d-md-block w-100" height="800" alt="/img/img.png">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"

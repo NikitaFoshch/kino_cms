@@ -7,54 +7,47 @@
 
 <main>
   <div class="row">
-    <img src="/img/img_3.png" class="d-md-block w-100" alt="..." height="600">
-  </div>
-  <div class="row">
-    <div class="ml-5 col-md-10 ">
-      Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.
-      Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.
-      Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.
+    <div class="col-md-12">
+      <img src="/img/img_3.png" class="d-md-block w-100" alt="..." height="600">
     </div>
-    <div class="col-md-2">
-      <div class="row mt-5 ">
-        <div class="col-md-12 text-center">
-          КАКАЯ_ТО РЕКЛАМА
-        </div>
-      </div>
-      <div class="row mt-3">
-        <div class="col-md-12 text-center">
-          КАКАЯ_ТО РЕКЛАМА
-        </div>
-      </div>
+
+  </div>
+
+  <div class="row pt-5">
+    <div class="col-md-2 pt-5" th:object="${movie}">
       <div class="row">
-        <div class="col-md-12 text-center">
-          КАКАЯ_ТО РЕКЛАМА
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+          <img th:src="${movie.mainImage == null} ? ${'/img/common/no-image.jpg'} : ${'/files/' + movie.mainImage}"
+               class="product-image w-100 " height="250" alt="Movie Image">
         </div>
       </div>
     </div>
-  </div>
-  <div class="row mt-5 mb-5 text-center"><h1>ФОТОГАЛЕРЕЯ</h1></div>
-  <div class="row m-auto w-75">
-    <div id="carouselExampleInterval" class="carousel slide " data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="6000">
-          <img src="/img/img.png" class="d-md-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="6000">
-          <img src="/img/img_1.png" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="6000">
-          <img src="/img/img_2.png" class="d-block w-100" alt="..." >
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-2">Цена в грн: 55</div>
+        <div class="col-md-3">Забронировано: 0</div>
+        <div class="col-md-4">Ваш заказ: Биллетов:0 Сумма:0</div>
+      </div>
+      <div class="row pt-4">
+        <div class="col-md-auto">
+          <img src="/img/schema.png" class="d-md-block w-100" alt="...">
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+      <div class="row pt-4">
+        <div class="col-md-12">
+          <p>ЗАбРОНИРОВАННЫЕ БИЛЕТЫ МОЖНО ВЫКУПИТЬ В КАССЕ НЕ ПОЗДНЕЕ ЧЕМ ЗА ПОЛЧАСА ДО НАЧАНАЛА СЕАНСА</p>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-md-6"></div>
+        <div class="col-md-auto">
+          <button type="button" class="btn btn-secondary">Забронировать</button>
+        </div>
+        <div class="col-md-auto">
+          <button type="button" class="btn btn-success">Купить</button>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -48,8 +48,9 @@
                         <a th:href="'/admin/movies/edit/' + *{movie.id}" class="text-gray-dark">
                             <div class="row">
                                 <div class="col-md-12 text-center pr-4 pl-4">
-                                    <img th:src="*{movie.mainImage == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + movie.mainImage}"
-                                         class="product-image w-100 " alt="Movie Image">
+                                    <img th:src="*{movie.mainImage == null} ? ${'/img/common/no-image.jpg'}
+                                    : *{'/files/' + movie.mainImage}"
+                                         class="product-image w-100" height="400" alt="Movie Image">
                                 </div>
                             </div>
                             <div class="row pt-2">
@@ -70,7 +71,7 @@
                             <div class="row">
                                 <div class="col-md-12 text-center pr-4 pl-4">
                                     <img th:src="*{movie.mainImage == null} ? ${'/img/common/no-image.jpg'} : *{'/files/' + movie.mainImage}"
-                                         class="product-image w-100 " alt="Movie Image">
+                                         class="product-image w-100 " height="400" alt="Movie Image">
                                 </div>
                             </div>
                             <div class="row pt-2">

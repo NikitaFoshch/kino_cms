@@ -41,7 +41,8 @@ public class MovieServiceImpl implements MovieService {
         List<Movie> movies = new ArrayList<>();
         LocalDate localDate = LocalDate.now().plusWeeks(1);
         for (Movie movie : movieList) {
-            if (movie.getRelease().getDayOfYear() <= localDate.getDayOfYear()) {
+
+            if (movie.getRelease().isBefore(localDate)) {
                 movies.add(movie);
             }
         }
@@ -53,9 +54,9 @@ public class MovieServiceImpl implements MovieService {
         log.info("---------------Get All Coming Soon Movies---------------");
         List<Movie> movieList = getAllMovieByOrderById();
         List<Movie> movies = new ArrayList<>();
-        LocalDate localDate = LocalDate.now().plusWeeks(1);
+        LocalDate localDate = LocalDate.now().plusDays(1);
         for (Movie movie : movieList) {
-            if (movie.getRelease().getDayOfYear() > localDate.getDayOfYear()) {
+            if (movie.getRelease().isAfter(localDate)) {
                 movies.add(movie);
             }
         }
@@ -72,6 +73,7 @@ public class MovieServiceImpl implements MovieService {
         Movie movie = getMovieById(movieId);
 
         movie.setName(requestedMovie.getName());
+        movie.setRelease(requestedMovie.getRelease());
         movie.setDescription(requestedMovie.getDescription());
         movie.setTrailerUrl(requestedMovie.getTrailerUrl());
         movie.setDisabled(requestedMovie.isDisabled());
@@ -126,6 +128,9 @@ public class MovieServiceImpl implements MovieService {
                           MultipartFile galleryImage3, MultipartFile galleryImage4,
                           MultipartFile galleryImage5) {
         log.info("---------------Save Movie---------------");
+        if (movie.getRelease()==null){
+            movie.setRelease(LocalDate.now());
+        }
         if (FileUtil.saveFile(mainImage.getOriginalFilename(), mainImage))
             movie.setMainImage(mainImage.getOriginalFilename());
 

@@ -126,6 +126,7 @@ public class Init implements CommandLineRunner {
             cinemaInfo.setDisabled(true);
             ContactsPage contactsPage = new ContactsPage();
             contactsPage.getCinemaInfoList().add(cinemaInfo);
+            contactsPage.setDisabled(true);
             contactsPageRepository.save(contactsPage);
             log.info("Initial Contacts Created");
         } else log.info("Contacts Found");

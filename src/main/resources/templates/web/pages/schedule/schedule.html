@@ -6,58 +6,164 @@
 <th:block th:insert="~{/web/fragments/header :: header}"></th:block>
 
 <main>
+  <div class="row mt-5 mb-5 text-center"><h1>Расписание</h1></div>
   <div class="row">
-    <img src="/img/img_3.png" class="d-md-block w-100" alt="..." height="600">
-  </div>
-  <div class="row">
-    <div class="ml-5 col-md-10 ">
-      Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.
-      Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.
-      Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.Какой то текст.
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row mt-5 mb-5 "><h1 th:text="${date.getDayOfMonth() + ' ' + date.getMonth() + ', ' + date.getDayOfWeek()}"></h1></div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Время</th>
+          <th scope="col">Фильм</th>
+          <th scope="col">Зал</th>
+          <th scope="col">Цена в грн</th>
+          <th scope="col">Бронировать</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${movie.type2D}" th:each="movie:${movies}">
+          <td>10:00</td>
+          <td><a th:href="${'/schedule/ticket-booking/' + movie.id}" class="text-dark" th:text="${movie.name}"></a></td>
+          <td>1</td>
+          <td>75</td>
+          <td></td>
+        </tr>
+        <tr th:if="${movie.type3D}" th:each="movie:${movies}">
+          <td>12:00</td>
+          <td>
+            <a th:href="${'/schedule/ticket-booking/' + movie.id}" class="text-dark" th:text="${movie.name + ' 3D'}"></a>
+          </td>
+          <td>1</td>
+          <td>100</td>
+          <td></td>
+        </tr>
+        <tr th:if="${movie.plus18}" th:each="movie:${movies}">
+          <td>13:00</td>
+          <td>
+            <a th:href="${'/schedule/ticket-booking/' + movie.id}" class="text-dark" th:text="${movie.name + ' +18'}"></a>
+          </td>
+          <td>1</td>
+          <td>95</td>
+          <td></td>
+        </tr>
+        <tr th:if="${movie.imax}" th:each="movie:${movies}">
+          <td>14:30</td>
+          <td>
+            <a th:href="${'/schedule/ticket-booking/' + movie.id}" class="text-dark" th:text="${movie.name + ' IMAX'}"></a>
+          </td>
+          <td>1</td>
+          <td>175</td>
+          <td></td>
+        </tr>
+        <tr th:if="${movie.dbox}" th:each="movie:${movies}">
+          <td>16:00</td>
+          <td>
+            <a th:href="${'/schedule/ticket-booking/' + movie.id}" class="text-dark" th:text="${movie.name + ' DBOX'}"></a>
+          </td>
+          <td>1</td>
+          <td>145</td>
+          <td></td>
+        </tr>
+        <tr th:if="${movie.plus12}" th:each="movie:${movies}">
+          <td>17:00</td>
+          <td>
+            <a th:href="${'/schedule/ticket-booking/' + movie.id}" class="text-dark" th:text="${movie.name + ' +12'}"></a>
+          </td>
+          <td>1</td>
+          <td>60</td>
+          <td></td>
+        </tr>
+        <tr th:if="${movie.plus16}" th:each="movie:${movies}">
+          <td>19:00</td>
+          <td>
+            <a th:href="${'/schedule/ticket-booking/' + movie.id}" class="text-dark" th:text="${movie.name + ' +16'}"></a>
+          </td>
+          <td>1</td>
+          <td>120</td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="row mt-5 mb-5 "><h1 th:text="${date.plusDays(1).getDayOfMonth() + ' ' + date.plusDays(1).getMonth() + ', ' + date.plusDays(1).getDayOfWeek()}"></h1></div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Время</th>
+          <th scope="col">Фильм</th>
+          <th scope="col">Зал</th>
+          <th scope="col">Цена в грн</th>
+          <th scope="col">Бронировать</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${movie.type2D}" th:each="movie:${movies}">
+          <td>10:00</td>
+          <td>
+            <a th:href="${'/schedule/ticket-booking/' + movie.id}" class="text-dark" th:text="${movie.name}"></a>
+          </td>
+          <td>1</td>
+          <td>75</td>
+          <td></td>
+        </tr>
+        <tr th:if="${movie.type3D}" th:each="movie:${movies}">
+          <td>12:00</td>
+          <td>
+            <a th:href="${'/schedule/ticket-booking/' + movie.id}" class="text-dark" th:text="${movie.name + ' 3D'}"></a>
+          </td>
+          <td>1</td>
+          <td>100</td>
+          <td></td>
+        </tr>
+        <tr th:if="${movie.plus18}" th:each="movie:${movies}">
+          <td>13:00</td>
+          <td>
+            <a th:href="${'/schedule/ticket-booking/' + movie.id}" class="text-dark" th:text="${movie.name + ' +18'}"></a>
+          </td>
+          <td>1</td>
+          <td>95</td>
+          <td></td>
+        </tr>
+        <tr th:if="${movie.imax}" th:each="movie:${movies}">
+          <td>14:30</td>
+          <td>
+            <a th:href="${'/schedule/ticket-booking/' + movie.id}" class="text-dark" th:text="${movie.name + ' IMAX'}"></a>
+          </td>
+          <td>1</td>
+          <td>175</td>
+          <td></td>
+        </tr>
+        <tr th:if="${movie.dbox}" th:each="movie:${movies}">
+          <td>16:00</td>
+          <td>
+            <a th:href="${'/schedule/ticket-booking/' + movie.id}" class="text-dark" th:text="${movie.name + ' DBOX'}"></a>
+          </td>
+          <td>1</td>
+          <td>145</td>
+          <td></td>
+        </tr>
+        <tr th:if="${movie.plus12}" th:each="movie:${movies}">
+          <td>17:00</td>
+          <td>
+            <a th:href="${'/schedule/ticket-booking/' + movie.id}" class="text-dark" th:text="${movie.name + ' +12'}"></a>
+          </td>
+          <td>1</td>
+          <td>60</td>
+          <td></td>
+        </tr>
+        <tr th:if="${movie.plus16}" th:each="movie:${movies}">
+          <td>19:00</td>
+          <td>
+            <a th:href="${'/schedule/ticket-booking/' + movie.id}" class="text-dark" th:text="${movie.name + ' +16'}"></a>
+          </td>
+          <td>1</td>
+          <td>120</td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="col-md-2">
-      <div class="row mt-5 ">
-        <div class="col-md-12 text-center">
-          КАКАЯ_ТО РЕКЛАМА
-        </div>
-      </div>
-      <div class="row mt-3">
-        <div class="col-md-12 text-center">
-          КАКАЯ_ТО РЕКЛАМА
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 text-center">
-          КАКАЯ_ТО РЕКЛАМА
-        </div>
-      </div>
-    </div>
   </div>
-  <div class="row mt-5 mb-5 text-center"><h1>ФОТОГАЛЕРЕЯ</h1></div>
-  <div class="row m-auto w-75">
-    <div id="carouselExampleInterval" class="carousel slide " data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="6000">
-          <img src="/img/img.png" class="d-md-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="6000">
-          <img src="/img/img_1.png" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="6000">
-          <img src="/img/img_2.png" class="d-block w-100" alt="..." >
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </div>
-
 </main>
 
 <th:block th:insert="~{/web/fragments/footer :: footer}"></th:block>
